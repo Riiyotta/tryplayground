@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Downloaded brand assets — deliberately NOT committed.
+#
+# These 671 files (73MB) were pulled from tryplayground.com for local
+# measurement work. They include third-party trade dress that is not the
+# site owner's to relicense (five named customer organisations' logos),
+# photographs of identifiable children and teachers, and hand-drawn
+# portraits of named customers. Committing them to a public repo would
+# redistribute all of that under this repo's licence.
+#
+# Run the recon/download scripts to repopulate locally; see PROCESS.md.
+public/assets/
+
+# Full-page screenshots of the live original (5.5MB). Same reasoning as
+# above: these are captures of someone else's site, used locally as a
+# measurement reference, not something to redistribute.
+reference/
+
+# Editor / OS
+.DS_Store
+*.swp
+.vscode/
+.idea/
+
+# Logs
+npm-debug.log*
+yarn-error.log*

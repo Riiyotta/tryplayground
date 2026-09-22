@@ -1,0 +1,438 @@
+{
+  "meta": {
+    "source": "tryplayground.com clone \u2014 21 nav routes built and measured against the live original at 1440/768/390. Structure derived from src/App.jsx (route table), src/pages/* (template composition) and src/data/* (content modules).",
+    "status": "measured-from-codebase",
+    "totalRoutes": 23,
+    "totalTemplates": 12
+  },
+  "categories": {
+    "CHROME": "Persistent site furniture rendered once by Layout.jsx and shared by every route.",
+    "HERO": "The above-the-fold opening block of a page: headline, subhead, primary CTA and any hero artwork.",
+    "PROOF": "Social-proof blocks \u2014 customer logos, testimonials, named quotes and review walls.",
+    "FEATURE": "Product-explanation blocks: alternating copy/media rows, capability cards and check-lists.",
+    "COLLECTION": "Repeating card grids and rails driven by a list in src/data \u2014 blog, webinars, resources, changelog, article rails.",
+    "CONVERT": "Blocks whose job is to move the visitor toward a demo: FAQ accordions, sibling-product links and closing CTA bands."
+  },
+  "sections": {
+    "chrome.header": {
+      "category": "CHROME",
+      "description": "Sticky 78px nav bar with the announcement strip above it and the four hover mega-menus (Platform 667x381, Switch 620x370, Built for 881x271, Resources 683x320). Menu targets are the original's own measured hrefs.",
+      "scope": "Every route, mounted once by Layout.jsx.",
+      "implementedBy": "Header.jsx"
+    },
+    "chrome.footer": {
+      "category": "CHROME",
+      "description": "Four-column link footer with the legal row beneath it.",
+      "scope": "Every route, mounted once by Layout.jsx.",
+      "implementedBy": "Sections.jsx > Footer"
+    },
+    "chrome.scroll-restore": {
+      "category": "CHROME",
+      "description": "Resets scroll to top on navigation; a client router otherwise lands the visitor mid-page on the next route.",
+      "scope": "Every route, mounted once by Layout.jsx.",
+      "implementedBy": "Layout.jsx > ScrollToTop"
+    },
+    "hero.home": {
+      "category": "HERO",
+      "description": "Homepage hero: eyebrow pill, 68px H1, subhead, demo CTA, star rating, then the seven-tab product rail whose white thumb slides on cubic-bezier(.65,0,.35,1) and auto-advances every ~4s over a 964x525 screenshot stage.",
+      "scope": "The homepage only \u2014 no other route carries the tab rail.",
+      "implementedBy": "Hero.jsx"
+    },
+    "hero.split": {
+      "category": "HERO",
+      "description": "Two-column inner-page hero: 68px H1, subhead and CTA on the left, a 409x547 product shot on the right, over a full-bleed illustration band.",
+      "scope": "The solutions and for-audience templates, which all measured this same split shape.",
+      "implementedBy": "SolutionPage.jsx / ForPage.jsx / SolutionsBilling.jsx"
+    },
+    "hero.centered": {
+      "category": "HERO",
+      "description": "Centered hero: H1 and subhead on the cream field with no product shot, optionally over an illustration band or a row of photos.",
+      "scope": "Support, customers, why-playground, about, careers, and the collection index pages.",
+      "implementedBy": "Support.jsx / Customers.jsx / IndexPage.jsx"
+    },
+    "proof.logo-ticker": {
+      "category": "PROOF",
+      "description": "Infinite partner-logo marquee running at a measured 49.7px/s, carrying the five real customer logos.",
+      "scope": "Homepage plus every solutions, for-audience and support route; not on the collection indexes.",
+      "implementedBy": "Ticker.jsx"
+    },
+    "proof.testimonial-band": {
+      "category": "PROOF",
+      "description": "Named-customer quote beside a hand-drawn portrait inset in the 450x456 orange frame, with dot navigation between customers.",
+      "scope": "Homepage, /solutions/billing and /why-playground.",
+      "implementedBy": "PageParts.jsx > TestimonialBand"
+    },
+    "proof.review-wall": {
+      "category": "PROOF",
+      "description": "Grid of short unattributed platform reviews, with a Directors/Families tab pair on /about.",
+      "scope": "/about and /careers, which share the same review set.",
+      "implementedBy": "About.jsx / Careers.jsx"
+    },
+    "proof.customer-stories": {
+      "category": "PROOF",
+      "description": "Featured customer stories \u2014 portrait, quote and a stat block \u2014 followed by the shorter 'Wall of love' quote grid.",
+      "scope": "/customers only.",
+      "implementedBy": "Customers.jsx"
+    },
+    "feature.intro-band": {
+      "category": "FEATURE",
+      "description": "Centered band that opens a product page: 60px H2, a 17px sub-headline the original marks up as a second h2, and a row of capability labels.",
+      "scope": "Every solutions template.",
+      "implementedBy": "SolutionPage.jsx"
+    },
+    "feature.alternating-rows": {
+      "category": "FEATURE",
+      "description": "Alternating copy/media rows \u2014 eyebrow, 48px H2, sub-headline, check-list and an optional pull quote, with the media column flipping side to side.",
+      "scope": "Solutions, for-audience and support templates.",
+      "implementedBy": "PageParts.jsx > FeatureRow"
+    },
+    "feature.card-grid": {
+      "category": "FEATURE",
+      "description": "Grids of bordered 277x119 link cards, optionally over a row of product screenshots.",
+      "scope": "/solutions/billing and /solutions/ai, the two hand-built solutions pages.",
+      "implementedBy": "PageParts.jsx > LinkCard"
+    },
+    "feature.grid-sections": {
+      "category": "FEATURE",
+      "description": "Homepage product sections: centered eyebrow and H2 over a mixed-span card grid whose cards carry full-bleed artwork.",
+      "scope": "Homepage only \u2014 marketing, finances, operations and AI.",
+      "implementedBy": "FeatureSection.jsx"
+    },
+    "feature.timeline": {
+      "category": "FEATURE",
+      "description": "Click-activated 30-day timeline: three day cards over a 966x275 growth-curve panel, with a dot and pill that slide along the curve on 500ms cubic-bezier(.22,1,.36,1).",
+      "scope": "Homepage only.",
+      "implementedBy": "Sections.jsx > Timeline"
+    },
+    "feature.audience-tiles": {
+      "category": "FEATURE",
+      "description": "Home-Based / Center / Multi-Location tiles, used both as a static row and as the selectable first step of the demo form.",
+      "scope": "Homepage, /solutions/billing, /customers and /why-playground.",
+      "implementedBy": "Sections.jsx > BuiltFor / WhyPlayground.jsx > DemoPicker"
+    },
+    "feature.release-list": {
+      "category": "FEATURE",
+      "description": "Compact version/title/date rows standing in for the changelog feed.",
+      "scope": "/support and /why-playground, as an inline proof of weekly shipping.",
+      "implementedBy": "Support.jsx / WhyPlayground.jsx"
+    },
+    "collection.card-grid": {
+      "category": "COLLECTION",
+      "description": "Grid of cover-plus-title cards driven by a list in src/data, with card geometry measured per page (343x205 landscape for webinars, 181x271 portrait for resources).",
+      "scope": "/webinars and /resources.",
+      "implementedBy": "IndexPage.jsx"
+    },
+    "collection.category-feed": {
+      "category": "COLLECTION",
+      "description": "Posts grouped under category headings with a 'See all' link per group; capped at 8 posts per category and states the cap on the page.",
+      "scope": "/blog only.",
+      "implementedBy": "Blog.jsx"
+    },
+    "collection.release-feed": {
+      "category": "COLLECTION",
+      "description": "Dated release entries with a 590x455 screenshot each; capped at the 24 most recent of 204 and states the cap.",
+      "scope": "/changelog only.",
+      "implementedBy": "Changelog.jsx"
+    },
+    "collection.article-rail": {
+      "category": "COLLECTION",
+      "description": "Horizontally scrolling rail of 309x300 article cards. Its trailing cards sit ~3000px off-screen, so they only load once the rail itself is scrolled.",
+      "scope": "Every solutions template.",
+      "implementedBy": "PageParts.jsx > ArticleRail"
+    },
+    "convert.faq": {
+      "category": "CONVERT",
+      "description": "Question accordion. Rows toggle independently rather than single-open; whether row 1 ships open is measured per page and passed as openFirst.",
+      "scope": "Solutions, for-audience and why-playground templates.",
+      "implementedBy": "PageParts.jsx > Faq"
+    },
+    "convert.sibling-links": {
+      "category": "CONVERT",
+      "description": "Cards linking to the other products in the same family, with the current page dropped from the list.",
+      "scope": "Every solutions template.",
+      "implementedBy": "SolutionPage.jsx"
+    },
+    "convert.closing-cta": {
+      "category": "CONVERT",
+      "description": "Closing demo band: a 48px H3 and a primary CTA, sometimes over a full-bleed illustration.",
+      "scope": "21 of the 23 routes. Absent on the 404, and on /why-playground, which ends on its FAQ because its demo CTA sits high up in the two-step form instead.",
+      "implementedBy": "SolutionPage.jsx / ForPage.jsx / Sections.jsx > FinalCTA"
+    },
+    "convert.demo-form": {
+      "category": "CONVERT",
+      "description": "Two-step lead form: picking a program-type tile reveals a contact step, which on the original grows the page's text from 4,403 to 5,015 characters.",
+      "scope": "/why-playground only.",
+      "implementedBy": "WhyPlayground.jsx > DemoPicker"
+    },
+    "convert.not-found": {
+      "category": "CONVERT",
+      "description": "404 body: heading, explanation that the page may not be built in this clone, and a link home.",
+      "scope": "The catch-all route only.",
+      "implementedBy": "NotFound.jsx"
+    }
+  },
+  "templates": [
+    {
+      "id": "template.home",
+      "name": "Homepage",
+      "routeCount": 1,
+      "routes": [
+        "/"
+      ],
+      "routePattern": null,
+      "chrome": "full",
+      "sections": [
+        "chrome.header",
+        "chrome.scroll-restore",
+        "hero.home",
+        "proof.logo-ticker",
+        "feature.grid-sections",
+        "proof.testimonial-band",
+        "feature.audience-tiles",
+        "feature.timeline",
+        "convert.closing-cta",
+        "chrome.footer"
+      ]
+    },
+    {
+      "id": "template.solution-flagship",
+      "name": "Solution \u2014 flagship (billing)",
+      "routeCount": 1,
+      "routes": [
+        "/solutions/billing"
+      ],
+      "routePattern": null,
+      "chrome": "full",
+      "sections": [
+        "chrome.header",
+        "chrome.scroll-restore",
+        "hero.split",
+        "proof.logo-ticker",
+        "feature.intro-band",
+        "feature.alternating-rows",
+        "proof.testimonial-band",
+        "feature.card-grid",
+        "convert.sibling-links",
+        "convert.faq",
+        "collection.article-rail",
+        "feature.audience-tiles",
+        "convert.closing-cta",
+        "chrome.footer"
+      ]
+    },
+    {
+      "id": "template.solution-standard",
+      "name": "Solution \u2014 shared renderer",
+      "routeCount": 3,
+      "routes": [
+        "/solutions/expenses",
+        "/solutions/payroll",
+        "/solutions/subsidy"
+      ],
+      "routePattern": null,
+      "chrome": "full",
+      "sections": [
+        "chrome.header",
+        "chrome.scroll-restore",
+        "hero.split",
+        "proof.logo-ticker",
+        "feature.intro-band",
+        "feature.alternating-rows",
+        "convert.sibling-links",
+        "convert.faq",
+        "collection.article-rail",
+        "convert.closing-cta",
+        "chrome.footer"
+      ]
+    },
+    {
+      "id": "template.solution-ai",
+      "name": "Solution \u2014 AI (Camber)",
+      "routeCount": 1,
+      "routes": [
+        "/solutions/ai"
+      ],
+      "routePattern": null,
+      "chrome": "full",
+      "sections": [
+        "chrome.header",
+        "chrome.scroll-restore",
+        "hero.centered",
+        "proof.logo-ticker",
+        "feature.card-grid",
+        "feature.alternating-rows",
+        "convert.faq",
+        "collection.article-rail",
+        "convert.closing-cta",
+        "chrome.footer"
+      ]
+    },
+    {
+      "id": "template.audience",
+      "name": "Built-for audience page",
+      "routeCount": 7,
+      "routes": [
+        "/for/centers",
+        "/for/home-based",
+        "/for/multi-site",
+        "/for/head-start",
+        "/for/owners",
+        "/for/directors",
+        "/for/enrollment-specialist"
+      ],
+      "routePattern": null,
+      "chrome": "full",
+      "sections": [
+        "chrome.header",
+        "chrome.scroll-restore",
+        "hero.split",
+        "proof.logo-ticker",
+        "feature.alternating-rows",
+        "convert.faq",
+        "convert.closing-cta",
+        "chrome.footer"
+      ]
+    },
+    {
+      "id": "template.support",
+      "name": "Support & onboarding",
+      "routeCount": 1,
+      "routes": [
+        "/support"
+      ],
+      "routePattern": null,
+      "chrome": "full",
+      "sections": [
+        "chrome.header",
+        "chrome.scroll-restore",
+        "hero.centered",
+        "proof.logo-ticker",
+        "feature.alternating-rows",
+        "feature.release-list",
+        "convert.closing-cta",
+        "chrome.footer"
+      ]
+    },
+    {
+      "id": "template.why",
+      "name": "Why Playground",
+      "routeCount": 1,
+      "routes": [
+        "/why-playground"
+      ],
+      "routePattern": null,
+      "chrome": "full",
+      "sections": [
+        "chrome.header",
+        "chrome.scroll-restore",
+        "hero.centered",
+        "convert.demo-form",
+        "feature.audience-tiles",
+        "proof.logo-ticker",
+        "feature.alternating-rows",
+        "proof.testimonial-band",
+        "feature.release-list",
+        "convert.faq",
+        "chrome.footer"
+      ]
+    },
+    {
+      "id": "template.customers",
+      "name": "Customer stories index",
+      "routeCount": 1,
+      "routes": [
+        "/customers"
+      ],
+      "routePattern": null,
+      "chrome": "full",
+      "sections": [
+        "chrome.header",
+        "chrome.scroll-restore",
+        "hero.centered",
+        "proof.customer-stories",
+        "proof.logo-ticker",
+        "feature.audience-tiles",
+        "convert.closing-cta",
+        "chrome.footer"
+      ]
+    },
+    {
+      "id": "template.about",
+      "name": "About",
+      "routeCount": 1,
+      "routes": [
+        "/about"
+      ],
+      "routePattern": null,
+      "chrome": "full",
+      "sections": [
+        "chrome.header",
+        "chrome.scroll-restore",
+        "hero.centered",
+        "feature.alternating-rows",
+        "proof.review-wall",
+        "convert.closing-cta",
+        "chrome.footer"
+      ]
+    },
+    {
+      "id": "template.careers",
+      "name": "Careers",
+      "routeCount": 1,
+      "routes": [
+        "/careers"
+      ],
+      "routePattern": null,
+      "chrome": "full",
+      "sections": [
+        "chrome.header",
+        "chrome.scroll-restore",
+        "hero.centered",
+        "feature.alternating-rows",
+        "proof.review-wall",
+        "feature.card-grid",
+        "convert.closing-cta",
+        "chrome.footer"
+      ]
+    },
+    {
+      "id": "template.collection-index",
+      "name": "Collection index",
+      "routeCount": 4,
+      "routes": [
+        "/webinars",
+        "/resources",
+        "/blog",
+        "/changelog"
+      ],
+      "routePattern": null,
+      "chrome": "full",
+      "sections": [
+        "chrome.header",
+        "chrome.scroll-restore",
+        "hero.centered",
+        "collection.card-grid",
+        "collection.category-feed",
+        "collection.release-feed",
+        "convert.closing-cta",
+        "chrome.footer"
+      ]
+    },
+    {
+      "id": "template.not-found",
+      "name": "404",
+      "routeCount": 1,
+      "routes": [
+        "/*"
+      ],
+      "routePattern": null,
+      "chrome": "full",
+      "sections": [
+        "chrome.header",
+        "chrome.scroll-restore",
+        "convert.not-found",
+        "chrome.footer"
+      ]
+    }
+  ]
+}

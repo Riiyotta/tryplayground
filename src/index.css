@@ -1,0 +1,59 @@
+@import './fonts.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { -webkit-font-smoothing: antialiased; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: theme('colors.ink');
+    background: #fff;
+  }
+  /* Display headings use Manrope in place of the original's commercial
+     CircularXX TT. Tracking is kept em-relative so line counts hold. */
+  h1, h2, h3, h4, h5, h6 { font-family: 'Manrope', 'Inter', sans-serif; }
+}
+
+@layer utilities {
+  /* The two easing tokens measured on the original. */
+  .ease-color { transition-timing-function: cubic-bezier(0.44, 0, 0.56, 1); }
+  .ease-move  { transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1); }
+  /* Hero tab thumb. Measured by rAF-sampling the original's white pill while
+     clicking Payroll: motion starts ~120ms after the click, runs 301ms and
+     settles at 421ms, interpolating x AND width together (288/128 -> 968/94).
+     The progress curve is symmetric (.001 .116 .440 .802 .985 1.0), which
+     fits cubic-bezier(.65,0,.35,1) at rmse 0.054 - roughly 5x closer than
+     ease-move or a plain ease-out. */
+  .ease-tab   { transition-timing-function: cubic-bezier(0.65, 0, 0.35, 1); }
+
+  .hover-color {
+    transition: color 200ms cubic-bezier(0.44, 0, 0.56, 1);
+  }
+
+  /* Hero cream field: a gradient, not a flat fill - it fades out over the
+     bottom third. Stop position measured at 64.5376%. */
+  .hero-cream {
+    background: linear-gradient(rgb(254,245,228) 64.5376%, rgba(254,245,228,0.08) 100%);
+  }
+
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+}
+
+/* Logo ticker: measured at 49.7px/s, linear, infinite. Duration is set
+   inline from the measured track width so the speed matches exactly. */
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(var(--ticker-distance)); }
+}
+.ticker-track {
+  animation: ticker var(--ticker-duration) linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track { animation: none; }
+  * { scroll-behavior: auto !important; }
+}
