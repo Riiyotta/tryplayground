@@ -8,7 +8,7 @@ import RiveArt from './RiveArt'
    Section padding: 180px desktop -> 96px at <=768. */
 export default function FeatureSection({
   id, heading, intro, lead, features, mediaH = 480, tone = 'grey', headingSize = 'h2',
-  band = false, headingW = 760, padTop = 180, eyebrow = '', padBottom = 0,
+  band = false, headingW = 760, padTop = 180, eyebrow = '', padBottom = 0, introW = 501,
   cardH = [683, 661],
 }) {
   /* Section pt measured per section at 1440: 0 for marketing, 180 for the
@@ -50,24 +50,22 @@ export default function FeatureSection({
         )}
         {intro && (
           <Reveal delay={60}>
-            <p className="mx-auto mt-5 max-w-[501px] text-center text-body text-muted">{intro}</p>
+            <p style={{ maxWidth: introW }}
+               className="mx-auto mt-5 text-center text-body text-muted">{intro}</p>
           </Reveal>
         )}
 
-        <Reveal delay={120} className="mt-5 flex justify-center">
-          <a href="#" className="inline-flex items-center gap-1 text-[15px] font-medium leading-6 text-accent hover-color">
-            Platform Overview
-            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M6 3.5 10.5 8 6 12.5" stroke="currentColor" strokeWidth="1.8"
-                    strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </a>
-        </Reveal>
+        {/* No "Platform Overview" link here. It appears exactly twice on the
+            original - in "Get to know" (y=1600) and near the footer (y=9077)
+            - never in the four feature sections. Rendering it on all four
+            pushed every card grid 36px down. */}
 
         {/* Measured (recon §1.1): the grid is 3-col with MIXED SPANS, not a
             uniform 3-up. 805.33px cards span 2 columns, one spans all 3.
-            grid-template-columns: 394.656 394.672 394.656; rows 480px; gap 16. */}
-        <div className="mt-1 grid grid-cols-1 gap-4 xl:grid-cols-3 xl:grid-rows-2 xl:[grid-auto-rows:480px]">
+            grid-template-columns: 394.656 394.672 394.656; rows 480px; gap 16.
+            Intro copy ends at +197 from the H2 top and the first card starts
+            at +245, so the grid sits 48px below the header block. */}
+        <div className="mt-8 grid grid-cols-1 gap-4 xl:mt-12 xl:grid-cols-3 xl:grid-rows-2 xl:[grid-auto-rows:480px]">
           {features.map((f) => (
             <article
               key={f.title}

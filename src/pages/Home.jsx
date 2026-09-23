@@ -56,7 +56,8 @@ export default function Home() {
         eyebrow="AI"
         headingW={750}
         cardH={[480, 480]}
-        intro="Camber answers inquiry calls, supports your staff, and handles the daily admin work — giving your team back the hours they spend on the phone and in the inbox."
+        introW={750}
+        intro="Camber answers inquiry calls, supports your staff, and handles the daily admin work — giving your program, daycare, or center the capacity of another full-time hire, at a fraction of the cost."
         features={aiFeatures}
         tone="blue"
         padBottom={140}

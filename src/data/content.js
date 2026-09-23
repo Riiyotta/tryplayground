@@ -186,13 +186,17 @@ export const opsFeatures = [
     desc: 'Report on anything in Playground with 100s of premade reports and the ability to build your own.' },
 ]
 
+/* Measured: 805/395 on row 1, then a full-width 1216px card. Unlike the
+   other three feature sections these carry real images, not Rive. The
+   original names "Camber" in every description - an earlier pass had
+   genericised it to "the agent"/"it". */
 export const aiFeatures = [
-  { span: 2, title: 'Never miss a lead', img: '/assets/img/feat-ai-call.webp',
-    desc: 'The agent answers 24/7, qualifies families, and logs every inquiry in your CRM' },
-  { span: 1, title: 'Instant answers for staff and families', img: '/assets/img/feat-ai-chat.webp',
-    desc: 'Trained on your handbook, SOPs, and state licensing — so every question gets a consistent, correct answer.' },
-  { span: 3, title: 'Do more with the team you have', img: '/assets/img/feat-ai-funnel.webp',
-    desc: 'Ask it to draft messages, issue refunds, reconcile subsidies, and build reports — right from your inbox.' },
+  { span: 2, title: 'Never miss a lead', img: '/assets/img/card-ai-lead.webp',
+    desc: 'Camber answers 24/7, qualifies families, and logs every inquiry in your CRM' },
+  { span: 1, title: 'Instant answers for staff and families', img: '/assets/img/card-ai-answers.webp',
+    desc: 'Camber is trained on your handbook, SOPs, and state licensing — so every question gets a fast, accurate answer' },
+  { span: 3, title: 'Do more with the team you have', img: '/assets/img/card-ai-team.webp',
+    desc: 'Ask Camber to draft messages, issue refunds, reconcile subsidies, and build reports — right inside Playground' },
 ]
 
 /* "Built for" tiles: 3 x 313.33px, gap 10px, container 960px, tile 313x380,
