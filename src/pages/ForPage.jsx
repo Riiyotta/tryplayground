@@ -285,6 +285,40 @@ export default function ForPage() {
         </section>
       )}
 
+
+      {/* y=5674 on /for/head-start - a 2x2 tile grid under a 48px heading.
+          Tile headings measure 18px/w500 at x=198/758 on the 1216 container,
+          rows at y=5904 and y=6149, i.e. a 245px row pitch. */}
+      {page.tileGrid && (
+        <section className="px-5 pt-24 xl:pt-[140px]">
+          <div className="mx-auto max-w-content">
+            <SectionH2 className="max-w-[760px]">{page.tileGrid.title}</SectionH2>
+            <div className="mt-12 grid gap-x-16 gap-y-12 md:grid-cols-2">
+              {page.tileGrid.tiles.map((t) => (
+                <div key={t.t}>
+                  <h3 className="text-feature font-medium text-ink">{t.t}</h3>
+                  <p className="mt-3 text-small text-muted">{t.d}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* y=7332 - a 32px pull-quote with attribution beneath. */}
+      {page.pullQuote && (
+        <section className="px-5 pt-24 xl:pt-[140px]">
+          <div className="mx-auto max-w-[860px] text-center">
+            <blockquote className="font-display text-[24px] font-bold leading-[30px]
+                                   tracking-[-0.03em] text-ink xl:text-[32px] xl:leading-[35.2px]">
+              &ldquo;{page.pullQuote.quote}&rdquo;
+            </blockquote>
+            <p className="mt-6 text-body font-medium text-ink">{page.pullQuote.who}</p>
+            <p className="text-small text-muted">{page.pullQuote.role}</p>
+          </div>
+        </section>
+      )}
+
       {/* FAQ — on these pages NO row ships open (row 1 measures 598x44, the
           question only), so none is defaulted open here. */}
       <section className="px-5 pt-24 xl:pt-[140px]">

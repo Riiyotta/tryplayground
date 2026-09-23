@@ -252,26 +252,68 @@ export const forPages = {
   },
 
   'head-start': {
-    h1: 'Modern Head Start software that gets better every week',
+    h1: 'Modern Head Start software that gets better family outcomes',
     sub: 'Eligibility, ERSEA, PIR reporting, screenings and CACFP in one system built for Head Start agencies.',
     shot: '/assets/img/for-head-start/playground-task-list-showing-an-em__4ov3CR0T3u7diBitBUSSXi7edJs.webp',
     backdrop: '/assets/img/for-head-start/illustration-of-children-playing-a__24I3XjOO33nTi2yUpYH9iczt7s.webp',
+    h1sub: 'Eligibility, ERSEA, PIR reporting, screenings and CACFP in one system built for Head Start agencies.',
+    /* Measured on the original: SEVEN alternating feature rows, each a 48px
+       heading with a 17px sub-heading beneath it (the original marks both as
+       h2, which is why a heading count reads 22 rather than 7). An earlier
+       pass consolidated these into four sections of our own wording, which
+       is most of why this page ran at 55% of the original's height. Copy
+       below is the original's own, verbatim. */
     sections: [
-      { title: 'Eligibility calculated for you',
-        intro: 'Enter the family’s criteria and Playground calculates income, applies housing deductions, and computes the percentage of the current Federal Poverty Level.',
-        img: '/assets/img/for-head-start/playground-eligibility-calculator-__YjwZq516rv9gFwDn8P2PqiYO04s.webp',
+      { title: 'One platform for your entire program',
+        intro: 'Unlike legacy Head Start software, Playground isn’t just built for administrators. It’s built for everyone, including family advocates to health staff, teachers and directors.',
+        img: '/assets/for/hs-platform.webp',
+        imgW: 439, imgH: 605, flip: true },
+      { title: 'Determine eligibility with confidence',
+        intro: 'Enter eligibility criteria and Playground automatically calculates income, applies housing deductions when applicable, and calculates the family’s percentage of the current Federal Poverty Level using the latest HHS guidelines.',
+        img: '/assets/for/hs-eligibility.webp',
         imgW: 510, imgH: 306 },
-      { title: 'ERSEA selection and ranking',
-        intro: 'Configure your agency’s selection criteria once and Playground scores and ranks applicants against them automatically.',
-        img: '/assets/img/for-head-start/playground-assessment-scorecards-f__GKzhtxMJZq3FhF3PsnA0WgbCMbo.webp',
+      { title: 'Rank applicants automatically',
+        intro: 'Configure your agency’s selection criteria. Playground then automatically scores applicants, ranks them, and gives your selection committee a prioritized list instead of another spreadsheet.',
+        img: '/assets/for/hs-rank.webp',
         imgW: 428, imgH: 455, flip: true },
       { title: 'PIR reporting that builds itself',
-        intro: 'Reporting assembles from what your team already enters during the program year, with any metric clickable down to the children behind it.',
-        img: '/assets/img/for-head-start/playground-data-quality-task-scree__zzSA1h0HFz8PeMaXQ3anDZIuUUI.webp',
+        intro: 'Your team is already entering the information. Playground puts it to work—so you can verify any metric, improve data quality, and preserve reporting snapshots long after submission.',
+        img: '/assets/for/hs-pir.webp',
         imgW: 510, imgH: 419 },
-      { title: 'Screenings and referrals in one place',
-        intro: 'Developmental, behavioral, health and mental health screenings managed centrally, with referrals tracked through to resolution.' },
+      { title: 'Family partnerships that move beyond paperwork',
+        intro: 'Playground helps family advocates manage strengths assessments, partnership goals, benchmarks, and follow-up tasks in one place—so agencies can measure growth over time instead of relying on isolated snapshots.',
+        img: '/assets/for/hs-partnerships.webp',
+        imgW: 510, imgH: 455, flip: true },
+      { title: 'Screenings that lead to action',
+        intro: 'Manage developmental, behavioral, health, and mental health screenings from one centralized system. Configure schedules based on age, enrollment date, or custom rules to keep the ball rolling.',
+        img: '/assets/for/hs-screenings.webp',
+        imgW: 393, imgH: 447 },
+      { title: 'Manage incidents, concerns and referrals from beginning to end',
+        intro: 'A concern shouldn’t disappear into someone’s inbox. Playground tracks every concern from initial identification through resolution—whether it begins with a screening, illness, injury, incident, or staff observation.',
+        img: '/assets/for/hs-incidents.webp',
+        imgW: 510, imgH: 483, flip: true },
     ],
+    /* y=5674 - a 2x2 tile grid, headings at 18px/w500 on a 1216 container
+       at x=198/758 with rows at y=5904 and y=6149. */
+    tileGrid: {
+      title: 'Everything your agency needs to serve families better',
+      tiles: [
+        { t: 'CACFP built into daily operations',
+          d: 'Record meals alongside attendance, surface claim issues early, and sync attendance, in/out times, and meal counts with KidKare or MyFoodProgram.' },
+        { t: 'Digital paperwork families actually complete',
+          d: 'Let families complete enrollment packets, health forms, permissions, consents, and emergency contacts from their phone, with reminders, expiration dates, reviews, and corrections built in.' },
+        { t: 'Built-in family engagement',
+          d: 'Share photos, videos, meals, naps, learning updates, and messages in one secure app, automatically translated into each family’s preferred language.' },
+        { t: 'Multi-site reporting without spreadsheets',
+          d: 'Analyze enrollment, attendance, staffing, family goals, screenings, referrals, health, CACFP, and custom data across your entire agency or one center, classroom, or child.' },
+      ],
+    },
+    /* y=7332 - a 32px pull-quote with attribution. */
+    pullQuote: {
+      quote: "Across all locations, we're saving 30 hours a month just on tasks parents can now do themselves. That's time we get back for what really matters.",
+      who: 'Nick Caughell',
+      role: 'The Weston School',
+    },
     faq: [
       { q: 'How does Playground determine Head Start eligibility?',
         a: "You enter the family's eligibility criteria and Playground automatically calculates income, applies housing deductions when applicable, and calculates the family's percentage of the current Federal Poverty Level using the latest HHS guidelines. Categorical eligibility is supported alongside income-based eligibility." },
