@@ -78,17 +78,44 @@ export default function FeatureSection({
               {/* Image is a full-bleed layer at inset:0, z-index 0, behind the
                   text - object-fit contain, since the artwork carries its own
                   whitespace. No card padding, border or shadow. */}
-              {f.img ? (
+              {f.img && (
                 <Img src={f.img} w="full" h="100%" alt="" fit="contain"
                      className="absolute inset-0 z-0" style={{ height: '100%' }} />
-              ) : (
-                <Placeholder w="full" h={mediaH} radius={0} tone={tone} label=""
-                             className="absolute inset-0 !h-full" />
               )}
-              {/* Text column: 385px wide, padded 32px 32px 0, title->desc gap 12px. */}
+              {/* Sticky-note testimonial. Measured 328x290 at the card's
+                  left edge, y=+166 from the card top, with the quote inset
+                  +38x/+55y at 253px wide. Two marketing cards and the wide
+                  finances card carry one. */}
+              {f.note && (
+                <div className="absolute left-0 top-[166px] z-[1] hidden h-[290px] w-[328px] xl:block">
+                  <img src={f.note} alt="" aria-hidden="true" loading="lazy" decoding="async"
+                       className="absolute inset-0 h-full w-full object-cover" />
+                  <div className="absolute left-[38px] top-[55px] w-[253px]">
+                    <p className="text-[15px] italic leading-[20px] text-ink">“{f.quote}”</p>
+                    <p className="mt-3 text-[13px] font-medium leading-[17px] text-ink">{f.who}</p>
+                    <p className="text-[13px] leading-[17px] text-muted">{f.role}</p>
+                  </div>
+                </div>
+              )}
+              {/* Text column: 385px wide, padded 32px 32px 0, title->desc gap 12px.
+                  The story card is the one exception: its heading IS the
+                  quote, set at 30px, and it closes with a link. */}
               <div className="relative z-[2] flex max-w-[385px] flex-col gap-3 px-8 pt-8">
-                <h3 className="max-w-[289px] text-feature font-medium text-ink">{f.title}</h3>
+                <h3 className={f.story
+                  ? 'max-w-[289px] font-display text-[30px] font-bold leading-[34px] tracking-[-0.03em] text-ink'
+                  : 'max-w-[289px] text-feature font-medium text-ink'}>
+                  {f.story ? `“${f.title}”` : f.title}
+                </h3>
                 <p className="max-w-[321px] text-small font-medium text-body-alt">{f.desc}</p>
+                {f.cta && (
+                  <a href="#" className="inline-flex items-center gap-1 text-[15px] font-medium text-accent hover-color">
+                    {f.cta}
+                    <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                      <path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" strokeWidth="1.6"
+                            strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </a>
+                )}
               </div>
             </article>
           ))}

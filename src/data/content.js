@@ -113,25 +113,43 @@ export const tickerLogos = [
    Titles kept verbatim (length drives wrapping); descriptions rewritten
    to the measured character counts. */
 export const marketingFeatures = [
-  { span: 2, title: "Don't let another lead slip through the cracks", img: '/assets/img/feat-enrollment.webp',
-    desc: 'Capture interested families, track every interaction, and scale enrollment — at one location or fifty.' },
-  { span: 1, title: 'Predictive Enrollment', img: '/assets/img/feat-ai-funnel.webp',
+  { span: 2, title: "Don't let another lead slip through the cracks",
+    desc: 'Capture interested families, track all interactions, and scale enrollment — at one location or across 100s',
+    note: '/assets/img/note-pin-red.svg',
+    quote: 'I no longer worry about not getting back to interested families in time',
+    who: 'Jermaine Rucker', role: 'Owner at Little Minds Universe' },
+  { span: 1, title: 'Predictive Enrollment', img: '/assets/img/card-predictive.webp',
     desc: 'Forecast future openings and maximize capacity with smart planning tools.' },
-  { span: 1, title: 'Child care websites built for enrollment', img: '/assets/img/feat-website.webp',
-    desc: 'We build your site to drive enrollment. A proven design that grows search traffic and turns visits into tours.' },
-  { span: 2, title: 'Less paper, less work', img: '/assets/img/feat-subsidy.webp',
-    desc: 'Say goodbye to paper — and much of the work — with fully digital registration packets that families finish on a phone.' },
+  { span: 1, title: 'Child care websites built for enrollment', img: '/assets/img/card-website.webp',
+    desc: 'Playground builds your website to drive enrollment. Our proven design grows Google traffic, and beats your competition.' },
+  { span: 2, title: 'Less paper, less work',
+    desc: 'Say goodbye to paper — and much of the work — with fully digital registration packets that autofill repetitive information.',
+    note: '/assets/img/note-pin-red.svg',
+    quote: 'Our parents jumped for joy when they saw the online paperwork packet.',
+    who: 'Carrie Hoffman', role: 'Office Manager at The Acorn' },
 ]
 
+/* Measured card order at 1440: row1 is a 805px wide card then the 395px
+   customer-story card; row2 is three 395px cards. The story card is a
+   different shape from the rest - its heading IS the quote and it carries a
+   "Read the story" link - so it is flagged with `story` rather than being
+   forced into the standard card. */
 export const financeFeatures = [
-  { span: 2, title: 'Payment collection on autopilot', img: '/assets/img/feat-enrollment.webp',
-    desc: 'Set mandatory autopay for families so you can stop chasing late payments and focus on the work.' },
-  { span: 1, title: 'Make subsidized billing a breeze', img: '/assets/img/feat-subsidy.webp',
+  { span: 2, title: 'Payment collection on autopilot',
+    desc: 'Set mandatory autopay for families so you can stop chasing late payments and focus on what matters.',
+    note: '/assets/img/note-pin-green.svg',
+    quote: 'We achieved a 93% reduction in delinquent payments.',
+    who: 'Kaitlynn Snyder', role: 'Boys & Girls Club Mountain Empire' },
+  { span: 1, story: true, title: 'I cut 4 systems down into just 1',
+    desc: 'Jermaine consolidated his apps into one — and saved time and money while doing so.',
+    cta: 'Read the story' },
+  { span: 1, title: 'Make subsidized billing a breeze', img: '/assets/img/card-subsidy.webp',
     desc: 'Automatically reconcile subsidy ledgers — and get more accurate reporting than ever' },
-  { span: 1, title: 'Automatic expense tracking', img: '/assets/img/feat-ai-funnel.webp',
+  { span: 1, title: 'Automatic expense tracking',
     desc: 'Pre-build budgets for responsible spend and eliminate manual expense reporting.' },
-  { span: 1, title: 'Fast, accurate, and effortless payroll designed for child care', img: '/assets/img/feat-payroll.webp',
-    desc: "Pay your staff with full service payroll, tax filing, and time tracking tools built in." },
+  { span: 1, title: 'Fast, accurate, and effortless payroll designed for child care',
+    img: '/assets/img/card-payroll.webp',
+    desc: "Pay your staff with Playground's full service payroll, tax filing, and time tracking tool." },
 ]
 
 export const opsFeatures = [
