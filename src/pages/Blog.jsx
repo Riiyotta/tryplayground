@@ -1,11 +1,22 @@
 import { PrimaryButton, Img } from '../components/Primitives'
 import { SectionH2 } from '../components/PageParts'
+import { useState } from 'react'
 import { blogIndex } from '../data/feeds'
 
 /* /blog — the original groups 213 posts under category headings with a
    "See all" link per group. The first 8 per category are rendered here (see
    feeds.js); the page states that rather than implying a full archive. */
 export default function Blog() {
+  /* The original carries a category filter bar the clone was missing
+     entirely - measured at y=453, starting x=225, a single row of "All" plus
+     the seven category names at 14px/rgb(39,42,46) separated by small
+     dividers. The clone had no bar and instead used the category names as
+     section headings scattered down the page (y=973/1721/2470). */
+  const [filter, setFilter] = useState('All')
+  const shown = filter === 'All'
+    ? blogIndex.categories
+    : blogIndex.categories.filter((c) => c.name === filter)
+
   return (
     <>
       <section className="hero-cream pt-[56px]">
@@ -20,8 +31,30 @@ export default function Blog() {
         </div>
       </section>
 
+      <nav aria-label="Filter by category" className="px-5 pt-10">
+        <ul className="mx-auto flex max-w-content flex-wrap items-center gap-x-5 gap-y-2">
+          {/* The original's bar lists All + the first six categories only and
+              fits on one row at y=453 - it does not enumerate all thirteen.
+              The rest stay reachable by scrolling to their section. */}
+          {['All', ...blogIndex.categories.map((c) => c.name).filter((n) => n !== 'Latest').slice(0, 6)].map((name, i) => (
+            <li key={name} className="flex items-center gap-5">
+              {i > 0 && <span aria-hidden="true" className="text-[12px] text-black/30">/</span>}
+              <button
+                onClick={() => setFilter(name)}
+                aria-current={filter === name ? 'true' : undefined}
+                className={`text-[14px] leading-[17px] hover-color
+                            ${filter === name
+                              ? 'font-medium text-[#272A2E]'
+                              : 'text-muted hover:text-[#272A2E]'}`}>
+                {name}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
       <div className="flex flex-col gap-16 px-5 pt-16 xl:gap-24">
-        {blogIndex.categories.map((cat) => (
+        {shown.map((cat) => (
           <section key={cat.name}>
             <div className="mx-auto max-w-content">
               <div className="flex items-baseline justify-between gap-4">

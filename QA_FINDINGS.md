@@ -91,8 +91,20 @@ against 11 in the clone**. All values rAF-sampled on pointer-enter.
   with grid-rows `0fr`/`1fr` on `.ease-tilt`, which carries the overshoot a
   plain ease-out cannot. Interpolates across 9 frames instead of 1.
 - **"Built for" tiles** now desaturate their artwork until hovered.
+- **`/blog` had no category filter bar.** The original carries one at y=453
+  from x=225 - "All" plus six categories on a single row at 14px in
+  rgb(39,42,46). The clone used the category names only as section headings
+  scattered down the page (y=973/1721/2470). Found incidentally while
+  chasing a motion report; the bar now filters (15 sections -> 3) and lists
+  the same six, in the same order, at the original's colours. Note the bar
+  shows six of the thirteen categories - that is the original's own
+  behaviour, not a truncation.
 - **Footer/nav link hover** landed on ink `rgb(28,25,23)`; the original
   measures `rgb(69,64,61)` — the `nav-hover` token that already existed.
+
+**`/blog` card hover is a measured absence, not a gap.** The original's
+blog grid cards (307 instances), featured card, category chips and "See
+all" links have no hover change. The clone matching that is correct.
 
 ### Motion that already matched (verified, no action)
 
