@@ -15,6 +15,25 @@
   h1, h2, h3, h4, h5, h6 { font-family: 'Manrope', 'Inter', sans-serif; }
 }
 
+@layer base {
+  /* The original tracks nearly all of its text negatively, and by a constant
+     ratio per size rather than a constant px: sampling four routes gives
+     15px -> -0.36px (-0.024em, 182 uses vs 44 untracked), 17px -> -0.34px
+     (-0.02em, 10/10) and 18px -> -0.36px (-0.02em, 37 uses).
+
+     The fontSize tokens in tailwind.config.js already carry exactly these,
+     but most of the codebase sizes text with arbitrary utilities
+     (text-[15px] and friends), which set size without tracking - so ~480
+     elements were rendering at letter-spacing: normal. These rules give the
+     arbitrary sizes the same em-relative tracking the tokens use. A token
+     class still wins, since Tailwind's utilities layer outranks base. */
+  .text-\[15px\] { letter-spacing: -0.024em; }
+  /* 16px is -0.34px on the original, i.e. -0.021em, NOT the 15px ratio. */
+  .text-\[16px\] { letter-spacing: -0.021em; }
+  .text-\[17px\], .text-\[18px\] { letter-spacing: -0.02em; }
+  .text-\[13px\] { letter-spacing: -0.023em; }
+}
+
 @layer utilities {
   /* The two easing tokens measured on the original. */
   .ease-color { transition-timing-function: cubic-bezier(0.44, 0, 0.56, 1); }
