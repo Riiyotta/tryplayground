@@ -617,13 +617,18 @@ export function Footer() {
                     to navigate somewhere that does not exist. */}
                 {col.links.map((l) => (
                   <li key={l.label}>
+                    {/* The store/account column fades on hover (1 -> 0.7 over
+                        ~250ms on the original) rather than shifting colour
+                        like the nav columns do. */}
                     {l.to ? (
                       <Link to={l.to}
-                            className="text-small font-medium text-muted hover-color hover:text-nav-hover">
+                            className={`text-small font-medium text-muted ${col.heading
+                              ? 'hover-color hover:text-nav-hover' : 'hover-fade'}`}>
                         {l.label}
                       </Link>
                     ) : (
-                      <a href="#" className="text-small font-medium text-muted hover-color hover:text-nav-hover">
+                      <a href="#" className={`text-small font-medium text-muted ${col.heading
+                        ? 'hover-color hover:text-nav-hover' : 'hover-fade'}`}>
                         {l.label}
                       </a>
                     )}
