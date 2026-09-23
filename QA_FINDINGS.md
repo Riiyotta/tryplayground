@@ -164,33 +164,51 @@ reproduces this. "Fixing" it would introduce a difference.
 
 It is the final CTA block, which exists. Not a missing section.
 
-## 7. Open
+## 7. Fixed in the follow-up pass
 
-- **`/for/head-start`** needs restructuring to the original's heading +
-  sub-heading + tile-grid shape (§1).
-- **Missing shadow stacks** beyond the blog well: a 3-layer `rgba(81,81,84)`
-  elevated-card stack (52 uses) and `rgba(0,0,0,0.12) 0 1px 4px` (24 uses)
-  are still absent.
-- **Radius tokens** `16px` and `9px` do not exist; those cards flatten onto
-  `card:12px`.
+Everything below was open after §1–6; all now fixed and re-verified.
+
+- **`/for/head-start`** — rebuilt to the original's 7-row + tile-grid +
+  pull-quote shape (was 4 consolidated sections). Height 0.548 → 0.889.
+- **Scroll parallax** on `/about` (the open-letter card, constant 3°
+  rotation with `ty` sweeping +63 → −62px) and `/customers` (the "Wall of
+  love" columns counter-parallaxing) — both added via a shared `useParallax`
+  hook.
+- **Persona tab cards** on `/why-playground` — padding was `p-4`, the
+  original is `24px 0 0`; label was 15px/500, the original is 18px/600. Now
+  exact.
+- **Elevated-card radius/shadow** (16px, the 3-layer `rgba(81,81,84)` stack,
+  21 uses on `/about` alone) — added as tokens, applied to the testimonial
+  wall which was using the flat bordered `card` treatment.
+- **Hero eyebrow-pill hover** — `rgb(238,245,255)` → `rgb(214,231,255)`,
+  moved out of inline style into a utility so a transition could be added.
+- **Footer "Log In"/"Family Sign Up"** — 1 → 0.7 opacity fade on hover.
+- **Feature/content card hover, primary-CTA width growth, FAQ spring, "Built
+  for" tile desaturation, nav/footer hover colour** — see §4, all fixed in
+  the same pass as the parallax work.
+
+## 8. Still open
+
+- **`/solutions/billing`'s "Explore related articles"** on the original is a
+  12-item blog-post carousel with 16px-radius white cards; the clone has a
+  3-link "sibling solutions" grid there instead. Left as-is rather than
+  replacing working links with fabricated post titles — see the commit that
+  added the `elevated` tokens for the reasoning.
+- **`/customers`** "Read case study" / "Watch video" buttons have no
+  handler, and use a solid-fill treatment where the original has a ghost
+  pill that scales up from `matrix(0.8,0,0,0.8,0,0)` at `opacity 0 → 0.05`.
+  A direct re-measurement of this mechanic was inconclusive (see the
+  parallax-fix commit) — the QA agent's original numbers stand, but I could
+  not independently reproduce the hover trigger to build against.
+- **9px radius token** does not exist; not yet traced to a specific element.
 - **Vertical rhythm**: the clone has collapsed onto a uniform ~140px section
   gap. `/for/centers` loses 80–95px before every heading; `/solutions/ai`
   gains 115–150px (the original has an eyebrow label directly above those
   h2s, a structure the clone does not reproduce).
-
-- **Persona tab cards** and `/solutions/billing` feature tiles have wrong
-  radius and fill.
-- **`/customers`** "Read case study" / "Watch video" buttons have no handler,
-  and use a solid-fill treatment where the original has a ghost pill that
-  scales up from `matrix(0.8,0,0,0.8,0,0)` at `opacity 0 → 0.05`.
-- **Scroll parallax** on `/customers` (testimonial blocks counter-parallax
-  ±14.76px) and `/about` (the letter holds a constant 3° rotation while its
-  `ty` animates 80 → −0.9) is absent.
-- **Footer "Log In"/"Family Sign Up"** opacity hover (1 → 0.7 over ~250ms)
-  and the 25×25 icon-link scale (1 → 1.05) are still missing; the utilities
-  are defined in `index.css` but not yet applied.
-- **Hero notification banner** hover fill `rgb(238,245,255)` →
-  `rgb(214,231,255)`.
+- **25×25 icon-link scale hover** (1 → 1.05) — confirmed on the original but
+  on a ChatGPT-crawler utility link near the top of the page, not
+  user-facing site navigation; the `.hover-card`-style utility exists but
+  isn't wired to an equivalent element in the clone.
 - Remaining `href="#"` links whose target pages are genuinely unbuilt.
 
 ## 8. Clean
