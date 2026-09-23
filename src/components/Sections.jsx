@@ -261,23 +261,31 @@ export function BuiltFor() {
       {/* Section box 1000px (x=220); inner tile grid is 960px so the three
           tiles compute to 313.33px with a 10px gap, as measured. */}
       <div className="mx-auto max-w-[960px]">
-        <Reveal>
-          <h2 className="mx-auto max-w-[470px] text-center font-display font-bold tracking-[-0.06em] text-ink
-                         text-[34px] leading-[36px] md:text-[48px] md:leading-[52.8px] xl:text-[60px] xl:leading-[66px]">
-            Built for child care programs of all sizes
-          </h2>
-        </Reveal>
-        <Reveal delay={60}>
-          <p className="mx-auto mt-5 max-w-[470px] text-center text-body text-muted">
-            Playground simplifies child care programs of all sizes, from home-based
-            providers to centers and multi-site organizations.
-          </p>
-        </Reveal>
+        {/* Two columns at xl, NOT a centered stack: the H2 measures 470px at
+            x=240 and the intro 470px at x=730, sitting beside it (intro top
+            9021 vs H2 top 9001). Stacking them centred is what forced the
+            -9px pull that was overlapping the intro with the tile grid. */}
+        <div className="xl:flex xl:items-start xl:gap-[14px]">
+          <Reveal className="xl:w-[470px] xl:shrink-0">
+            <h2 className="mx-auto max-w-[470px] text-center font-display font-bold tracking-[-0.06em] text-ink
+                           text-[34px] leading-[36px] md:text-[48px] md:leading-[52.8px]
+                           xl:mx-0 xl:text-left xl:text-[60px] xl:leading-[66px]">
+              Built for child care programs of all sizes
+            </h2>
+          </Reveal>
+          <Reveal delay={60} className="xl:w-[470px] xl:shrink-0 xl:pt-5">
+            <p className="mx-auto mt-5 max-w-[470px] text-center text-body text-muted
+                          xl:mx-0 xl:mt-0 xl:text-left">
+              Playground simplifies child care programs of all sizes, from home-based
+              providers to centers and multi-site organizations.
+            </p>
+          </Reveal>
+        </div>
 
-        {/* Stays 3-up at 768 (measured 212.66px x3), collapses only at 390. */}
-        {/* Stays 3-up at 768 (measured 212.66px x3, container 670). At 390 it
+        {/* Tile grid starts 254px below the H2 top on the original.
+            Stays 3-up at 768 (measured 212.66px x3, container 670). At 390 it
             collapses but the tiles shrink so the section stays ~705px tall. */}
-        <div className="mt-6 grid grid-cols-3 gap-[10px] xl:mt-[-9px]">
+        <div className="mt-6 grid grid-cols-3 gap-[10px] xl:mt-[56px]">
           {builtForTiles.map((t, i) => (
             <Reveal key={t.title} delay={i * 60}>
               {/* Tile measured 313.33x380 flat, bg #FBFAF9, radius 12, padding 40. */}
