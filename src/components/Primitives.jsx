@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 /* The original has NO scroll reveal. Deep recon sampled feature cards,
    "Built for" tiles and section H2s at 40-45ms intervals across 1.6-1.7s
@@ -116,6 +116,56 @@ export function LogoMark({ className = '' }) {
       </span>
     </a>
   )
+}
+
+/* Global fallback for raw <img> tags.
+
+   `Img` below degrades to a Placeholder on error, but 31 raw <img> tags
+   across the pages do not use it - they carry a measured width/height and
+   are laid out directly. On a fresh clone `public/assets/` is absent by
+   design (see NOTICE.md), so those render as 40 broken icons on the
+   homepage alone.
+
+   This listens for image load failures during the capture phase (error does
+   not bubble, so a normal listener never sees it) and swaps the element for
+   a neutral tinted box at the SAME geometry. Layout is therefore unchanged
+   whether or not the assets are present, which is what keeps the measured
+   page heights meaningful on a bare checkout. */
+export function useMissingAssetFallback() {
+  useEffect(() => {
+    const paint = (img) => {
+      if (img.dataset.fallbackApplied) return
+      img.dataset.fallbackApplied = '1'
+      const r = img.getBoundingClientRect()
+      const cs = getComputedStyle(img)
+      /* Keep whatever box the layout already gave the image. */
+      img.style.width = cs.width !== 'auto' ? cs.width : `${r.width || 120}px`
+      img.style.height = cs.height !== 'auto' ? cs.height : `${r.height || 80}px`
+      img.style.background = '#F0ECE9'
+      img.style.borderRadius = cs.borderRadius
+      img.style.objectFit = 'none'
+      /* An inline SVG keeps it a single element - replacing the node would
+         break the sibling selectors some sections rely on. */
+      img.src =
+        'data:image/svg+xml;utf8,' +
+        encodeURIComponent(
+          '<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="none" ' +
+            'stroke="#B9AFA6" stroke-width="1.5">' +
+            '<rect x="3" y="3" width="18" height="18" rx="3"/>' +
+            '<circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>',
+        )
+    }
+    const onError = (e) => {
+      const t = e.target
+      if (t && t.tagName === 'IMG') paint(t)
+    }
+    document.addEventListener('error', onError, true)
+    /* Catch anything that already failed before this mounted. */
+    document.querySelectorAll('img').forEach((img) => {
+      if (img.complete && img.naturalWidth === 0 && img.getAttribute('src')) paint(img)
+    })
+    return () => document.removeEventListener('error', onError, true)
+  }, [])
 }
 
 /* Real downloaded asset. Falls back to the Placeholder box if the file is

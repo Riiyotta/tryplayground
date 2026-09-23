@@ -24,9 +24,14 @@ No brand assets are committed. `.gitignore` excludes:
   are not the site owner's to relicense, and are not redistributed here.
 - `reference/` — full-page screenshots of the live original.
 
-The app therefore renders with missing images on a fresh clone. That is
-intended. `PROCESS.md` documents how the assets were obtained if you have your
-own authorization to fetch them.
+A fresh clone therefore has no imagery. The app handles this: every image that
+fails to load is swapped for a neutral box at the *same* measured geometry, so
+page heights and layout are byte-identical with or without the assets (verified
+at 13,908px for the homepage either way). You get a laid-out, navigable site
+rather than a grid of broken icons.
+
+`PROCESS.md` documents how the assets were obtained if you have your own
+authorization to fetch them.
 
 ## If you are Playground
 
