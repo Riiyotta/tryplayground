@@ -1,29 +1,46 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   testimonials, builtForTiles, timeline, footerColumns, legalLinks, tickerLogos,
+  getToKnowRows,
 } from '../data/content'
 import { Reveal, Placeholder, PrimaryButton, SecondaryButton, Img } from './Primitives'
+import MenuIcon from './MenuIcons'
 
-/* Leading glyph on each "Get to know" row — the original uses a distinct
-   line icon per row; a single neutral outline mark stands in at the same box. */
-const RowGlyph = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-       strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"
-       aria-hidden="true" className="shrink-0 text-muted">
-    <rect x="3" y="4" width="18" height="16" rx="2.5" />
-    <path d="M3 9h18M8 14h8" />
-  </svg>
-)
+/* Per-row glyph + tint, reusing the measured mega-menu icon set. */
+const ROW_ICON = {
+  Marketing:     { icon: 'marketing',  tone: '#FC5F35' },
+  Registration:  { icon: 'guides',     tone: '#79716B' },
+  Finances:      { icon: 'finances',   tone: '#1EBD66' },
+  Engagement:    { icon: 'blog',       tone: '#79716B' },
+  Payroll:       { icon: 'payroll',    tone: '#79716B' },
+  'AI Employee': { icon: 'ai',         tone: '#B805FF' },
+}
+
+/* Dwell per row, measured at ~4861-5000ms on the original. */
+const GTK_DWELL = 5000
 
 /* Section 5 - "Get to know Playground". Padding 160px -> 96px at <=768. */
 export function GetToKnow() {
+  const [active, setActive] = useState(0)
+  /* Unconditional ~5000ms advance, wrapping at the end. `active` is a
+     dependency so an explicit click restarts the dwell rather than
+     inheriting a partly-elapsed tick. */
+  useEffect(() => {
+    const id = setTimeout(
+      () => setActive((i) => (i + 1) % getToKnowRows.length),
+      GTK_DWELL,
+    )
+    return () => clearTimeout(id)
+  }, [active])
+
   return (
     <section className="px-5 pt-24 pb-[180px] md:pt-[160px] md:pb-[126px]">
       <div className="mx-auto max-w-shell">
-        {/* Measured: text column ~407px, media 829x451 at x=561, column gap 56px.
-            Not a symmetric 2-up grid - that made the section 252px short. */}
-        <div className="flex flex-col gap-10 xl:flex-row xl:items-start xl:gap-[56px]">
-          <div className="xl:w-[371px] xl:shrink-0">
+        {/* Measured: text column 360px at x=112, media 829x451 at x=561, so
+            the column gap is 89px. Not a symmetric 2-up grid - that made the
+            section 252px short. */}
+        <div className="flex flex-col gap-10 xl:flex-row xl:items-start xl:gap-[89px]">
+          <div className="xl:w-[360px] xl:shrink-0">
             <Reveal>
               <h2 className="max-w-[348px] font-display font-bold tracking-[-0.06em] text-ink
                              text-[34px] leading-[36px] md:text-[48px] md:leading-[52.8px] xl:text-[60px] xl:leading-[66px]">
@@ -39,26 +56,61 @@ export function GetToKnow() {
               </p>
             </Reveal>
             <Reveal delay={115}>
-              {/* Tab list measured 360x414, rows of 69px starting y=1710.6.
-                  Each row: leading glyph, label, 1px rule, circular arrow. */}
+              {/* Accordion, not a link list — see getToKnowRows in content.js
+                  for the measured cadence and the progress-rule spec.
+                  Rows are 360px wide and 69px tall when collapsed. */}
               <ul className="mt-10 hidden w-[360px] flex-col xl:flex">
-                {['Marketing', 'Registration', 'Finances', 'Engagement', 'Payroll', 'AI Employee'].map((t) => (
-                  <li key={t}>
-                    <a href="#" className="group flex h-[69px] items-center gap-3 border-b border-rule
-                                           text-[18px] font-medium text-ink">
-                      <RowGlyph />
-                      <span className="hover-color group-hover:text-muted">{t}</span>
-                      <span className="ml-auto grid h-[26px] w-[26px] shrink-0 place-items-center
-                                       rounded-full border border-rule text-muted
-                                       transition-colors duration-200 group-hover:border-ink group-hover:text-ink">
-                        <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                          <path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor"
-                                strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
+                {getToKnowRows.map((row, i) => {
+                  const on = i === active
+                  const ic = ROW_ICON[row.label] || { icon: 'generic', tone: '#79716B' }
+                  return (
+                    <li key={row.label} className="relative">
+                      <button type="button" onClick={() => setActive(i)}
+                              aria-expanded={on}
+                              className="group w-full text-left">
+                        <span className="flex h-[69px] items-center gap-3 text-[18px] font-medium text-ink">
+                          <MenuIcon name={ic.icon} tone={ic.tone} size={18} />
+                          <span className={on ? '' : 'hover-color group-hover:text-muted'}>
+                            {row.label}
+                          </span>
+                          <span className="ml-auto grid h-[26px] w-[26px] shrink-0 place-items-center
+                                           rounded-full border border-rule text-muted
+                                           transition-colors duration-200 group-hover:border-ink group-hover:text-ink">
+                            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                              <path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor"
+                                    strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                          </span>
+                        </span>
+                        {/* Expanded copy. Height is animated via a grid-rows
+                            trick so the row can transition to its natural
+                            height rather than a hard-coded one. */}
+                        {row.desc && (
+                          <span className={`grid transition-[grid-template-rows] duration-[375ms] ease-move
+                                            ${on ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
+                            <span className="overflow-hidden">
+                              <span className="block pb-4 text-[15px] leading-[22px] text-muted">
+                                {row.desc}
+                              </span>
+                            </span>
+                          </span>
+                        )}
+                      </button>
+                      {/* 360x1 rule in #F0ECE9; the open row overlays a 2px
+                          bar in rgb(31,92,247) that fills linearly across
+                          the dwell (measured -360 -> 0 at 7.2px/100ms). */}
+                      <span aria-hidden="true"
+                            className="relative block h-px w-full overflow-hidden rounded-[40px]"
+                            style={{ background: '#F0ECE9' }}>
+                        {on && (
+                          <span key={active}
+                                className="gtk-bar absolute inset-y-0 left-0 block h-[2px] w-full"
+                                style={{ background: 'rgb(31,92,247)' }} />
+                        )}
                       </span>
-                    </a>
-                  </li>
-                ))}
+                    </li>
+                  )
+                })}
               </ul>
             </Reveal>
             <Reveal delay={120}>
@@ -75,7 +127,7 @@ export function GetToKnow() {
               </button>
             </Reveal>
           </div>
-          <div className="xl:w-[807px] xl:shrink-0">
+          <div className="xl:w-[829px] xl:shrink-0">
             {/* Right column opens with the subhead + overview link (xl only),
                 sitting level with the H2 as measured on the original. */}
             <Reveal delay={60}>
@@ -96,10 +148,19 @@ export function GetToKnow() {
             <Reveal delay={100} className="xl:mt-[52px]">
             {/* Media row measured 1216x515: a 360px tab list on the left and an
                 807x515 stage on the right holding the 829x451 card. */}
-            <div className="flex h-[620px] items-center justify-center rounded-card md:h-[660px] xl:h-[515px]"
-                 style={{ background: 'rgba(68,25,6,0.04)' }}>
-              <Img src="/assets/img/automations.jpeg" w="full" h={451} radius={12} alt=""
-                   fit="cover" className="mx-[9px]" />
+            {/* The stage swaps with the open row — measured changing ~150ms
+                before the row itself expands, so it leads rather than lags.
+                Measured 829x451 at x=561 with the image filling the box
+                exactly: there is no warm padded frame around it here (that
+                belongs to the hero stage, not this one). */}
+            <div className="relative h-[620px] overflow-hidden rounded-card md:h-[660px] xl:h-[451px] xl:w-[829px]">
+              {getToKnowRows.map((row, i) => (
+                <img key={row.label} src={row.img} alt=""
+                     loading={i === 0 ? 'eager' : 'lazy'} decoding="async"
+                     className="absolute inset-0 h-full w-full rounded-card object-cover
+                                transition-opacity duration-[310ms] ease-color"
+                     style={{ opacity: i === active ? 1 : 0 }} />
+              ))}
             </div>
             </Reveal>
           </div>
@@ -130,7 +191,17 @@ export function Testimonials() {
             {/* orange picture frame 450x456 holding a 415x420 portrait */}
             {/* 450x456 orange frame with the portrait inset inside its border.
                 No card behind it — it sits directly on the section background. */}
-            <div className="relative mx-auto aspect-[450/456] w-full max-w-[450px]">
+            {/* Hovering the frame rotates it 2deg, settling ~340ms with a
+                slight overshoot — see .ease-tilt. The measured matrix is
+                pure rotation (its scale terms are cos2deg = 0.999391), so
+                the 450 -> 465.6 growth the original reports is just the
+                rotated bounding box, NOT an additional scale. Adding one
+                over-sized the frame to 481.8. The frame also carries a
+                "Watch video" control over the portrait. */}
+            <button type="button"
+                    className="group relative mx-auto block aspect-[450/456] w-full max-w-[450px]
+                               origin-center transition-transform duration-[340ms] ease-tilt
+                               hover:rotate-2">
               {/* Portrait sits inside the painted border (~10.5% inset). */}
               <img src="/assets/img/testimonial-portrait.webp" alt=""
                    loading="lazy" decoding="async"
@@ -138,7 +209,15 @@ export function Testimonials() {
               <img src="/assets/img/testimonial-frame.webp" alt="" aria-hidden="true"
                    loading="lazy" decoding="async"
                    className="absolute inset-0 z-10 h-full w-full object-contain" />
-            </div>
+              <span className="absolute left-1/2 top-1/2 z-20 flex -translate-x-1/2 -translate-y-1/2
+                               items-center gap-2 rounded-pill bg-white/90 px-4 py-[10px] shadow-warm
+                               backdrop-blur-sm">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="#8A4B2A" aria-hidden="true">
+                  <path d="M5 3.5v9l7.5-4.5z" />
+                </svg>
+                <span className="text-[15px] font-medium" style={{ color: '#8A4B2A' }}>Watch video</span>
+              </span>
+            </button>
           </Reveal>
 
           <Reveal delay={80}>

@@ -122,8 +122,10 @@ export default function Hero() {
           Inner eyebrow/H1/subhead group is 800x248.81 at y=171, gap 20px. */}
       <div className="relative z-10 mx-auto flex max-w-hero flex-col gap-5 px-4 pb-[10px] text-center">
         {/* Eyebrow pill - 13px/15.6, with a circular blue arrow at its end. */}
+        {/* Measured 614.1x28 at x=412.9 — the pill hugs its text rather than
+            filling the column, so it must not stretch as a flex child. */}
         <a href="#"
-           className="inline-flex items-center justify-center gap-[10px] overflow-hidden"
+           className="flex max-w-full self-center items-center justify-center gap-[10px] overflow-hidden"
            style={{ background: '#EEF5FF', borderRadius: 61, padding: '6px 6px 6px 12px', border: 'none' }}>
           <span className="text-center text-[13px] font-medium leading-[15.6px]"
                 style={{ color: '#183390' }}>

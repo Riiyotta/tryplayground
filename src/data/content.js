@@ -216,3 +216,32 @@ export const footerColumns = [
 ]
 
 export const legalLinks = ['HIPAA Notice of Privacy Practices', 'Privacy', 'Terms of Service', 'Sitemap']
+
+/* Section 5 "Get to know Playground" is an AUTO-ADVANCING ACCORDION, not the
+   static link list an earlier pass built. Measured on the live original by
+   sampling the six row boxes while idle:
+     - exactly one row is expanded at a time, showing a description
+     - it advances on a ~5000ms cadence (row changes at t=3648/8648/13647/
+       18647, and a second 40s run confirmed 4861/4861/4878ms gaps)
+     - collapsed rows are 69px; expanded rows run 152-225px with the copy
+     - the expand/collapse transition takes ~375ms
+     - the 829x451 media on the right SWAPS per row, changing ~150ms before
+       the row itself expands
+     - the open row carries a progress rule: a 360x1 track in #F0ECE9 with a
+       2px bar in rgb(31,92,247) that fills linearly across the dwell
+   "AI Employee" is the one row with NO description and no media of its own
+   (it measured 69px even when clicked, and the stage keeps the previous
+   image), so it is a plain row that never expands. */
+export const getToKnowRows = [
+  { label: 'Marketing',   img: '/assets/img/gtk-marketing.webp',
+    desc: 'Convert more families with automated lead capture, tour reminders, and personalized email + text campaigns all integrated directly into Playground.' },
+  { label: 'Registration', img: '/assets/img/gtk-registration.webp',
+    desc: 'Playground makes registration easy, intuitive, and quick for families — no juggling PDFs, forms, and follow-up emails. Our mobile-first experience feels personalized and polished from the first click to the first day.' },
+  { label: 'Finances',    img: '/assets/img/gtk-finances.webp',
+    desc: 'Playground simplifies billing, payroll, and expense tracking with automatic invoicing, flexible payments, and fast reporting—no spreadsheets or extra logins needed. It also automates subsidy tracking and reconciliation, helping you save time and close your books with confidence.' },
+  { label: 'Engagement',  img: '/assets/img/gtk-engagement.webp',
+    desc: 'Make your families and staff happier with daily updates, secure messaging, and frictionless communication without juggling multiple apps.' },
+  { label: 'Payroll',     img: '/assets/img/gtk-payroll.webp',
+    desc: 'Run payroll in minutes, file taxes automatically, and manage time tracking - all in one place, with no extra logins or hidden fees.' },
+  { label: 'AI Employee', img: '/assets/img/gtk-marketing.webp', desc: null },
+]
