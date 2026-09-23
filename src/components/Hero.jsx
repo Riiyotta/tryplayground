@@ -124,9 +124,11 @@ export default function Hero() {
         {/* Eyebrow pill - 13px/15.6, with a circular blue arrow at its end. */}
         {/* Measured 614.1x28 at x=412.9 — the pill hugs its text rather than
             filling the column, so it must not stretch as a flex child. */}
+        {/* Hover fill rgb(238,245,255) -> rgb(214,231,255), measured directly
+            on this element. */}
         <a href="#"
-           className="flex max-w-full self-center items-center justify-center gap-[10px] overflow-hidden"
-           style={{ background: '#EEF5FF', borderRadius: 61, padding: '6px 6px 6px 12px', border: 'none' }}>
+           className="hero-pill flex max-w-full self-center items-center justify-center gap-[10px] overflow-hidden"
+           style={{ borderRadius: 61, padding: '6px 6px 6px 12px', border: 'none' }}>
           <span className="text-center text-[13px] font-medium leading-[15.6px]"
                 style={{ color: '#183390' }}>
             Arizona, Iowa, Idaho, Kansas, New York and providers have access to Playground at no cost
