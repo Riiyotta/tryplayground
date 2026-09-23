@@ -1,4 +1,5 @@
 import { PrimaryButton, SecondaryButton, Img } from '../components/Primitives'
+import { useParallax } from '../components/useParallax'
 import { SectionH2 } from '../components/PageParts'
 import Ticker from '../components/Ticker'
 import {
@@ -9,6 +10,43 @@ import {
    stories (two of which carry a portrait inside the 450x456 orange frame and
    a stat block), the "Wall of love" quote grid at y=2581, then the shared
    closing CTA at y=3976. */
+/* Counter-parallax wall: the "aligned" column moves with scroll ratio
+   -0.015, the "offset" column the opposite sign, matching the original's
+   measured swing (+/-27.5px down to +/-12px as the section scrolls through,
+   clamped past that). */
+function WallOfLove() {
+  const [ref, y] = useParallax(-0.015, 28)
+  const items = customersWall.items
+  const col1 = items.filter((_, i) => i % 2 === 0)
+  const col2 = items.filter((_, i) => i % 2 === 1)
+
+  const Card = ({ w }) => (
+    <blockquote className="flex flex-col rounded-card bg-surface p-6">
+      <p className="flex-1 text-[16px] leading-[24px] text-body-alt">{w.q}</p>
+      <footer className="mt-5">
+        {w.by && <p className="text-[14px] font-medium leading-[18px] text-ink">{w.by}</p>}
+        {w.org && <p className="text-[14px] leading-[18px] text-muted">{w.org}</p>}
+      </footer>
+    </blockquote>
+  )
+
+  return (
+    <section ref={ref} className="px-5 pt-24 xl:pt-[140px]">
+      <div className="mx-auto max-w-content">
+        <SectionH2 className="text-center">{customersWall.h2}</SectionH2>
+        <div className="mt-12 grid gap-6 md:grid-cols-2">
+          <div className="flex flex-col gap-6" style={{ transform: `translateY(${y}px)` }}>
+            {col1.map((w) => <Card key={w.q} w={w} />)}
+          </div>
+          <div className="flex flex-col gap-6" style={{ transform: `translateY(${-y}px)` }}>
+            {col2.map((w) => <Card key={w.q} w={w} />)}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 export default function Customers() {
   return (
     <>
@@ -86,24 +124,15 @@ export default function Customers() {
         </div>
       </section>
 
-      {/* y=2581 — Wall of love. */}
-      <section className="px-5 pt-24 xl:pt-[140px]">
-        <div className="mx-auto max-w-content">
-          <SectionH2 className="text-center">{customersWall.h2}</SectionH2>
-          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {customersWall.items.map((w) => (
-              <blockquote key={w.q}
-                          className="flex flex-col rounded-card bg-surface p-6">
-                <p className="flex-1 text-[16px] leading-[24px] text-body-alt">{w.q}</p>
-                <footer className="mt-5">
-                  {w.by && <p className="text-[14px] font-medium leading-[18px] text-ink">{w.by}</p>}
-                  {w.org && <p className="text-[14px] leading-[18px] text-muted">{w.org}</p>}
-                </footer>
-              </blockquote>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* y=2581 — Wall of love. On the original this is a 3-column masonry
+          (not a uniform 4-up grid) and the outer columns counter-parallax
+          against the centre one: measured translateY swinging +/-27.5px at
+          the top of the section down to +/-12px as it scrolls through,
+          opposite sign between the flanking and centre columns, opacity
+          constant throughout - i.e. a parallax, not a fade-reveal. Laid out
+          here as 2 columns (this data has 4 items, not the original's 8),
+          with the offset column counter-moving against the aligned one. */}
+      <WallOfLove />
 
       <Ticker />
 

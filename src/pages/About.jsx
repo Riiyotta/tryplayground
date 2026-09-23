@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useParallax } from '../components/useParallax'
 import { Link } from 'react-router-dom'
 import { PrimaryButton, SecondaryButton, Img } from '../components/Primitives'
 import { SectionH2, Intro } from '../components/PageParts'
@@ -10,6 +11,7 @@ import {
 /* /about — original measures 7,689px at 1440 with 13 h2s and 35 unique
    images. Section y-positions from the recon are noted inline. */
 export default function About() {
+  const [letterRef, letterY] = useParallax(-0.136, 63)
   const [tab, setTab] = useState(0)
 
   return (
@@ -32,14 +34,19 @@ export default function About() {
         </div>
       </section>
 
-      {/* y=916 — the open letter. */}
+      {/* y=916 — the open letter. The card holds a constant 3deg rotation
+          (matrix cos/sin(3deg)) while translateY parallaxes: measured
+          46.4 -> -63px as the card scrolls through, ratio ~-0.136. Read the
+          matrix, not the bounding box - see PROCESS.md s12.2. */}
       <section className="relative overflow-hidden px-5 pt-24 xl:pt-[140px]">
         <img src={aboutLetter.pattern} alt="" aria-hidden="true" loading="lazy" decoding="async"
              className="pointer-events-none absolute inset-x-0 top-0 hidden h-[732px] w-full
                         max-w-none object-cover opacity-60 xl:block" />
         <div className="relative z-10 mx-auto max-w-[760px] text-center">
           <SectionH2 size={48}>{aboutLetter.h2}</SectionH2>
-          <div className="mt-10 rounded-card border border-rule bg-white p-8 text-left xl:p-12">
+          <div ref={letterRef}
+               style={{ transform: `rotate(3deg) translateY(${letterY}px)` }}
+               className="mt-10 rounded-card border border-rule bg-white p-8 text-left xl:p-12">
             <p className="text-[17px] font-medium leading-[26px] text-ink">{aboutLetter.salutation}</p>
             {aboutLetter.paras.map((t) => (
               <p key={t} className="mt-5 text-[17px] leading-[26px] text-muted">{t}</p>
