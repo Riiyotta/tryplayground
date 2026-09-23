@@ -122,9 +122,11 @@ export default function About() {
               </button>
             ))}
           </div>
+          {/* Measured 360x290 r16px on white with a 3-layer rgba(81,81,84)
+              shadow stack, not the flat bordered card elsewhere on the site. */}
           <ul className="mt-10 grid gap-4 text-left md:grid-cols-2 xl:grid-cols-3">
             {aboutLoved.reviews.map((r) => (
-              <li key={r} className="rounded-card border border-rule bg-white p-6
+              <li key={r} className="rounded-elevated bg-white p-6 shadow-elevated
                                      text-[16px] leading-[24px] text-body-alt">
                 {r}
               </li>

@@ -62,6 +62,7 @@ export default {
         card: '12px',   // dominant radius (50 uses)
         well: '8px',    // /blog + /changelog cards
         panel: '10px',  // nav dropdown
+        elevated: '16px', // elevated white cards (21 uses on /about alone)
         btn: '8px',     // buttons
         rail: '70px',   // tab rail track
         cta: '20px',
@@ -77,6 +78,10 @@ export default {
         well: 'inset 0 1px 11px 0 rgba(0,0,0,0.05)',
         // small floating chip (e.g. the /blog read-time pill), 3 uses
         chip: '0 1px 4px 0 rgba(0,0,0,0.08)',
+        // elevated white 16px-radius card (/about testimonials etc), 21 uses
+        elevated: '0 0.301094px 0.662406px -1.25px rgba(81,81,84,0.18), 0 1.14427px 2.51739px -2.5px rgba(81,81,84,0.16), 0 5px 11px -3.75px rgba(81,81,84,0.06)',
+        // small stat/circular chip, 11 uses
+        stat: '0 0 0 1px rgba(0,0,0,0.03), 0 1px 1px 0.5px rgba(0,0,0,0.03), 0 3px 3px 1.5px rgba(0,0,0,0.03), 0 6px 6px -3px rgba(0,0,0,0.03)',
       },
       transitionTimingFunction: {
         // the only two easing curves on the page

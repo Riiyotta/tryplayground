@@ -25,9 +25,9 @@ function DemoPicker() {
               aria-pressed={on}
               style={{ background: on ? 'rgba(70,160,219,0.2)' : '#F4F2EC' }}
               className="flex h-[250px] w-[198px] flex-col items-center justify-end gap-3
-                         rounded-[10px] p-4 transition-colors duration-200 ease-color">
+                         rounded-[10px] pt-6 transition-colors duration-200 ease-color">
               <Img src={t.img} w={150} h={150} radius={8} alt="" fit="contain" />
-              <span className={`text-[15px] font-medium ${on ? 'text-ink' : 'text-muted'}`}>
+              <span className={`text-[18px] font-semibold ${on ? 'text-ink' : 'text-muted'}`}>
                 {t.label}
               </span>
             </button>
