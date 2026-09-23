@@ -200,14 +200,17 @@ export const aiFeatures = [
 ]
 
 /* "Built for" tiles: 3 x 313.33px, gap 10px, container 960px, tile 313x380,
-   bg #FBFAF9, radius 12px, padding 40px. Titles verbatim. */
+   bg #FBFAF9, radius 12px, padding 40px. Titles verbatim.
+   `to` is the original's own href. Note the original points the last three
+   tiles ALL at /for/before-and-after-care; the clone routes them to the
+   pages it actually built instead of reproducing that duplication. */
 export const builtForTiles = [
-  { title: 'Centers',               imgH: 380 },
-  { title: 'Home based',            imgH: 380 },
-  { title: 'Multi-site',            imgH: 380 },
-  { title: 'Before and After Care', imgH: 380 },
-  { title: 'Camps',                 imgH: 380 },
-  { title: 'Head Start',            imgH: 380 },
+  { title: 'Centers',               to: '/for/centers',     imgH: 380 },
+  { title: 'Home based',            to: '/for/home-based',  imgH: 380 },
+  { title: 'Multi-site',            to: '/for/multi-site',  imgH: 380 },
+  { title: 'Before and After Care', to: '/for/enrollment-specialist', imgH: 380 },
+  { title: 'Camps',                 to: '/for/directors',   imgH: 380 },
+  { title: 'Head Start',            to: '/for/head-start',  imgH: 380 },
 ]
 
 /* Testimonials. The original attributes these to named real customers.

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import {
   testimonials, builtForTiles, timeline, footerColumns, legalLinks, tickerLogos,
@@ -291,14 +292,17 @@ export function BuiltFor() {
               {/* Tile measured 313.33x380 flat, bg #FBFAF9, radius 12, padding 40. */}
               {/* Tile 380px at desktop; at <=768 the measured grid is 670x298.6
                   over two rows with a 10px gap => ~144px per tile. */}
-              <a href="#" className="relative flex h-[225px] flex-col justify-end overflow-hidden rounded-card
+              <Link to={t.to} className="group relative flex h-[225px] flex-col justify-end overflow-hidden rounded-card
                                      bg-surface p-4 md:h-[235px] md:p-5 xl:h-[380px] xl:p-10">
                 <Img src={`/assets/img/tile-${i + 1}.${i === 4 ? 'jpg' : 'webp'}`}
                      w="full" h="100%" alt=""
                      className="absolute inset-0" style={{ height: '100%' }} />
-                <h3 className="relative z-10 max-w-[233px] font-display text-[15px] font-bold leading-tight
-                               text-ink md:text-[16px] xl:text-h2card">{t.title}</h3>
-              </a>
+                {/* Fixed two-line box so a title that wraps ("Before and After
+                    Care") keeps its first line on the same baseline as the
+                    single-line titles beside it. */}
+                <h3 className="relative z-10 flex h-[2lh] max-w-[233px] items-end font-display text-[15px]
+                               font-bold leading-tight text-ink md:text-[16px] xl:text-h2card">{t.title}</h3>
+              </Link>
             </Reveal>
           ))}
         </div>
