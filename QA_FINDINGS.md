@@ -7,7 +7,7 @@ commits listed in each row.
 
 The point of recording this is that several findings were **wrong**, and
 wrong in ways that would have made the clone worse if applied. Those are in
-§5 — they are the most useful part of this document.
+§6 — they are the most useful part of this document.
 
 ---
 
@@ -71,7 +71,40 @@ Per-route live anchors: `/` 2→27, `/about` 2→22, `/for/directors` 2→21,
   slightly flatter than the original rather than obviously wrong — which is
   why it survived earlier passes.
 
-## 4. Fixed — behaviour and a11y
+## 4. Fixed — motion and hover
+
+A motion audit counted **62 hover-responsive controls on the original
+against 11 in the clone**. All values rAF-sampled on pointer-enter.
+
+- **Feature/content cards had no hover at all.** The original steps the fill
+  `rgb(251,250,249)` → `rgb(247,246,245)` over ~150ms. Clone now steps
+  through the same five colours in 115ms.
+- **Primary CTA used the wrong mechanic.** The clone brightened; the
+  original *grows*, 162.61 → 186.61 (+24px) over ~350ms while a 16×16 arrow
+  unclips alongside. Rebuilt with `grid-template-columns` so the button
+  still sizes to its label. Clone now grows by exactly +24px over the same
+  350ms. (Resting width differs by 5px — the label is Manrope/Inter, not
+  Circular. The delta is what matters.)
+- **FAQ answers were conditionally mounted**, so a row opened in a single
+  frame. The original springs: `/for/centers` runs 428 → 519.6 over ~360ms,
+  overshooting to 520.37 at 418ms before settling at 519.0. Now animated
+  with grid-rows `0fr`/`1fr` on `.ease-tilt`, which carries the overshoot a
+  plain ease-out cannot. Interpolates across 9 frames instead of 1.
+- **"Built for" tiles** now desaturate their artwork until hovered.
+- **Footer/nav link hover** landed on ink `rgb(28,25,23)`; the original
+  measures `rgb(69,64,61)` — the `nav-hover` token that already existed.
+
+### Motion that already matched (verified, no action)
+
+Logo marquee (original rAF-driven at 50.96 px/s, clone CSS at 50.07 px/s —
+effectively identical), the "Get to know" auto-accordion (both 5000ms
+cadence, deltas within 40ms), the hero tab rail (both 4000ms, ~300ms
+transition; different mechanic — the original scaleX-es a mask, the clone
+animates left/width — but the same curve shape), mega-menu open (neither
+site animates it), cursor states, and focus-visible (both rely on the UA
+default; neither defines a custom ring).
+
+## 5. Fixed — behaviour and a11y
 
 - Rive logged a "no stateMachine specified" warning per card. All eight
   `.riv` files ship `State Machine 1` (verified with `strings` over the
@@ -80,12 +113,12 @@ Per-route live anchors: `/` 2→27, `/about` 2→22, `/for/directors` 2→21,
 - Blog and changelog thumbnails carried `alt=""` beside a title — informative
   images announced as decorative. Now 94/97 and 24/27 described.
 
-## 5. Reported but NOT changed — and why
+## 6. Reported but NOT changed — and why
 
 These are the findings that were wrong. Each would have moved the clone
 *away* from the original.
 
-### 5.1 "Every h1 is weight 400 on the original, 700 in the clone"
+### 6.1 "Every h1 is weight 400 on the original, 700 in the clone"
 
 The original's font family is literally `"CircularXX TT Bold"`. Circular
 ships each weight as a separate file, so it asks for weight 400 *of a font
@@ -100,7 +133,7 @@ Medium cuts.
 clone, since CircularXX is commercial — `font-weight` is not comparable
 between them.** Recorded as PROCESS.md §13.
 
-### 5.2 "`surface` is off by one channel, should be #FBF9F7"
+### 6.2 "`surface` is off by one channel, should be #FBF9F7"
 
 Page-local, not a token error. Measured: homepage `rgb(251,250,249)` ×24,
 `/solutions/billing` ×22, `/for/centers` ×9 — all matching the current
@@ -109,17 +142,17 @@ token. Only `/blog` uses `rgb(251,249,247)`, ×311. The finding sampled
 correct card on every other page to fix one. Added as a `blog-surface`
 token instead.
 
-### 5.3 "`/about`'s Directors/Families tabs are inert"
+### 6.3 "`/about`'s Directors/Families tabs are inert"
 
 True, and correct. Clicking "Families" on the **live original** leaves the
 review wall byte-identical (21 reviews, same order). The clone faithfully
 reproduces this. "Fixing" it would introduce a difference.
 
-### 5.4 "A 960px container is missing"
+### 6.4 "A 960px container is missing"
 
 It is the final CTA block, which exists. Not a missing section.
 
-## 6. Open
+## 7. Open
 
 - **`/for/head-start`** needs restructuring to the original's heading +
   sub-heading + tile-grid shape (§1).
@@ -135,10 +168,20 @@ It is the final CTA block, which exists. Not a missing section.
 
 - **Persona tab cards** and `/solutions/billing` feature tiles have wrong
   radius and fill.
-- **`/customers`** "Read case study" / "Watch video" buttons have no handler.
+- **`/customers`** "Read case study" / "Watch video" buttons have no handler,
+  and use a solid-fill treatment where the original has a ghost pill that
+  scales up from `matrix(0.8,0,0,0.8,0,0)` at `opacity 0 → 0.05`.
+- **Scroll parallax** on `/customers` (testimonial blocks counter-parallax
+  ±14.76px) and `/about` (the letter holds a constant 3° rotation while its
+  `ty` animates 80 → −0.9) is absent.
+- **Footer "Log In"/"Family Sign Up"** opacity hover (1 → 0.7 over ~250ms)
+  and the 25×25 icon-link scale (1 → 1.05) are still missing; the utilities
+  are defined in `index.css` but not yet applied.
+- **Hero notification banner** hover fill `rgb(238,245,255)` →
+  `rgb(214,231,255)`.
 - Remaining `href="#"` links whose target pages are genuinely unbuilt.
 
-## 7. Clean
+## 8. Clean
 
 Verified across all 23 routes: zero console errors, zero failed network
 requests, zero broken images, no horizontal overflow at 1440/768/390, every
@@ -150,7 +193,7 @@ serif or system-font fallback leaks anywhere.
 
 ---
 
-## 8. Regression check
+## 9. Regression check
 
 After every fix above, all 23 routes re-verified at 1440: exactly one `<h1>`,
 zero broken images, zero console errors, zero HTTP ≥400, and no horizontal
