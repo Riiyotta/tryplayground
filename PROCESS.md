@@ -659,3 +659,112 @@ FAQ are the original's, but several sections that carry bespoke artwork and
 sub-layouts on the original render as plain copy blocks here.
 `/for/multi-site` is the weakest - 28 h2s on the original, with a
 customer-story band and card grids not built.
+
+---
+
+## 12. Static-looking sections that are actually stateful
+
+The four bugs reported against the homepage in this pass shared one root
+cause worth recording: **a section that looks static in a screenshot can be
+stateful in the DOM**, and the methods in §8 will not catch it.
+
+### 12.1 "Get to know" was an accordion, built as a link list
+
+The six rows were built as six `<a>` links. They are in fact an
+auto-advancing accordion. The tell was not visual — a screenshot of either
+version looks like a list of six labels. What exposed it was sampling the six
+row *boxes* on a timer while leaving the page completely idle:
+
+| t (ms) | open row | its height |
+|-------:|----------|-----------:|
+| 0      | Marketing    | 176 |
+| 3648   | Registration | 202 |
+| 8648   | Finances     | 226 |
+| 13647  | Engagement   | 153 |
+| 18647  | Payroll      | 153 |
+
+Collapsed rows hold at 69px. The gaps are ~5000ms (a second 40s run measured
+4861/4861/4878), the expand transition runs ~375ms, and the 829x451 stage
+image swaps *~150ms before* the row expands — the media leads, it does not
+lag.
+
+Two details only direct measurement would have given:
+
+- **The progress rule.** The open row carries a 360x1 track in `#F0ECE9`
+  under a 2px bar in `rgb(31,92,247)`. The bar's element is 720px wide —
+  twice the track — and is translated from -360 to 0. Sampling it showed a
+  flat 7.2px per 100ms, i.e. exactly linear across the 5000ms dwell, with no
+  easing at all.
+- **"AI Employee" never expands.** Every other row has a description. This
+  one measured 69px even when clicked directly, and the stage kept the
+  previous image. Building it "consistently" with the others would have
+  invented a row state the original does not have.
+
+### 12.2 A rotation read as a scale
+
+The testimonial video frame tilts on hover. rAF-sampling it gave:
+
+```
+matrix(0.999391, 0.0348995, -0.0348995, 0.999391, 0, 0)
+```
+
+and a box growing 450x456 -> 465.6x471.4. The first fix applied
+`rotate(2deg) scale(1.0347)` from those two facts and over-sized the frame to
+481.8px.
+
+The matrix says otherwise: its scale terms are 0.999391 = **cos(2°)**. This
+is pure rotation. The 15.6px of "growth" is just the rotated bounding box of
+an unscaled element. With the scale removed the clone's hover matrix is
+digit-for-digit identical to the original's.
+
+Lesson: when a hover both moves and resizes something, read the matrix, not
+the bounding box. A `getBoundingClientRect` delta cannot distinguish a scale
+from a rotation, and will invite you to apply both.
+
+The curve is a **spring**: the rotation overshoots to 0.035403 at ~343ms
+before settling back to 0.0348995. None of the three existing easing tokens
+overshoot, so this needed a fourth (`.ease-tilt`).
+
+### 12.3 Measuring one level too high, and one level too low
+
+Both failure directions showed up in the same section:
+
+- **Too low.** Measuring the stage *image* found it filling its immediate
+  parent exactly (829x451), which read as "no frame here" — so a frame was
+  removed that does exist. It sits one level further up: 845x467, radius 20,
+  padding 8, `rgba(68,25,6,0.04)`.
+- **Too high.** Climbing from the section's `<h2>` to find its cards never
+  reached them — the heading and the card grid are siblings under different
+  wrappers, so a containment walk returned `cards: []` on a section that
+  visibly has four. Anchoring on absolute Y instead (`heading top` ±span, and
+  filter every element in that band) found them immediately.
+
+Prefer **coordinate-banded** queries to DOM-containment walks on Framer
+output. The visual grouping and the DOM nesting routinely disagree.
+
+### 12.4 Card grid spans mirror between rows
+
+The marketing grid is not a repeating 2-span/1-span pattern. Measured x
+positions are 112 / 523 / 933 with cards of 805 or 395:
+
+```
+row 1:  805 @112        395 @933
+row 2:  395 @112   805 @523
+```
+
+The wide card swaps sides. The earlier build had row 2 the wrong way round,
+which is invisible in a thumbnail and obvious at full width.
+
+Finances is a different shape again — five cards, not four — and its second
+card is a **customer story**: its heading *is* the quote, set at 30px, and it
+closes with a "Read the story" link. It is flagged `story` in the data rather
+than forced through the standard card layout.
+
+### 12.5 A cross-fade caught mid-swap is not a design token
+
+A comparison screenshot showed a pink wash around the original's stage that
+the clone lacked. It was not a frame color — it was the previous image
+cross-fading out, caught mid-transition. The real fill is the same
+`rgba(68,25,6,0.04)` warm wash used elsewhere. Screenshots of an
+auto-advancing section will regularly catch a transient state; confirm any
+"new" color against `getComputedStyle` before encoding it.

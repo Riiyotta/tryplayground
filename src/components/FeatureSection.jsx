@@ -1,4 +1,5 @@
 import { Reveal, Placeholder, Img } from './Primitives'
+import RiveArt from './RiveArt'
 
 /* Shared layout for sections 7-10 ("marketing", "finances", "operations",
    "AI"). Measured: container 1216px, feature grid 3 x 394.66px with a 16px
@@ -78,10 +79,12 @@ export default function FeatureSection({
               {/* Image is a full-bleed layer at inset:0, z-index 0, behind the
                   text - object-fit contain, since the artwork carries its own
                   whitespace. No card padding, border or shadow. */}
-              {f.img && (
-                <Img src={f.img} w="full" h="100%" alt="" fit="contain"
-                     className="absolute inset-0 z-0" style={{ height: '100%' }} />
-              )}
+              {f.rive
+                ? <RiveArt src={f.rive} label={f.riveLabel} />
+                : f.img && (
+                    <Img src={f.img} w="full" h="100%" alt="" fit="contain"
+                         className="absolute inset-0 z-0" style={{ height: '100%' }} />
+                  )}
               {/* Sticky-note testimonial. Measured 328x290 at the card's
                   left edge, y=+166 from the card top, with the quote inset
                   +38x/+55y at 253px wide. Two marketing cards and the wide

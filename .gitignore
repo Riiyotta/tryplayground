@@ -13,6 +13,11 @@ dist/
 # portraits of named customers. Committing them to a public repo would
 # redistribute all of that under this repo's licence.
 #
+# This also covers public/assets/rive/ — the original's Rive (.riv) animation
+# files for the feature-card artwork. Those are Playground's own authored
+# animation source, not generic assets, so they stay out of a public repo for
+# the same reason.
+#
 # Run the recon/download scripts to repopulate locally; see PROCESS.md.
 public/assets/
 
