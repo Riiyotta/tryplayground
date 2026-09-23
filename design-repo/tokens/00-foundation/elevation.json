@@ -1,0 +1,14 @@
+{
+  "$schema": "foundation.elevation",
+  "measuredFrom": "tailwind.config.js:77-94",
+  "note": "All shadow values measured verbatim from the original.",
+  "shadows": {
+    "warm": { "value": "0 0.97px 0.97px 0.49px rgba(68,25,6,0.04), 0 2.92px 2.92px 1.46px rgba(68,25,6,0.04), 0 5.83px 5.83px -2.92px rgba(68,25,6,0.04), 0 11.67px 11.67px -5.83px rgba(68,25,6,0.04), 0 23.33px 23.33px -11.67px rgba(68,25,6,0.04)", "citation": "tailwind.config.js:79" },
+    "btn": { "value": "0 1px 1px 0.5px rgba(0,0,0,0.04), 0 3px 3px 1.5px rgba(0,0,0,0.04), 0 6px 6px -3px rgba(0,0,0,0.04), 0 24px 24px -12px rgba(0,0,0,0.04), 0 1px 4px -1px rgba(3,7,18,0.04)", "citation": "tailwind.config.js:80" },
+    "panel": { "value": "0 0 0 1px rgba(0,0,0,0.04), 0 1px 1px 0.5px rgba(0,0,0,0.04), 0 3px 3px 1.5px rgba(0,0,0,0.04), 0 6px 6px -3px rgba(0,0,0,0.04), 0 12px 12px -6px rgba(0,0,0,0.04), 0 24px 24px -12px rgba(0,0,0,0.04)", "citation": "tailwind.config.js:81" },
+    "well": { "value": "inset 0 1px 11px 0 rgba(0,0,0,0.05)", "citation": "tailwind.config.js:84", "note": "the only inset shadow on the site; 311 uses on /blog alone" },
+    "chip": { "value": "0 1px 4px 0 rgba(0,0,0,0.08)", "citation": "tailwind.config.js:86", "note": "small floating chip, e.g. /blog read-time pill; 3 uses" },
+    "elevated": { "value": "0 0.301094px 0.662406px -1.25px rgba(81,81,84,0.18), 0 1.14427px 2.51739px -2.5px rgba(81,81,84,0.16), 0 5px 11px -3.75px rgba(81,81,84,0.06)", "citation": "tailwind.config.js:88", "note": "elevated white 16px-radius card, e.g. /about testimonials; 21 uses" },
+    "stat": { "value": "0 0 0 1px rgba(0,0,0,0.03), 0 1px 1px 0.5px rgba(0,0,0,0.03), 0 3px 3px 1.5px rgba(0,0,0,0.03), 0 6px 6px -3px rgba(0,0,0,0.03)", "citation": "tailwind.config.js:90", "note": "small stat/circular chip, 11 uses" }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "tile",
+  "type": "component",
+  "purpose": "Compact labeled tile - used by feature.audience-tiles (Home-Based/Center/Multi-Location) and feature.tile-grid's 2x2 grid.",
+  "citation": "ia.json sections.feature.audience-tiles, sections.feature.tile-grid",
+  "composes": ["icon"],
+  "props": {
+    "label": { "type": "string", "maxWords": 5 },
+    "selectable": { "type": "boolean", "default": false, "note": "true when used as the demo-form's first-step picker (WhyPlayground.jsx > DemoPicker)" }
+  }
+}

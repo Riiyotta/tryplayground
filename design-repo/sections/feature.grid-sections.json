@@ -1,0 +1,22 @@
+{
+  "id": "feature.grid-sections",
+  "category": "FEATURE",
+  "purpose": "Homepage-only overview of the four core product pillars (marketing, finances, operations, AI), each card carrying full-bleed Rive-canvas artwork rather than a static screenshot.",
+  "citation": "ia.json sections.feature.grid-sections; implementedBy FeatureSection.jsx",
+  "scope": "Homepage only - marketing, finances, operations and AI.",
+  "content": {
+    "type": "object",
+    "properties": {
+      "eyebrow": { "type": "string", "maxWords": 3 },
+      "headline": { "type": "string", "maxWords": 10 },
+      "cards": { "type": "array", "items": { "type": "object", "properties": { "label": { "type": "string", "maxWords": 4 }, "riveArt": { "assetRole": "rive-canvas-art" } }, "required": ["label", "riveArt"], "additionalProperties": false }, "minItems": 4, "maxItems": 4 }
+    },
+    "required": ["headline", "cards"],
+    "additionalProperties": false
+  },
+  "constraints": { "onePerPage": true, "homeRouteOnly": true, "repeatable": false },
+  "motion": {
+    "pattern": "rive-canvas",
+    "reducedMotionFallback": "static poster frame in place of the playing canvas"
+  }
+}

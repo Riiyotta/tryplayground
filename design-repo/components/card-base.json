@@ -1,0 +1,9 @@
+{
+  "id": "card-base",
+  "type": "component",
+  "purpose": "Generic bordered/filled card shell composed by feature.card-grid, collection.card-grid, feature.support-band, feature.tile-grid.",
+  "citation": "ia.json sections.feature.card-grid ('bordered 277x119 link cards'); src/components/PageParts.jsx > LinkCard",
+  "composes": ["button", "link", "icon"],
+  "variants": ["default", "elevated", "well", "cta"],
+  "tokens": { "component": "tokens/20-component/card.json" }
+}

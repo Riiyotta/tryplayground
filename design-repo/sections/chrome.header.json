@@ -1,0 +1,21 @@
+{
+  "id": "chrome.header",
+  "category": "CHROME",
+  "purpose": "Persistent sticky navigation - lets a visitor reach any top-level section of the product/marketing site from anywhere.",
+  "citation": "ia.json sections.chrome.header; implementedBy Header.jsx",
+  "scope": "Every route, mounted once by Layout.jsx.",
+  "content": {
+    "type": "object",
+    "properties": {
+      "announcementText": { "type": "string", "maxWords": 20 },
+      "navLabels": { "type": "array", "items": { "type": "string", "maxWords": 3 }, "minItems": 1, "maxItems": 8 }
+    },
+    "required": ["navLabels"],
+    "additionalProperties": false
+  },
+  "constraints": { "onePerPage": true, "mustBeFirst": true, "repeatable": false },
+  "motion": {
+    "pattern": "none",
+    "reducedMotionFallback": "n/a - static chrome, no animation authored for the header shell itself beyond mega-menu hover (see convention in tokens/00-foundation/motion.json:color)"
+  }
+}

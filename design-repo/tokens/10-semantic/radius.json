@@ -1,0 +1,13 @@
+{
+  "$schema": "semantic.radius",
+  "roles": {
+    "radius.card": { "foundation": "card" },
+    "radius.card-well": { "foundation": "well" },
+    "radius.panel": { "foundation": "panel" },
+    "radius.card-elevated": { "foundation": "elevated" },
+    "radius.button": { "foundation": "btn" },
+    "radius.rail": { "foundation": "rail" },
+    "radius.cta-card": { "foundation": "cta" },
+    "radius.pill": { "foundation": "pill" }
+  }
+}

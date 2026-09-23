@@ -1,0 +1,12 @@
+{
+  "$schema": "layout.grid",
+  "measuredFrom": "tailwind.config.js:101-106; CLONE_SPEC_COMPONENTS.md",
+  "containers": {
+    "shell": { "maxWidth": "1256px", "usage": "outer page shell (header/footer)" },
+    "content": { "maxWidth": "1216px", "usage": "default section content width" },
+    "hero": { "maxWidth": "800px", "usage": "centered hero copy column" },
+    "builtfor": { "maxWidth": "1000px", "usage": "for-audience page content column" },
+    "ctacard": { "maxWidth": "960px", "usage": "closing-cta card width" }
+  },
+  "note": "Grid/column mechanics beyond max-width containers are not project-specific token overrides - they use Tailwind's default grid/flex utilities per-component and are documented per-section instead of as global layout tokens."
+}

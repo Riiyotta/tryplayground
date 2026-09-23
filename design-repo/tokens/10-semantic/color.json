@@ -1,0 +1,31 @@
+{
+  "$schema": "semantic.color",
+  "note": "Semantic roles alias foundation color tokens by intent. An LLM should reference these ids (e.g. text.primary), never a raw hex or a foundation token id directly.",
+  "roles": {
+    "text.primary": { "foundation": "ink", "usage": "headings, card titles" },
+    "text.secondary": { "foundation": "muted", "usage": "body copy, nav labels" },
+    "text.tertiary": { "foundation": "body-alt", "usage": "feature descriptions" },
+    "text.quote": { "foundation": "quote", "usage": "attributed pull-quote copy" },
+    "text.timeline": { "foundation": "slate", "usage": "timeline day-card copy" },
+    "text.link": { "foundation": "accent", "usage": "inline text links" },
+    "text.link-phone": { "foundation": "link-blue", "usage": "tel: links" },
+    "text.day-label": { "foundation": "day-label", "usage": "changelog date labels" },
+    "surface.page": { "foundation": "cream", "usage": "hero gradient stop, page background accents" },
+    "surface.card": { "foundation": "surface", "usage": "default card fill" },
+    "surface.card-warm": { "foundation": "warm-card", "usage": "warm-tinted card fill" },
+    "surface.card-cta": { "foundation": "cta-card", "usage": "closing-cta card fill" },
+    "surface.card-blog": { "foundation": "blog-surface", "usage": "blog/changelog card fill only - page-local, never substitute surface.card here" },
+    "surface.brand": { "foundation": "accent", "usage": "primary CTA fill" },
+    "surface.chip-dark": { "foundation": "dark-chip", "usage": "dark UI chip fill" },
+    "surface.tint": { "foundation": "warm-tint", "usage": "tab rail track, decorative frames/arrows" },
+    "surface.fill-blue": { "foundation": "blue-fill", "usage": "billing feature card fill" },
+    "surface.fill-neutral": { "foundation": "warm-neutral", "usage": "neutral card fill" },
+    "border.default": { "foundation": "rule", "usage": "1px row dividers" },
+    "border.button-secondary": { "foundation": "btn-secondary", "usage": "secondary button border/fill" },
+    "icon.grey": { "foundation": "grey-fill", "usage": "muted icon fill" },
+    "eyebrow.accent": { "foundation": "eyebrow", "usage": "FEATURE-category eyebrow labels only" },
+    "state.hover.nav": { "foundation": "nav-hover", "usage": "nav link hover target" },
+    "gradient.start": { "foundation": "accent-start", "usage": "announcement bar / hero gradient start" },
+    "gradient.end": { "foundation": "accent", "usage": "announcement bar / hero gradient end" }
+  }
+}

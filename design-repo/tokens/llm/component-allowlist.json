@@ -1,0 +1,20 @@
+{
+  "$schema": "llm.component-allowlist",
+  "version": "1.0.0",
+  "note": "Closed list of every primitive/component/section id an LLM generator may instantiate. verify_all.py enforces parity between this file and the real contract files on disk - every id here must have a matching file, and every real contract file must have an entry here.",
+  "primitives": [
+    "button", "link", "badge", "icon", "input", "tag", "avatar", "chip", "logo-image"
+  ],
+  "components": [
+    "card-base", "stat-block", "quote-block", "tile", "accordion-row", "dot-nav", "cta-band"
+  ],
+  "sections": [
+    "chrome.header", "chrome.footer", "chrome.scroll-restore",
+    "hero.home", "hero.split", "hero.centered",
+    "proof.logo-ticker", "proof.testimonial-band", "proof.review-wall", "proof.customer-stories", "proof.pull-quote",
+    "feature.intro-band", "feature.alternating-rows", "feature.card-grid", "feature.grid-sections",
+    "feature.timeline", "feature.audience-tiles", "feature.release-list", "feature.support-band", "feature.tile-grid",
+    "collection.card-grid", "collection.category-feed", "collection.release-feed", "collection.article-rail",
+    "convert.faq", "convert.sibling-links", "convert.closing-cta", "convert.demo-form", "convert.not-found", "convert.savings-club"
+  ]
+}

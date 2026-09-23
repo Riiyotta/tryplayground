@@ -1,0 +1,10 @@
+{
+  "$schema": "foundation.breakpoint",
+  "measuredFrom": "CLONE_SPEC.md and IA_README.md, which both state the three measurement viewports used to build and audit this clone",
+  "note": "These are the three real viewport widths the original clone was measured and audited against, not Tailwind's default breakpoint scale (which this project does not override in tailwind.config.js).",
+  "breakpoints": {
+    "desktop": { "width": "1440px", "citation": "tailwind.config.js:2 ('All values measured from the original at 1440/768/390')" },
+    "tablet": { "width": "768px", "citation": "tailwind.config.js:2" },
+    "mobile": { "width": "390px", "citation": "tailwind.config.js:2" }
+  }
+}

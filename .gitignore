@@ -18,7 +18,6 @@ dist/
 # animation source, not generic assets, so they stay out of a public repo for
 # the same reason.
 #
-# Run the recon/download scripts to repopulate locally; see PROCESS.md.
 public/assets/
 
 # Full-page screenshots of the live original (5.5MB). Same reasoning as
@@ -35,3 +34,7 @@ reference/
 # Logs
 npm-debug.log*
 yarn-error.log*
+
+# Design-repo build artifact — regenerated fresh from design-repo/, never
+# committed alongside the live folder it's built from.
+design-repo.zip

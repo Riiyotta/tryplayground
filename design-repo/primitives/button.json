@@ -1,0 +1,13 @@
+{
+  "id": "button",
+  "type": "primitive",
+  "purpose": "Primary/secondary call-to-action trigger.",
+  "citation": "src/components/Primitives.jsx",
+  "props": {
+    "variant": { "enum": ["primary", "secondary"], "default": "primary" },
+    "label": { "type": "string", "maxWords": 4 },
+    "href": { "type": "string" }
+  },
+  "tokens": { "component": "tokens/20-component/button.json" },
+  "accessibility": "renders as a real <a> or <button>; label must be non-empty and describe the destination/action, not a bare 'Click here'."
+}

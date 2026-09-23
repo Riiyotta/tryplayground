@@ -1,0 +1,19 @@
+{
+  "id": "proof.pull-quote",
+  "category": "PROOF",
+  "purpose": "A single, unadorned, high-impact quote breaking up the head-start page's feature-heavy middle.",
+  "citation": "ia.json sections.proof.pull-quote; implementedBy ForPage.jsx",
+  "scope": "One route: /for/head-start only.",
+  "content": {
+    "type": "object",
+    "properties": {
+      "quote": { "type": "string", "maxWords": 30 },
+      "name": { "type": "string", "maxWords": 4 },
+      "role": { "type": "string", "maxWords": 6 }
+    },
+    "required": ["quote", "name", "role"],
+    "additionalProperties": false
+  },
+  "constraints": { "onePerPage": true, "repeatable": false, "routeRestriction": "/for/head-start" },
+  "motion": { "pattern": "none", "reducedMotionFallback": "n/a" }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "feature.alternating-rows",
+  "category": "FEATURE",
+  "purpose": "Carries the bulk of a page's feature explanation - each row makes one capability claim with a check-list of proof points and optional pull quote, alternating media side to keep long pages visually varied.",
+  "citation": "ia.json sections.feature.alternating-rows; implementedBy PageParts.jsx > FeatureRow",
+  "scope": "Solutions, for-audience and support templates.",
+  "content": {
+    "type": "object",
+    "properties": {
+      "rows": { "type": "array", "items": { "type": "object", "properties": { "eyebrow": { "type": "string", "maxWords": 3 }, "headline": { "type": "string", "maxWords": 10 }, "subheadline": { "type": "string", "maxWords": 24 }, "checklist": { "type": "array", "items": { "type": "string", "maxWords": 10 }, "maxItems": 6 }, "pullQuote": { "type": "string", "maxWords": 30 }, "media": { "assetRole": "product-screenshot" }, "mediaSide": { "enum": ["left", "right"] } }, "required": ["headline", "media", "mediaSide"], "additionalProperties": false }, "minItems": 1 }
+    },
+    "required": ["rows"],
+    "additionalProperties": false
+  },
+  "constraints": { "repeatable": false, "maxPerPage": 1 },
+  "motion": {
+    "pattern": "accordion-reveal",
+    "note": "check-list rows may use the same grid-template-rows reveal as convert.faq when a row's checklist is collapsible; static when not.",
+    "reducedMotionFallback": "instant show/hide"
+  }
+}

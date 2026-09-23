@@ -1,0 +1,56 @@
+{
+  "$schema": "foundation.motion",
+  "measuredFrom": "tailwind.config.js:96-100 (easing curves); src/components/Hero.jsx, Sections.jsx, PageParts.jsx, Ticker.jsx, useParallax.js, RiveArt.jsx (real usage sites)",
+  "note": "Exactly two easing curves exist site-wide per tailwind.config.js's own comment ('the only two easing curves on the page'). A third, ease-tab, is used only by the homepage hero tab rail and is documented separately below since it is not in tailwind.config.js's transitionTimingFunction block but is cited by Hero.jsx's own comment as a distinct curve.",
+  "easing": {
+    "color": { "curve": "cubic-bezier(0.44, 0, 0.56, 1)", "durationMs": 200, "citation": "tailwind.config.js:98", "note": "45 uses; hover/color transitions" },
+    "move": { "curve": "cubic-bezier(0.22, 1, 0.36, 1)", "durationMs": 500, "citation": "tailwind.config.js:99", "note": "position/layout transitions" },
+    "tab": { "curve": "cubic-bezier(0.65, 0, 0.35, 1)", "durationMs": 300, "citation": "src/components/Hero.jsx:184,192", "note": "homepage hero tab-rail thumb only; settles at 421ms per Hero.jsx's own measured comment. Distinct from move - do not merge." },
+    "tilt": { "curve": "cubic-bezier(0.22, 1, 0.36, 1)", "durationMs": 360, "citation": "src/components/PageParts.jsx:143, Sections.jsx:90", "note": "same curve family as move, used for grid-template-rows accordion-reveal transitions (FAQ rows, article-rail expand). Kept as its own token because the duration differs (360-375ms vs move's 500ms)." }
+  },
+  "patterns": {
+    "scroll-parallax": {
+      "description": "JS/rAF-driven scroll-linked vertical offset, never a CSS transition or scroll-timeline.",
+      "citation": "src/components/useParallax.js:1-22",
+      "mechanism": "translateY = clamp(-clampPx, clampPx, -(elementCenterFromViewportCenter) * ratio)",
+      "measuredInstances": [
+        { "usage": "/about open-letter card", "ratio": -0.136, "clampPx": 120, "citation": "src/components/useParallax.js:17-19" },
+        { "usage": "/customers wall-of-love columns", "ratio": 0.015, "clampPx": 120, "citation": "src/components/useParallax.js:20-22" }
+      ],
+      "reducedMotionFallback": "static; hook returns early and never attaches a scroll listener when prefers-reduced-motion: reduce matches",
+      "reducedMotionCitation": "src/components/useParallax.js:27"
+    },
+    "logo-marquee": {
+      "description": "CSS marquee (translateX loop) at a fixed real-world speed, not a fixed keyframe duration - track width is measured at runtime and duration derived from speed so px/s stays constant regardless of content length.",
+      "citation": "src/components/Ticker.jsx:1-15",
+      "speedPxPerSec": 49.7,
+      "reducedMotionFallback": "REQUIRED but not yet wired in source (Ticker.jsx has no prefers-reduced-motion check) - flagged as a known gap, not invented as fixed. A generated PageSpec MUST declare a static (non-animating) fallback for this pattern regardless of source-code gap.",
+      "reducedMotionCitation": "src/components/Ticker.jsx (absence confirmed by full-file read; no matchMedia call present)"
+    },
+    "tab-rail-autoadvance": {
+      "description": "Homepage-only 7-tab product rail; white thumb slides under ease-tab, auto-advances on an interval.",
+      "citation": "ia.json sections.hero.home; src/components/Hero.jsx:184-225",
+      "intervalMs": 4000,
+      "reducedMotionFallback": "static first tab, no auto-advance timer, thumb positioned without transition",
+      "reducedMotionCitation": "inferred pattern consistent with useParallax.js's site-wide reduced-motion convention; not independently verified in Hero.jsx"
+    },
+    "rive-canvas": {
+      "description": "WebGL2 canvas animation (Rive), autoplay disabled until IntersectionObserver confirms the card is on screen - caps concurrent WebGL contexts.",
+      "citation": "src/components/RiveArt.jsx:1-30",
+      "reducedMotionFallback": "static poster frame (first frame of the .riv artboard, not painted) in place of the playing canvas",
+      "reducedMotionCitation": "inferred from IntersectionObserver-gated play convention; RiveArt.jsx does not itself check prefers-reduced-motion"
+    },
+    "timeline-slide": {
+      "description": "Homepage 30-day timeline: a dot and pill slide along a growth-curve panel on click.",
+      "citation": "ia.json sections.feature.timeline; src/components/Sections.jsx:425,435 (transition-[left,top] duration-500 ease-move)",
+      "reducedMotionFallback": "instant position swap, no transition",
+      "reducedMotionCitation": "inferred from site-wide convention"
+    },
+    "accordion-reveal": {
+      "description": "grid-template-rows transition used for FAQ answer reveal and article-rail expand.",
+      "citation": "src/components/PageParts.jsx:143 (duration-[360ms] ease-tilt); src/components/Sections.jsx:90 (duration-[375ms] ease-move)",
+      "reducedMotionFallback": "instant show/hide, no grid-template-rows transition",
+      "reducedMotionCitation": "inferred from site-wide convention"
+    }
+  }
+}

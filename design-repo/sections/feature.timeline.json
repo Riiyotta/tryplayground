@@ -1,0 +1,22 @@
+{
+  "id": "feature.timeline",
+  "category": "FEATURE",
+  "purpose": "Homepage-only interactive proof of onboarding speed - a 30-day timeline the visitor can click through.",
+  "citation": "ia.json sections.feature.timeline; implementedBy Sections.jsx > Timeline",
+  "scope": "Homepage only.",
+  "content": {
+    "type": "object",
+    "properties": {
+      "days": { "type": "array", "items": { "type": "object", "properties": { "day": { "type": "integer", "minimum": 1, "maximum": 30 }, "title": { "type": "string", "maxWords": 6 }, "description": { "type": "string", "maxWords": 20 } }, "required": ["day", "title"], "additionalProperties": false }, "minItems": 3, "maxItems": 3 }
+    },
+    "required": ["days"],
+    "additionalProperties": false
+  },
+  "constraints": { "onePerPage": true, "homeRouteOnly": true, "repeatable": false },
+  "motion": {
+    "pattern": "timeline-slide",
+    "curve": "move",
+    "durationMs": 500,
+    "reducedMotionFallback": "instant position swap, no transition"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "semantic.typography",
+  "note": "Semantic type roles alias foundation.typography.fontSize entries by document role.",
+  "roles": {
+    "heading.page": { "foundation": "h1", "family": "display" },
+    "heading.section": { "foundation": "h2", "family": "display" },
+    "heading.section-sub": { "foundation": "h2sub", "family": "display" },
+    "heading.card": { "foundation": "h2card", "family": "display" },
+    "quote.pull": { "foundation": "pullquote", "family": "display" },
+    "quote.card": { "foundation": "cardquote", "family": "display" },
+    "body.feature": { "foundation": "feature", "family": "sans" },
+    "body.lead": { "foundation": "lead", "family": "sans" },
+    "body.default": { "foundation": "body", "family": "sans" },
+    "body.slate": { "foundation": "bodyslate", "family": "sans" },
+    "body.small": { "foundation": "small", "family": "sans" },
+    "nav.label": { "foundation": "nav", "family": "sans" },
+    "label.caption": { "foundation": "caption", "family": "sans" },
+    "label.footer": { "foundation": "footer", "family": "sans" },
+    "label.announce": { "foundation": "announce", "family": "sans" },
+    "label.day": { "foundation": "daylabel", "family": "sans" }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "convert.demo-form",
+  "category": "CONVERT",
+  "purpose": "The primary conversion mechanism of /why-playground - a two-step picker-then-contact flow rather than a single static CTA.",
+  "citation": "ia.json sections.convert.demo-form; implementedBy WhyPlayground.jsx > DemoPicker",
+  "scope": "/why-playground only.",
+  "content": {
+    "type": "object",
+    "properties": {
+      "stepOneHeading": { "type": "string", "maxWords": 10 },
+      "programTiles": { "type": "array", "items": { "type": "string", "maxWords": 4 }, "minItems": 1 },
+      "stepTwoFields": { "type": "array", "items": { "type": "string", "maxWords": 4 }, "minItems": 1 }
+    },
+    "required": ["stepOneHeading", "programTiles", "stepTwoFields"],
+    "additionalProperties": false
+  },
+  "constraints": { "onePerPage": true, "repeatable": false, "routeRestriction": "/why-playground" },
+  "motion": {
+    "pattern": "accordion-reveal",
+    "note": "revealing step two grows page text from 4,403 to 5,015 characters per ia.json's own measurement",
+    "reducedMotionFallback": "instant step transition"
+  }
+}

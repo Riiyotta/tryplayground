@@ -1,0 +1,24 @@
+{
+  "id": "convert.faq",
+  "category": "CONVERT",
+  "purpose": "Removes last-mile objections right before the closing CTA by answering the most common questions inline.",
+  "citation": "ia.json sections.convert.faq; implementedBy PageParts.jsx > Faq",
+  "scope": "Solutions, for-audience and why-playground templates.",
+  "content": {
+    "type": "object",
+    "properties": {
+      "questions": { "type": "array", "items": { "type": "object", "properties": { "question": { "type": "string", "maxWords": 20 }, "answer": { "type": "string", "maxWords": 80 } }, "required": ["question", "answer"], "additionalProperties": false }, "minItems": 1 },
+      "openFirst": { "type": "boolean", "note": "measured per page, not a fixed default - whether row 1 ships open" }
+    },
+    "required": ["questions", "openFirst"],
+    "additionalProperties": false
+  },
+  "constraints": { "onePerPage": true, "repeatable": false, "mustPrecede": ["convert.closing-cta"] },
+  "motion": {
+    "pattern": "accordion-reveal",
+    "curve": "tilt",
+    "durationMs": 360,
+    "component": "accordion-row",
+    "reducedMotionFallback": "instant show/hide, no grid-template-rows transition"
+  }
+}

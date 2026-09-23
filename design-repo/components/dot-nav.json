@@ -1,0 +1,11 @@
+{
+  "id": "dot-nav",
+  "type": "component",
+  "purpose": "Row of dot indicators for switching between items - composed by proof.testimonial-band (customer switch) and proof.review-wall (Directors/Families tabs use a variant of this pattern).",
+  "citation": "ia.json sections.proof.testimonial-band ('dot navigation between customers'); src/components/PageParts.jsx:186, Sections.jsx:243",
+  "props": {
+    "count": { "type": "integer", "minimum": 2 },
+    "activeIndex": { "type": "integer", "minimum": 0 }
+  },
+  "tokens": { "sizing": "8px dot (icon-size.dot-indicator)" }
+}

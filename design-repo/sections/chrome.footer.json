@@ -1,0 +1,18 @@
+{
+  "id": "chrome.footer",
+  "category": "CHROME",
+  "purpose": "Persistent link footer - surfaces the full sitemap and legal links once per page.",
+  "citation": "ia.json sections.chrome.footer; implementedBy Sections.jsx > Footer",
+  "scope": "Every route, mounted once by Layout.jsx.",
+  "content": {
+    "type": "object",
+    "properties": {
+      "columns": { "type": "array", "items": { "type": "object", "properties": { "heading": { "type": "string", "maxWords": 3 }, "links": { "type": "array", "items": { "type": "string", "maxWords": 4 } } }, "required": ["heading", "links"], "additionalProperties": false }, "minItems": 4, "maxItems": 4 },
+      "legalText": { "type": "string", "maxWords": 30 }
+    },
+    "required": ["columns"],
+    "additionalProperties": false
+  },
+  "constraints": { "onePerPage": true, "mustBeLast": true, "repeatable": false },
+  "motion": { "pattern": "none", "reducedMotionFallback": "n/a - static chrome" }
+}

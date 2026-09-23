@@ -1,0 +1,37 @@
+{
+  "$schema": "assets.role-registry",
+  "version": "1.0.0",
+  "complianceNote": "Playground (tryplayground.com) is a real, live company. This clone's own NOTICE.md (project root) already documents that public/assets/ - including five named customer organizations' logos, photographs of identifiable children and teachers, and hand-drawn portraits of named individuals - is gitignored and NOT committed to this repository for exactly this reason. This design-repo's asset-role guidance below carries that same posture forward: no generator using this design-repo may fabricate, reproduce, or approximate any real Playground customer logo, any real customer/employee/child photograph, or any real Playground product-screenshot UI. Where the source site places one of these, the correct generation behavior is a clearly-synthetic placeholder, never a fabrication presented as real.",
+  "roles": {
+    "customer-logo": {
+      "description": "A named third-party organization's logo mark (e.g. the five customers in proof.logo-ticker, proof.review-wall's named quotes).",
+      "aiGeneration": "must-not-fabricate",
+      "guidance": "Never generate a logo resembling a real, identifiable organization. If a customer-logo slot is needed for a new generated page, use a generic placeholder mark (a neutral wordmark/monogram) clearly not attributable to any real company - do not invent a plausible-sounding fictional company logo styled to pass as real, either."
+    },
+    "customer-photo": {
+      "description": "A photograph of a real, identifiable customer, employee, child, or teacher (proof.testimonial-band, proof.customer-stories, proof.pull-quote, hand-drawn portraits in /about, /customers, /careers).",
+      "aiGeneration": "must-not-fabricate",
+      "guidance": "Never generate a photorealistic image implying a real identifiable person. If illustrative art is needed in this role's place, use a clearly non-photographic, non-identifying illustration style (the source itself uses hand-drawn illustration for some of these slots already)."
+    },
+    "product-screenshot": {
+      "description": "A real screenshot of the Playground product UI (hero tab-rail stage, changelog release images, /solutions feature-row media, feature.grid-sections card art).",
+      "aiGeneration": "must-not-fabricate",
+      "guidance": "Never generate a screenshot presented as a real product UI. A generated page needing this role should use an abstract/illustrative placeholder that does not imply real functionality or real UI chrome belonging to Playground's actual product."
+    },
+    "decorative-illustration": {
+      "description": "Hand-drawn decorative shapes/patterns with no identifiable subject (squiggles, sun-bursts, plaques - see public/assets/img/about/*).",
+      "aiGeneration": "may-generate-new",
+      "guidance": "Safe to generate new decorative art in this role, matching the site's hand-drawn illustration style, since it carries no real-identity or real-brand content."
+    },
+    "icon": {
+      "description": "UI iconography (nav icons, dot indicators, chevrons).",
+      "aiGeneration": "may-generate-new",
+      "guidance": "Safe to generate new icon art following the primitive icon contract's sizing."
+    },
+    "rive-canvas-art": {
+      "description": "WebGL2 Rive state-machine animation painted into a canvas (feature.grid-sections wide cards). Not a static image asset.",
+      "aiGeneration": "must-reuse-exact",
+      "guidance": "This role is not a generatable static asset - it is bound to a real .riv file per RiveArt.jsx. A generated PageSpec should not attempt to invent new Rive content; treat existing rive-canvas-art bindings as fixed."
+    }
+  }
+}

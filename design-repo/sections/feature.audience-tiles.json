@@ -1,0 +1,18 @@
+{
+  "id": "feature.audience-tiles",
+  "category": "FEATURE",
+  "purpose": "Segments the visitor by care-setting type (Home-Based / Center / Multi-Location), either as informational tiles or as the first step of the demo-request flow.",
+  "citation": "ia.json sections.feature.audience-tiles; implementedBy Sections.jsx > BuiltFor / WhyPlayground.jsx > DemoPicker",
+  "scope": "Homepage, /solutions/billing, /customers and /why-playground.",
+  "content": {
+    "type": "object",
+    "properties": {
+      "tiles": { "type": "array", "items": { "type": "object", "properties": { "label": { "type": "string", "maxWords": 4 } }, "required": ["label"], "additionalProperties": false }, "minItems": 3, "maxItems": 3 },
+      "selectable": { "type": "boolean", "default": false }
+    },
+    "required": ["tiles"],
+    "additionalProperties": false
+  },
+  "constraints": { "onePerPage": true, "repeatable": false },
+  "motion": { "pattern": "none", "reducedMotionFallback": "n/a" }
+}

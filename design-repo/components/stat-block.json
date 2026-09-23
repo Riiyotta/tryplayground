@@ -1,0 +1,11 @@
+{
+  "id": "stat-block",
+  "type": "component",
+  "purpose": "A stat/number chip paired with a short label, used inside proof.customer-stories' featured story cards.",
+  "citation": "ia.json sections.proof.customer-stories ('portrait, quote and a stat block')",
+  "composes": ["chip"],
+  "props": {
+    "value": { "type": "string", "maxWords": 3 },
+    "label": { "type": "string", "maxWords": 8 }
+  }
+}

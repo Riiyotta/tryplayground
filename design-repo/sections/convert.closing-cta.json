@@ -1,0 +1,27 @@
+{
+  "id": "convert.closing-cta",
+  "category": "CONVERT",
+  "purpose": "The final conversion push before the footer - almost every page ends with one clear demo CTA.",
+  "citation": "ia.json sections.convert.closing-cta; implementedBy SolutionPage.jsx / ForPage.jsx / Sections.jsx > FinalCTA",
+  "scope": "21 of the 23 routes. Absent on the 404, and on /why-playground, which ends on its FAQ because its demo CTA sits high up in the two-step form instead.",
+  "content": {
+    "type": "object",
+    "properties": {
+      "heading": { "type": "string", "maxWords": 10 },
+      "ctaLabel": { "type": "string", "maxWords": 4 },
+      "illustration": { "type": "boolean", "default": false, "assetRole": "decorative-illustration" }
+    },
+    "required": ["heading", "ctaLabel"],
+    "additionalProperties": false
+  },
+  "constraints": {
+    "onePerPage": true,
+    "mustBeLast": true,
+    "repeatable": false,
+    "exceptions": {
+      "excludedTemplates": ["template.not-found", "template.why"],
+      "reason": "template.not-found has no demo funnel at all; template.why ends on convert.faq because its demo CTA sits high up in the two-step convert.demo-form instead. Both are real, measured exceptions per IA_README.md, not gaps to fix."
+    }
+  },
+  "motion": { "pattern": "none", "reducedMotionFallback": "n/a" }
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "llm.token-policy",
+  "version": "1.0.0",
+  "note": "States which parts of the token system are machine-enforced vs. convention-only. PageSpecs in this design-repo carry no per-instance style/token-override field - styling is fully owned by section/component contracts, not by a generated instance. This is a real gap, not an oversight: see below.",
+  "enforced": {
+    "assetRole": "closed enum, enforced by schema/pagespec.schema.json and semantic_validate.py",
+    "sectionContentContract": "each section's content fields, enforced by schema/pagespec.schema.json's per-section allOf/oneOf branches"
+  },
+  "conventionOnly": {
+    "colorSemanticNaming": "component contracts reference semantic color roles by convention; nothing currently re-validates a section contract's color references against tokens/10-semantic/color.json's real role list at build time"
+  },
+  "overrides": {
+    "pageSpecLevelTokenOverrides": "NOT SUPPORTED. schema/pagespec.schema.json has no per-node style/token-override field. A PageSpec instance can select which section/variant to render and what content goes in it, but cannot override a section's token bindings. If a future revision adds this, this file's 'enforced' block must gain a matching entry and an adversarial test must prove an invalid override is rejected."
+  }
+}

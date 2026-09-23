@@ -1,0 +1,12 @@
+{
+  "id": "cta-band",
+  "type": "component",
+  "purpose": "Heading + primary CTA band, optionally over a full-bleed illustration - composed by convert.closing-cta.",
+  "citation": "ia.json sections.convert.closing-cta",
+  "composes": ["button"],
+  "props": {
+    "heading": { "type": "string", "maxWords": 10 },
+    "ctaLabel": { "type": "string", "maxWords": 4 },
+    "backgroundIllustration": { "type": "boolean", "default": false, "assetRole": "decorative-illustration" }
+  }
+}

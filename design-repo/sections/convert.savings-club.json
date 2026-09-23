@@ -1,0 +1,20 @@
+{
+  "id": "convert.savings-club",
+  "category": "CONVERT",
+  "purpose": "Cross-sells the Playground Savings Club discount programme specifically to owners/directors, who are the roles that own the purchasing decision this benefit targets.",
+  "citation": "ia.json sections.convert.savings-club; implementedBy ForPage.jsx",
+  "scope": "Two of the seven built-for audience pages: /for/owners and /for/directors.",
+  "content": {
+    "type": "object",
+    "properties": {
+      "headline": { "type": "string", "maxWords": 10 },
+      "body": { "type": "string", "maxWords": 30 },
+      "linkLabel": { "type": "string", "maxWords": 4 },
+      "image": { "assetRole": "product-screenshot" }
+    },
+    "required": ["headline", "body", "linkLabel", "image"],
+    "additionalProperties": false
+  },
+  "constraints": { "onePerPage": true, "repeatable": false, "routeRestriction": ["/for/owners", "/for/directors"] },
+  "motion": { "pattern": "none", "reducedMotionFallback": "n/a" }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "quote-block",
+  "type": "component",
+  "purpose": "An attributed quote, with or without a portrait avatar - composed by proof.testimonial-band, proof.pull-quote, proof.customer-stories.",
+  "citation": "ia.json sections.proof.testimonial-band, sections.proof.pull-quote",
+  "composes": ["avatar"],
+  "props": {
+    "quote": { "type": "string", "maxWords": 40 },
+    "attributionName": { "type": "string", "maxWords": 4 },
+    "attributionRole": { "type": "string", "maxWords": 6 },
+    "hasPortrait": { "type": "boolean" }
+  },
+  "variants": {
+    "framed": { "usedBy": ["proof.testimonial-band"], "note": "450x456 orange-frame portrait inset" },
+    "plain": { "usedBy": ["proof.pull-quote"], "note": "32px centered pull-quote, no card chrome" }
+  }
+}

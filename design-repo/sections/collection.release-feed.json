@@ -1,0 +1,18 @@
+{
+  "id": "collection.release-feed",
+  "category": "COLLECTION",
+  "purpose": "Chronological proof of shipping cadence with visual evidence (a real screenshot per release) - the full changelog, capped to the most recent releases so the page stays a finite size.",
+  "citation": "ia.json sections.collection.release-feed; implementedBy Changelog.jsx",
+  "scope": "/changelog only.",
+  "content": {
+    "type": "object",
+    "properties": {
+      "releases": { "type": "array", "items": { "type": "object", "properties": { "date": { "type": "string", "maxWords": 3 }, "title": { "type": "string", "maxWords": 10 }, "screenshot": { "assetRole": "product-screenshot" } }, "required": ["date", "title", "screenshot"], "additionalProperties": false }, "maxItems": 24 },
+      "capNote": { "const": "capped at the 24 most recent of 204; the page states this cap" }
+    },
+    "required": ["releases"],
+    "additionalProperties": false
+  },
+  "constraints": { "onePerPage": true, "repeatable": false, "routeRestriction": "/changelog" },
+  "motion": { "pattern": "none", "reducedMotionFallback": "n/a" }
+}

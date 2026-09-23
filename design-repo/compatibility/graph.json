@@ -1,0 +1,60 @@
+{
+  "$schema": "compatibility.graph",
+  "note": "Every rule here must agree with schema/semantic_validate.py's actual enforcement code - if you correct a claim in one, grep the other and fix it too.",
+  "rules": [
+    {
+      "id": "ONE_HEADER_ONE_FOOTER",
+      "severity": "error",
+      "description": "chrome.header must be the first node and chrome.footer must be the last node, exactly once each, on every template.",
+      "exception": "None - all 15 templates carry exactly one header and one footer, confirmed against templates/templates.json."
+    },
+    {
+      "id": "ONE_HERO_PER_PAGE",
+      "severity": "error",
+      "description": "At most one hero.* section (hero.home, hero.split, hero.centered) per page.",
+      "exception": "template.not-found carries zero hero sections - the 404 has no hero at all. This is a genuine exception, not a violation: confirmed by direct inspection of templates/templates.json's template.not-found.nodes, which contains no hero.* entry."
+    },
+    {
+      "id": "CLOSING_CTA_NEAR_LAST",
+      "severity": "error",
+      "description": "Where convert.closing-cta appears, it must be the last content node before chrome.footer.",
+      "exception": "None for templates that carry it - see CLOSING_CTA_COVERAGE below for which templates omit it entirely."
+    },
+    {
+      "id": "CLOSING_CTA_COVERAGE",
+      "severity": "warn",
+      "description": "convert.closing-cta should appear on every template as the final conversion push.",
+      "exception": "template.not-found (no demo funnel exists on a 404) and template.why (its demo CTA sits high up in convert.demo-form instead, so ending on convert.faq is correct) are named, real exceptions - confirmed against IA_README.md's own note and templates/templates.json. This matches 21 of 23 routes carrying the section, per ia.json's sections.convert.closing-cta.scope."
+    },
+    {
+      "id": "FAQ_MUST_PRECEDE_CLOSING_CTA",
+      "severity": "error",
+      "description": "Where both convert.faq and convert.closing-cta appear on the same template, convert.faq must come first.",
+      "exception": "None."
+    },
+    {
+      "id": "NO_ADJACENT_SAME_CATEGORY_FEATURE",
+      "severity": "warn",
+      "description": "Two FEATURE-category sections should not sit directly adjacent without a PROOF or CONVERT section between them, to avoid the page reading as an undifferentiated wall of feature claims.",
+      "exception": "template.audience-savings-support and template.audience-support legitimately place feature.alternating-rows directly before feature.support-band (and template.audience-headstart places feature.alternating-rows directly before feature.tile-grid) - these are two distinct FEATURE sections with genuinely different jobs (broad capability narrative vs. a compact support/tile summary), not filler repetition. Named exception, confirmed against templates/templates.json."
+    },
+    {
+      "id": "COLLECTION_INDEX_EXACTLY_ONE_VARIANT",
+      "severity": "error",
+      "description": "template.collection-index's three optional collection.* nodes (collection.card-grid, collection.category-feed, collection.release-feed) must resolve to exactly one present node per route, never zero, never more than one.",
+      "exception": "None - this is a hard structural rule specific to template.collection-index's 4 routes, each of which renders exactly one variant per matrix.csv's per-template incidence counts (each of the three sections shows routeCount=1 within this template)."
+    },
+    {
+      "id": "SAVINGS_CLUB_SUPPORT_BAND_ROUTE_RESTRICTION",
+      "severity": "error",
+      "description": "convert.savings-club may only appear on /for/owners and /for/directors; feature.support-band may only appear on /for/owners, /for/directors and /for/enrollment-specialist; feature.tile-grid and proof.pull-quote may only appear on /for/head-start.",
+      "exception": "None - these are page-local sections per IA_README.md's explicit note not to pre-extract single-use sections into shared components."
+    },
+    {
+      "id": "NO_CONSECUTIVE_SCROLL_STAGES",
+      "severity": "warn",
+      "description": "Two sections that both use the scroll-parallax motion pattern should not sit directly adjacent.",
+      "exception": "None currently possible - only proof.customer-stories uses scroll-parallax, and it appears on exactly one template (template.customers), so no adjacency case exists today. Rule retained for when a future section adopts the same pattern."
+    }
+  ]
+}

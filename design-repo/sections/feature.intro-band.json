@@ -1,0 +1,19 @@
+{
+  "id": "feature.intro-band",
+  "category": "FEATURE",
+  "purpose": "Transitions from the hero's promise into the page's specific feature narrative with a centered restatement and capability labels.",
+  "citation": "ia.json sections.feature.intro-band; implementedBy SolutionPage.jsx",
+  "scope": "Every solutions template.",
+  "content": {
+    "type": "object",
+    "properties": {
+      "headline": { "type": "string", "maxWords": 12 },
+      "subheadline": { "type": "string", "maxWords": 24 },
+      "capabilityLabels": { "type": "array", "items": { "type": "string", "maxWords": 3 }, "minItems": 1, "maxItems": 8 }
+    },
+    "required": ["headline", "subheadline"],
+    "additionalProperties": false
+  },
+  "constraints": { "onePerPage": true, "repeatable": false },
+  "motion": { "pattern": "none", "reducedMotionFallback": "n/a" }
+}

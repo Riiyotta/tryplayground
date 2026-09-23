@@ -1,0 +1,20 @@
+{
+  "id": "hero.split",
+  "category": "HERO",
+  "purpose": "Opens a solutions/for-audience page - pairs a headline/CTA column with a real product screenshot so the visitor immediately sees the product, not just a claim.",
+  "citation": "ia.json sections.hero.split; implementedBy SolutionPage.jsx / ForPage.jsx / SolutionsBilling.jsx",
+  "scope": "The solutions and for-audience templates.",
+  "content": {
+    "type": "object",
+    "properties": {
+      "headline": { "type": "string", "maxWords": 12 },
+      "subhead": { "type": "string", "maxWords": 24 },
+      "ctaLabel": { "type": "string", "maxWords": 4 },
+      "productShot": { "assetRole": "product-screenshot" }
+    },
+    "required": ["headline", "subhead", "ctaLabel", "productShot"],
+    "additionalProperties": false
+  },
+  "constraints": { "onePerPage": true, "mustBeFirst": true, "repeatable": false },
+  "motion": { "pattern": "none", "reducedMotionFallback": "n/a - static hero" }
+}

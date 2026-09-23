@@ -1,0 +1,11 @@
+{
+  "id": "input",
+  "type": "primitive",
+  "purpose": "Text/contact field used by the two-step demo form.",
+  "citation": "src/pages/WhyPlayground.jsx (DemoPicker contact step)",
+  "props": {
+    "label": { "type": "string", "maxWords": 4 },
+    "inputType": { "enum": ["text", "email", "tel"], "default": "text" },
+    "required": { "type": "boolean", "default": true }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "feature.card-grid",
+  "category": "FEATURE",
+  "purpose": "Presents a broader set of sub-features as scannable link cards, sometimes over product screenshots - used where a page covers more ground than the alternating-rows format suits.",
+  "citation": "ia.json sections.feature.card-grid; implementedBy PageParts.jsx > LinkCard",
+  "scope": "/solutions/billing and /solutions/ai, the two hand-built solutions pages.",
+  "content": {
+    "type": "object",
+    "properties": {
+      "cards": { "type": "array", "items": { "type": "object", "properties": { "label": { "type": "string", "maxWords": 6 }, "href": { "type": "string" }, "screenshot": { "assetRole": "product-screenshot" } }, "required": ["label", "href"], "additionalProperties": false }, "minItems": 1 }
+    },
+    "required": ["cards"],
+    "additionalProperties": false
+  },
+  "constraints": { "repeatable": false, "maxPerPage": 1 },
+  "motion": { "pattern": "none", "reducedMotionFallback": "n/a" }
+}

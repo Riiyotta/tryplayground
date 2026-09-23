@@ -1,0 +1,11 @@
+{
+  "id": "link",
+  "type": "primitive",
+  "purpose": "Inline or standalone text link.",
+  "citation": "src/components/PageParts.jsx (LinkCard, sibling-links usage)",
+  "props": {
+    "label": { "type": "string", "maxWords": 6 },
+    "href": { "type": "string" }
+  },
+  "tokens": { "color": "text.link", "hover": "state.hover.nav" }
+}

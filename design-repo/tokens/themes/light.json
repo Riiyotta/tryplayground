@@ -1,0 +1,8 @@
+{
+  "$schema": "theme.instance",
+  "themeId": "light",
+  "isDefault": true,
+  "note": "The only theme this site has. Confirmed no dark mode exists: no `dark:` Tailwind variant appears anywhere in src/ (repo-wide grep), and there is no theme-toggle component in src/components/. Do not invent a dark theme instance without new source evidence.",
+  "resolution": "Every semantic token below resolves 1:1 to the foundation value cited in tokens/00-foundation. This file exists so the schema's themeId enum and resolution-order convention (foundation -> theme-mode overrides -> semantic aliases) has a real instance to point at, even though light is the only mode.",
+  "semanticColorOverrides": {}
+}

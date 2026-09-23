@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "pagespec.schema.json",
+  "title": "Playground clone PageSpec",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["template", "route", "nodes"],
+  "properties": {
+    "template": {
+      "type": "string",
+      "enum": [
+        "template.home", "template.solution-flagship", "template.solution-standard",
+        "template.solution-ai", "template.support", "template.why", "template.customers",
+        "template.about", "template.careers", "template.collection-index", "template.not-found",
+        "template.audience-plain", "template.audience-savings-support", "template.audience-support",
+        "template.audience-headstart"
+      ]
+    },
+    "route": { "type": "string" },
+    "nodes": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/node" }
+    }
+  },
+  "definitions": {
+    "node": {
+      "type": "object",
+      "required": ["section", "type", "content", "motion"],
+      "additionalProperties": false,
+      "properties": {
+        "section": {
+          "type": "string",
+          "enum": [
+            "chrome.header", "chrome.footer", "chrome.scroll-restore",
+            "hero.home", "hero.split", "hero.centered",
+            "proof.logo-ticker", "proof.testimonial-band", "proof.review-wall", "proof.customer-stories", "proof.pull-quote",
+            "feature.intro-band", "feature.alternating-rows", "feature.card-grid", "feature.grid-sections",
+            "feature.timeline", "feature.audience-tiles", "feature.release-list", "feature.support-band", "feature.tile-grid",
+            "collection.card-grid", "collection.category-feed", "collection.release-feed", "collection.article-rail",
+            "convert.faq", "convert.sibling-links", "convert.closing-cta", "convert.demo-form", "convert.not-found", "convert.savings-club"
+          ]
+        },
+        "type": { "type": "string", "const": "section" },
+        "content": { "type": "object" },
+        "motion": {
+          "type": "object",
+          "required": ["reducedMotionFallback"],
+          "additionalProperties": false,
+          "properties": {
+            "pattern": {
+              "type": "string",
+              "enum": ["none", "scroll-parallax", "logo-marquee", "tab-rail-autoadvance", "rive-canvas", "timeline-slide", "accordion-reveal"]
+            },
+            "curve": { "type": "string", "enum": ["color", "move", "tab", "tilt"] },
+            "durationMs": { "type": "number" },
+            "reducedMotionFallback": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    }
+  }
+}

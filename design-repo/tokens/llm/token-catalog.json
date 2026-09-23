@@ -1,0 +1,12 @@
+{
+  "$schema": "llm.token-catalog",
+  "version": "1.0.0",
+  "note": "The curated view of tokens a generator may reference by id. Raw foundation values (hex, px) are never referenced directly by a PageSpec - only these semantic/component ids.",
+  "referenceable": {
+    "color": ["text.primary", "text.secondary", "text.tertiary", "text.quote", "text.timeline", "text.link", "text.link-phone", "text.day-label", "surface.page", "surface.card", "surface.card-warm", "surface.card-cta", "surface.card-blog", "surface.brand", "surface.chip-dark", "surface.tint", "surface.fill-blue", "surface.fill-neutral", "border.default", "border.button-secondary", "icon.grey", "eyebrow.accent", "state.hover.nav", "gradient.start", "gradient.end"],
+    "typography": ["heading.page", "heading.section", "heading.section-sub", "heading.card", "quote.pull", "quote.card", "body.feature", "body.lead", "body.default", "body.slate", "body.small", "nav.label", "label.caption", "label.footer", "label.announce", "label.day"],
+    "radius": ["radius.card", "radius.card-well", "radius.panel", "radius.card-elevated", "radius.button", "radius.rail", "radius.cta-card", "radius.pill"],
+    "elevation": ["elevation.warm-card", "elevation.button", "elevation.dropdown-panel", "elevation.card-well", "elevation.chip", "elevation.card-elevated", "elevation.stat-chip"],
+    "motion": ["color", "move", "tab", "tilt"]
+  }
+}

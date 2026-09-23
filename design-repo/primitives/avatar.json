@@ -1,0 +1,12 @@
+{
+  "id": "avatar",
+  "type": "primitive",
+  "purpose": "Hand-drawn portrait inset used by testimonial/quote blocks.",
+  "citation": "ia.json sections.proof.testimonial-band ('hand-drawn portrait inset in the 450x456 orange frame')",
+  "props": {
+    "image": { "assetRole": "customer-photo" },
+    "frame": { "enum": ["orange-inset"], "default": "orange-inset" }
+  },
+  "assetRole": "customer-photo",
+  "complianceNote": "See assets/asset-roles.json:customer-photo - must-not-fabricate a real identifiable person."
+}

@@ -1,0 +1,17 @@
+{
+  "id": "convert.sibling-links",
+  "category": "CONVERT",
+  "purpose": "Cross-sells the rest of the product family - keeps a visitor exploring the site instead of leaving after one solution page.",
+  "citation": "ia.json sections.convert.sibling-links; implementedBy SolutionPage.jsx",
+  "scope": "Every solutions template.",
+  "content": {
+    "type": "object",
+    "properties": {
+      "siblings": { "type": "array", "items": { "type": "object", "properties": { "label": { "type": "string", "maxWords": 4 }, "href": { "type": "string" } }, "required": ["label", "href"], "additionalProperties": false }, "minItems": 1, "note": "the current page is dropped from this list at render time" }
+    },
+    "required": ["siblings"],
+    "additionalProperties": false
+  },
+  "constraints": { "onePerPage": true, "repeatable": false },
+  "motion": { "pattern": "none", "reducedMotionFallback": "n/a" }
+}

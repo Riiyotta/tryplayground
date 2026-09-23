@@ -1,0 +1,10 @@
+{
+  "id": "tag",
+  "type": "primitive",
+  "purpose": "Category label on collection cards (blog category, changelog version tag).",
+  "citation": "src/pages/Blog.jsx, src/pages/Changelog.jsx",
+  "props": {
+    "label": { "type": "string", "maxWords": 3 }
+  },
+  "tokens": { "typography": "label.caption" }
+}

@@ -1,0 +1,267 @@
+{
+  "$schema": "templates.registry",
+  "measuredFrom": "ia.json:198-523 (this design-repo's node sequences are copied verbatim from ia.json's real, measured templates array - not re-derived)",
+  "totalTemplates": 15,
+  "totalRoutes": 23,
+  "templates": [
+    {
+      "id": "template.home",
+      "name": "Homepage",
+      "routes": ["/"],
+      "routePattern": null,
+      "nodes": [
+        { "section": "chrome.header", "required": true, "repeatable": false },
+        { "section": "chrome.scroll-restore", "required": true, "repeatable": false },
+        { "section": "hero.home", "required": true, "repeatable": false },
+        { "section": "proof.logo-ticker", "required": true, "repeatable": false },
+        { "section": "feature.grid-sections", "required": true, "repeatable": false },
+        { "section": "proof.testimonial-band", "required": true, "repeatable": false },
+        { "section": "feature.audience-tiles", "required": true, "repeatable": false },
+        { "section": "feature.timeline", "required": true, "repeatable": false },
+        { "section": "convert.closing-cta", "required": true, "repeatable": false },
+        { "section": "chrome.footer", "required": true, "repeatable": false }
+      ]
+    },
+    {
+      "id": "template.solution-flagship",
+      "name": "Solution - flagship (billing)",
+      "routes": ["/solutions/billing"],
+      "routePattern": null,
+      "nodes": [
+        { "section": "chrome.header", "required": true, "repeatable": false },
+        { "section": "chrome.scroll-restore", "required": true, "repeatable": false },
+        { "section": "hero.split", "required": true, "repeatable": false },
+        { "section": "proof.logo-ticker", "required": true, "repeatable": false },
+        { "section": "feature.intro-band", "required": true, "repeatable": false },
+        { "section": "feature.alternating-rows", "required": true, "repeatable": false },
+        { "section": "proof.testimonial-band", "required": true, "repeatable": false },
+        { "section": "feature.card-grid", "required": true, "repeatable": false },
+        { "section": "convert.sibling-links", "required": true, "repeatable": false },
+        { "section": "convert.faq", "required": true, "repeatable": false },
+        { "section": "collection.article-rail", "required": true, "repeatable": false },
+        { "section": "feature.audience-tiles", "required": true, "repeatable": false },
+        { "section": "convert.closing-cta", "required": true, "repeatable": false },
+        { "section": "chrome.footer", "required": true, "repeatable": false }
+      ]
+    },
+    {
+      "id": "template.solution-standard",
+      "name": "Solution - shared renderer",
+      "routes": ["/solutions/expenses", "/solutions/payroll", "/solutions/subsidy"],
+      "routePattern": "/solutions/:slug",
+      "nodes": [
+        { "section": "chrome.header", "required": true, "repeatable": false },
+        { "section": "chrome.scroll-restore", "required": true, "repeatable": false },
+        { "section": "hero.split", "required": true, "repeatable": false },
+        { "section": "proof.logo-ticker", "required": true, "repeatable": false },
+        { "section": "feature.intro-band", "required": true, "repeatable": false },
+        { "section": "feature.alternating-rows", "required": true, "repeatable": false },
+        { "section": "convert.sibling-links", "required": true, "repeatable": false },
+        { "section": "convert.faq", "required": true, "repeatable": false },
+        { "section": "collection.article-rail", "required": true, "repeatable": false },
+        { "section": "convert.closing-cta", "required": true, "repeatable": false },
+        { "section": "chrome.footer", "required": true, "repeatable": false }
+      ]
+    },
+    {
+      "id": "template.solution-ai",
+      "name": "Solution - AI (Camber)",
+      "routes": ["/solutions/ai"],
+      "routePattern": null,
+      "nodes": [
+        { "section": "chrome.header", "required": true, "repeatable": false },
+        { "section": "chrome.scroll-restore", "required": true, "repeatable": false },
+        { "section": "hero.centered", "required": true, "repeatable": false },
+        { "section": "proof.logo-ticker", "required": true, "repeatable": false },
+        { "section": "feature.card-grid", "required": true, "repeatable": false },
+        { "section": "feature.alternating-rows", "required": true, "repeatable": false },
+        { "section": "convert.faq", "required": true, "repeatable": false },
+        { "section": "collection.article-rail", "required": true, "repeatable": false },
+        { "section": "convert.closing-cta", "required": true, "repeatable": false },
+        { "section": "chrome.footer", "required": true, "repeatable": false }
+      ]
+    },
+    {
+      "id": "template.support",
+      "name": "Support & onboarding",
+      "routes": ["/support"],
+      "routePattern": null,
+      "nodes": [
+        { "section": "chrome.header", "required": true, "repeatable": false },
+        { "section": "chrome.scroll-restore", "required": true, "repeatable": false },
+        { "section": "hero.centered", "required": true, "repeatable": false },
+        { "section": "proof.logo-ticker", "required": true, "repeatable": false },
+        { "section": "feature.alternating-rows", "required": true, "repeatable": false },
+        { "section": "feature.release-list", "required": true, "repeatable": false },
+        { "section": "convert.closing-cta", "required": true, "repeatable": false },
+        { "section": "chrome.footer", "required": true, "repeatable": false }
+      ]
+    },
+    {
+      "id": "template.why",
+      "name": "Why Playground",
+      "routes": ["/why-playground"],
+      "routePattern": null,
+      "nodes": [
+        { "section": "chrome.header", "required": true, "repeatable": false },
+        { "section": "chrome.scroll-restore", "required": true, "repeatable": false },
+        { "section": "hero.centered", "required": true, "repeatable": false },
+        { "section": "convert.demo-form", "required": true, "repeatable": false },
+        { "section": "feature.audience-tiles", "required": true, "repeatable": false },
+        { "section": "proof.logo-ticker", "required": true, "repeatable": false },
+        { "section": "feature.alternating-rows", "required": true, "repeatable": false },
+        { "section": "proof.testimonial-band", "required": true, "repeatable": false },
+        { "section": "feature.release-list", "required": true, "repeatable": false },
+        { "section": "convert.faq", "required": true, "repeatable": false },
+        { "section": "chrome.footer", "required": true, "repeatable": false }
+      ],
+      "note": "No convert.closing-cta - the demo CTA sits high up in convert.demo-form instead. See sections/convert.closing-cta.json's constraints.exceptions."
+    },
+    {
+      "id": "template.customers",
+      "name": "Customer stories index",
+      "routes": ["/customers"],
+      "routePattern": null,
+      "nodes": [
+        { "section": "chrome.header", "required": true, "repeatable": false },
+        { "section": "chrome.scroll-restore", "required": true, "repeatable": false },
+        { "section": "hero.centered", "required": true, "repeatable": false },
+        { "section": "proof.customer-stories", "required": true, "repeatable": false },
+        { "section": "proof.logo-ticker", "required": true, "repeatable": false },
+        { "section": "feature.audience-tiles", "required": true, "repeatable": false },
+        { "section": "convert.closing-cta", "required": true, "repeatable": false },
+        { "section": "chrome.footer", "required": true, "repeatable": false }
+      ]
+    },
+    {
+      "id": "template.about",
+      "name": "About",
+      "routes": ["/about"],
+      "routePattern": null,
+      "nodes": [
+        { "section": "chrome.header", "required": true, "repeatable": false },
+        { "section": "chrome.scroll-restore", "required": true, "repeatable": false },
+        { "section": "hero.centered", "required": true, "repeatable": false },
+        { "section": "feature.alternating-rows", "required": true, "repeatable": false },
+        { "section": "proof.review-wall", "required": true, "repeatable": false },
+        { "section": "convert.closing-cta", "required": true, "repeatable": false },
+        { "section": "chrome.footer", "required": true, "repeatable": false }
+      ]
+    },
+    {
+      "id": "template.careers",
+      "name": "Careers",
+      "routes": ["/careers"],
+      "routePattern": null,
+      "nodes": [
+        { "section": "chrome.header", "required": true, "repeatable": false },
+        { "section": "chrome.scroll-restore", "required": true, "repeatable": false },
+        { "section": "hero.centered", "required": true, "repeatable": false },
+        { "section": "feature.alternating-rows", "required": true, "repeatable": false },
+        { "section": "proof.review-wall", "required": true, "repeatable": false },
+        { "section": "feature.card-grid", "required": true, "repeatable": false },
+        { "section": "convert.closing-cta", "required": true, "repeatable": false },
+        { "section": "chrome.footer", "required": true, "repeatable": false }
+      ]
+    },
+    {
+      "id": "template.collection-index",
+      "name": "Collection index",
+      "routes": ["/webinars", "/resources", "/blog", "/changelog"],
+      "routePattern": null,
+      "nodes": [
+        { "section": "chrome.header", "required": true, "repeatable": false },
+        { "section": "chrome.scroll-restore", "required": true, "repeatable": false },
+        { "section": "hero.centered", "required": true, "repeatable": false },
+        { "section": "collection.card-grid", "required": false, "repeatable": false, "note": "only /webinars and /resources render this node" },
+        { "section": "collection.category-feed", "required": false, "repeatable": false, "note": "only /blog renders this node" },
+        { "section": "collection.release-feed", "required": false, "repeatable": false, "note": "only /changelog renders this node" },
+        { "section": "convert.closing-cta", "required": true, "repeatable": false },
+        { "section": "chrome.footer", "required": true, "repeatable": false }
+      ],
+      "note": "This template's 4 routes each render exactly one of the three optional collection.* nodes, never more than one, per matrix.csv's incidence row (each of these three sections shows exactly 1 route). The validator enforces exactly-one-of via compatibility/graph.json's COLLECTION_INDEX_EXACTLY_ONE_VARIANT rule."
+    },
+    {
+      "id": "template.not-found",
+      "name": "404",
+      "routes": ["/*"],
+      "routePattern": "/*",
+      "nodes": [
+        { "section": "chrome.header", "required": true, "repeatable": false },
+        { "section": "chrome.scroll-restore", "required": true, "repeatable": false },
+        { "section": "convert.not-found", "required": true, "repeatable": false },
+        { "section": "chrome.footer", "required": true, "repeatable": false }
+      ],
+      "note": "The one template with no hero.* section - the ONE_HERO_PER_PAGE rule's named exception (see compatibility/graph.json)."
+    },
+    {
+      "id": "template.audience-plain",
+      "name": "Built-for audience page (plain)",
+      "routes": ["/for/centers", "/for/home-based", "/for/multi-site"],
+      "routePattern": "/for/:slug",
+      "nodes": [
+        { "section": "chrome.header", "required": true, "repeatable": false },
+        { "section": "chrome.scroll-restore", "required": true, "repeatable": false },
+        { "section": "hero.split", "required": true, "repeatable": false },
+        { "section": "proof.logo-ticker", "required": true, "repeatable": false },
+        { "section": "feature.alternating-rows", "required": true, "repeatable": false },
+        { "section": "convert.faq", "required": true, "repeatable": false },
+        { "section": "convert.closing-cta", "required": true, "repeatable": false },
+        { "section": "chrome.footer", "required": true, "repeatable": false }
+      ]
+    },
+    {
+      "id": "template.audience-savings-support",
+      "name": "Built-for audience page (savings club + support band)",
+      "routes": ["/for/owners", "/for/directors"],
+      "routePattern": "/for/:slug",
+      "nodes": [
+        { "section": "chrome.header", "required": true, "repeatable": false },
+        { "section": "chrome.scroll-restore", "required": true, "repeatable": false },
+        { "section": "hero.split", "required": true, "repeatable": false },
+        { "section": "proof.logo-ticker", "required": true, "repeatable": false },
+        { "section": "feature.alternating-rows", "required": true, "repeatable": false },
+        { "section": "convert.savings-club", "required": true, "repeatable": false },
+        { "section": "feature.support-band", "required": true, "repeatable": false },
+        { "section": "convert.faq", "required": true, "repeatable": false },
+        { "section": "convert.closing-cta", "required": true, "repeatable": false },
+        { "section": "chrome.footer", "required": true, "repeatable": false }
+      ]
+    },
+    {
+      "id": "template.audience-support",
+      "name": "Built-for audience page (support band)",
+      "routes": ["/for/enrollment-specialist"],
+      "routePattern": "/for/:slug",
+      "nodes": [
+        { "section": "chrome.header", "required": true, "repeatable": false },
+        { "section": "chrome.scroll-restore", "required": true, "repeatable": false },
+        { "section": "hero.split", "required": true, "repeatable": false },
+        { "section": "proof.logo-ticker", "required": true, "repeatable": false },
+        { "section": "feature.alternating-rows", "required": true, "repeatable": false },
+        { "section": "feature.support-band", "required": true, "repeatable": false },
+        { "section": "convert.faq", "required": true, "repeatable": false },
+        { "section": "convert.closing-cta", "required": true, "repeatable": false },
+        { "section": "chrome.footer", "required": true, "repeatable": false }
+      ]
+    },
+    {
+      "id": "template.audience-headstart",
+      "name": "Built-for audience page (head start - tile grid + pull quote)",
+      "routes": ["/for/head-start"],
+      "routePattern": "/for/:slug",
+      "nodes": [
+        { "section": "chrome.header", "required": true, "repeatable": false },
+        { "section": "chrome.scroll-restore", "required": true, "repeatable": false },
+        { "section": "hero.split", "required": true, "repeatable": false },
+        { "section": "proof.logo-ticker", "required": true, "repeatable": false },
+        { "section": "feature.alternating-rows", "required": true, "repeatable": false },
+        { "section": "feature.tile-grid", "required": true, "repeatable": false },
+        { "section": "proof.pull-quote", "required": true, "repeatable": false },
+        { "section": "convert.faq", "required": true, "repeatable": false },
+        { "section": "convert.closing-cta", "required": true, "repeatable": false },
+        { "section": "chrome.footer", "required": true, "repeatable": false }
+      ]
+    }
+  ]
+}

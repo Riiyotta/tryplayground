@@ -1,0 +1,23 @@
+{
+  "id": "proof.customer-stories",
+  "category": "PROOF",
+  "purpose": "The whole purpose of /customers - deep, named customer stories followed by a broader quote wall.",
+  "citation": "ia.json sections.proof.customer-stories; implementedBy Customers.jsx",
+  "scope": "/customers only.",
+  "content": {
+    "type": "object",
+    "properties": {
+      "featured": { "type": "array", "items": { "type": "object", "properties": { "portrait": { "assetRole": "customer-photo" }, "quote": { "type": "string", "maxWords": 40 }, "stat": { "type": "object", "properties": { "value": { "type": "string", "maxWords": 3 }, "label": { "type": "string", "maxWords": 8 } }, "required": ["value", "label"], "additionalProperties": false } }, "required": ["portrait", "quote", "stat"], "additionalProperties": false }, "minItems": 1 },
+      "wallOfLove": { "type": "array", "items": { "type": "string", "maxWords": 30 } }
+    },
+    "required": ["featured"],
+    "additionalProperties": false
+  },
+  "constraints": { "onePerPage": true, "homeRouteOnly": false, "repeatable": false, "note": "routeRestriction: /customers only, enforced by semantic_validate.py" },
+  "motion": {
+    "pattern": "scroll-parallax",
+    "ratio": 0.015,
+    "clampPx": 120,
+    "reducedMotionFallback": "static; no scroll listener attached"
+  }
+}

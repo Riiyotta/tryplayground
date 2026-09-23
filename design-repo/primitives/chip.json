@@ -1,0 +1,11 @@
+{
+  "id": "chip",
+  "type": "primitive",
+  "purpose": "Small floating stat/label chip.",
+  "citation": "tailwind.config.js:86 (shadow.chip, 3 uses), :90 (shadow.stat, 11 uses)",
+  "props": {
+    "label": { "type": "string", "maxWords": 3 },
+    "variant": { "enum": ["chip", "stat"], "default": "chip" }
+  },
+  "tokens": { "elevation": ["elevation.chip", "elevation.stat-chip"] }
+}

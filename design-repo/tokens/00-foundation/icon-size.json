@@ -1,0 +1,8 @@
+{
+  "$schema": "foundation.icon-size",
+  "measuredFrom": "src/components/MenuIcons.jsx, src/components/PageParts.jsx",
+  "note": "No dedicated icon-size scale exists in tailwind.config.js. Icon sizing is expressed as inline Tailwind width/height utility pairs at the call site (e.g. FAQ chevrons at PageParts.jsx:126 use h-2 w-2 for dot indicators; nav icons in MenuIcons.jsx are sized per-icon). Recorded here as an evidence gap rather than inventing a scale that doesn't exist in the source.",
+  "observed": {
+    "dot-indicator": { "value": "8px", "citation": "src/components/PageParts.jsx:186 (h-2 w-2), Sections.jsx:243" }
+  }
+}

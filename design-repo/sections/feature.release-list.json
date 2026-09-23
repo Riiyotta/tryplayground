@@ -1,0 +1,17 @@
+{
+  "id": "feature.release-list",
+  "category": "FEATURE",
+  "purpose": "Inline proof of weekly shipping velocity via compact version/title/date rows, without linking out to the full changelog.",
+  "citation": "ia.json sections.feature.release-list; implementedBy Support.jsx / WhyPlayground.jsx",
+  "scope": "/support and /why-playground, as an inline proof of weekly shipping.",
+  "content": {
+    "type": "object",
+    "properties": {
+      "releases": { "type": "array", "items": { "type": "object", "properties": { "version": { "type": "string", "maxWords": 2 }, "title": { "type": "string", "maxWords": 8 }, "date": { "type": "string", "maxWords": 3 } }, "required": ["title", "date"], "additionalProperties": false }, "minItems": 1 }
+    },
+    "required": ["releases"],
+    "additionalProperties": false
+  },
+  "constraints": { "repeatable": false, "maxPerPage": 1 },
+  "motion": { "pattern": "none", "reducedMotionFallback": "n/a" }
+}

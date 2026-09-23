@@ -1,0 +1,14 @@
+{
+  "$schema": "foundation.radius",
+  "measuredFrom": "tailwind.config.js:67-75",
+  "radii": {
+    "card": { "value": "12px", "citation": "tailwind.config.js:68", "note": "dominant radius, 50 uses" },
+    "well": { "value": "8px", "citation": "tailwind.config.js:69", "note": "/blog + /changelog cards" },
+    "panel": { "value": "10px", "citation": "tailwind.config.js:70", "note": "nav dropdown" },
+    "elevated": { "value": "16px", "citation": "tailwind.config.js:71", "note": "elevated white cards, 21 uses on /about alone" },
+    "btn": { "value": "8px", "citation": "tailwind.config.js:72" },
+    "rail": { "value": "70px", "citation": "tailwind.config.js:73", "note": "tab rail track" },
+    "cta": { "value": "20px", "citation": "tailwind.config.js:74" },
+    "pill": { "value": "999px", "citation": "tailwind.config.js:75" }
+  }
+}

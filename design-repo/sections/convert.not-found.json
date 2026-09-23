@@ -1,0 +1,19 @@
+{
+  "id": "convert.not-found",
+  "category": "CONVERT",
+  "purpose": "The 404 body - explains the page isn't built in this clone and routes the visitor home rather than dead-ending.",
+  "citation": "ia.json sections.convert.not-found; implementedBy NotFound.jsx",
+  "scope": "The catch-all route only.",
+  "content": {
+    "type": "object",
+    "properties": {
+      "heading": { "type": "string", "maxWords": 8 },
+      "explanation": { "type": "string", "maxWords": 30 },
+      "homeLinkLabel": { "type": "string", "maxWords": 4 }
+    },
+    "required": ["heading", "homeLinkLabel"],
+    "additionalProperties": false
+  },
+  "constraints": { "onePerPage": true, "repeatable": false, "routeRestriction": "/*" },
+  "motion": { "pattern": "none", "reducedMotionFallback": "n/a" }
+}

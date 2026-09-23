@@ -1,0 +1,12 @@
+{
+  "$schema": "semantic.elevation",
+  "roles": {
+    "elevation.warm-card": { "foundation": "warm" },
+    "elevation.button": { "foundation": "btn" },
+    "elevation.dropdown-panel": { "foundation": "panel" },
+    "elevation.card-well": { "foundation": "well" },
+    "elevation.chip": { "foundation": "chip" },
+    "elevation.card-elevated": { "foundation": "elevated" },
+    "elevation.stat-chip": { "foundation": "stat" }
+  }
+}

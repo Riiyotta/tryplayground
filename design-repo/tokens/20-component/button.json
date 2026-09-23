@@ -1,0 +1,8 @@
+{
+  "$schema": "component.button",
+  "measuredFrom": "tailwind.config.js radius/elevation blocks; src/components/Primitives.jsx",
+  "variants": {
+    "primary": { "surface": "surface.brand", "radius": "radius.button", "elevation": "elevation.button", "textColor": "#FFFFFF" },
+    "secondary": { "surface": "border.button-secondary", "radius": "radius.button", "elevation": "elevation.button", "textColor": "text.primary" }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "chrome.scroll-restore",
+  "category": "CHROME",
+  "purpose": "Non-visual behavior node - resets scroll to top on client-side navigation so a route change never lands the visitor mid-page.",
+  "citation": "ia.json sections.chrome.scroll-restore; implementedBy Layout.jsx > ScrollToTop",
+  "scope": "Every route, mounted once by Layout.jsx.",
+  "content": {
+    "type": "object",
+    "properties": {},
+    "additionalProperties": false,
+    "note": "This node carries no visible content - it exists in the node sequence purely as a behavior marker."
+  },
+  "constraints": { "onePerPage": true, "repeatable": false },
+  "motion": { "pattern": "none", "reducedMotionFallback": "n/a - non-visual" }
+}

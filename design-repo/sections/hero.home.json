@@ -1,0 +1,27 @@
+{
+  "id": "hero.home",
+  "category": "HERO",
+  "purpose": "Opens the homepage - establishes the product promise and lets a visitor preview the 7 core product surfaces via the tab rail before committing to a demo.",
+  "citation": "ia.json sections.hero.home; implementedBy Hero.jsx",
+  "scope": "The homepage only - no other route carries the tab rail.",
+  "content": {
+    "type": "object",
+    "properties": {
+      "eyebrow": { "type": "string", "maxWords": 4 },
+      "headline": { "type": "string", "maxWords": 12 },
+      "subhead": { "type": "string", "maxWords": 24 },
+      "ctaLabel": { "type": "string", "maxWords": 4 },
+      "ratingText": { "type": "string", "maxWords": 8 },
+      "tabs": { "type": "array", "items": { "type": "object", "properties": { "label": { "type": "string", "maxWords": 3 }, "screenshot": { "assetRole": "product-screenshot" } }, "required": ["label", "screenshot"], "additionalProperties": false }, "minItems": 7, "maxItems": 7 }
+    },
+    "required": ["headline", "subhead", "ctaLabel", "tabs"],
+    "additionalProperties": false
+  },
+  "constraints": { "onePerPage": true, "mustBeFirst": true, "homeRouteOnly": true, "repeatable": false },
+  "motion": {
+    "pattern": "tab-rail-autoadvance",
+    "curve": "tab",
+    "intervalMs": 4000,
+    "reducedMotionFallback": "static first tab, no auto-advance timer, thumb positioned without transition"
+  }
+}

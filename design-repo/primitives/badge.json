@@ -1,0 +1,11 @@
+{
+  "id": "badge",
+  "type": "primitive",
+  "purpose": "Small labeled chip - eyebrow pills, category tags.",
+  "citation": "src/components/Sections.jsx (eyebrow usage in FeatureSection/Sections)",
+  "props": {
+    "label": { "type": "string", "maxWords": 4 },
+    "tone": { "enum": ["accent", "neutral"], "default": "neutral" }
+  },
+  "tokens": { "radius": "radius.pill", "color": "eyebrow.accent" }
+}

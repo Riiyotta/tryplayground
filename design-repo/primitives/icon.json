@@ -1,0 +1,12 @@
+{
+  "id": "icon",
+  "type": "primitive",
+  "purpose": "UI iconography - nav glyphs, chevrons, dot indicators.",
+  "citation": "src/components/MenuIcons.jsx",
+  "props": {
+    "name": { "type": "string" },
+    "size": { "enum": ["dot-indicator"], "default": "dot-indicator" }
+  },
+  "assetRole": "icon",
+  "tokens": { "sizeScale": "tokens/00-foundation/icon-size.json" }
+}

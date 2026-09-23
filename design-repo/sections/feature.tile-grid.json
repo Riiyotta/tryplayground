@@ -1,0 +1,18 @@
+{
+  "id": "feature.tile-grid",
+  "category": "FEATURE",
+  "purpose": "A compact 2x2 features-list variant used only where a page needs a denser feature summary than the alternating-rows format - the head-start audience page's own distinct pacing choice.",
+  "citation": "ia.json sections.feature.tile-grid; implementedBy ForPage.jsx",
+  "scope": "One route: /for/head-start only.",
+  "content": {
+    "type": "object",
+    "properties": {
+      "heading": { "type": "string", "maxWords": 8 },
+      "tiles": { "type": "array", "items": { "type": "string", "maxWords": 8 }, "minItems": 4, "maxItems": 4 }
+    },
+    "required": ["heading", "tiles"],
+    "additionalProperties": false
+  },
+  "constraints": { "onePerPage": true, "repeatable": false, "routeRestriction": "/for/head-start" },
+  "motion": { "pattern": "none", "reducedMotionFallback": "n/a" }
+}

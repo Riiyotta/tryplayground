@@ -1,0 +1,21 @@
+{
+  "id": "collection.article-rail",
+  "category": "COLLECTION",
+  "purpose": "Surfaces related reading without competing with the page's primary feature narrative - a horizontally scrolling rail rather than a full grid.",
+  "citation": "ia.json sections.collection.article-rail; implementedBy PageParts.jsx > ArticleRail",
+  "scope": "Every solutions template.",
+  "content": {
+    "type": "object",
+    "properties": {
+      "articles": { "type": "array", "items": { "type": "object", "properties": { "title": { "type": "string", "maxWords": 14 }, "cover": { "assetRole": "product-screenshot" } }, "required": ["title", "cover"], "additionalProperties": false }, "minItems": 1 }
+    },
+    "required": ["articles"],
+    "additionalProperties": false
+  },
+  "constraints": { "onePerPage": true, "repeatable": false },
+  "motion": {
+    "pattern": "none",
+    "note": "trailing cards sit ~3000px off-screen and only load once the rail is scrolled - a lazy-load behavior, not an animation",
+    "reducedMotionFallback": "n/a"
+  }
+}

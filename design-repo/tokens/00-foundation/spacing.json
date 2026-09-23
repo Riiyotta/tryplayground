@@ -1,0 +1,12 @@
+{
+  "$schema": "foundation.spacing",
+  "measuredFrom": "tailwind.config.js:101-108 (maxWidth scale) plus Tailwind's own default spacing scale, which the project does not override",
+  "note": "The project only overrides maxWidth (content shell widths). All padding/margin/gap utilities use Tailwind's unmodified default spacing scale (0.25rem steps) - not re-declared here since it is not project-specific evidence.",
+  "maxWidth": {
+    "shell": { "value": "1256px", "citation": "tailwind.config.js:102" },
+    "content": { "value": "1216px", "citation": "tailwind.config.js:103" },
+    "hero": { "value": "800px", "citation": "tailwind.config.js:104" },
+    "builtfor": { "value": "1000px", "citation": "tailwind.config.js:105" },
+    "ctacard": { "value": "960px", "citation": "tailwind.config.js:106" }
+  }
+}

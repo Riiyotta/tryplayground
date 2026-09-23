@@ -1,0 +1,22 @@
+{
+  "id": "proof.logo-ticker",
+  "category": "PROOF",
+  "purpose": "Establishes credibility immediately after the hero via recognizable customer logos in continuous motion.",
+  "citation": "ia.json sections.proof.logo-ticker; implementedBy Ticker.jsx",
+  "scope": "Homepage plus every solutions, for-audience and support route; not on the collection indexes.",
+  "content": {
+    "type": "object",
+    "properties": {
+      "introText": { "type": "string", "maxWords": 12 },
+      "logos": { "type": "array", "items": { "type": "object", "properties": { "image": { "assetRole": "customer-logo" }, "alt": { "type": "string", "maxWords": 6 } }, "required": ["image", "alt"], "additionalProperties": false }, "minItems": 1, "maxItems": 5 }
+    },
+    "required": ["logos"],
+    "additionalProperties": false
+  },
+  "constraints": { "onePerPage": true, "notRecommendedWith": ["collection.card-grid", "collection.category-feed", "collection.release-feed"], "repeatable": false },
+  "motion": {
+    "pattern": "logo-marquee",
+    "speedPxPerSec": 49.7,
+    "reducedMotionFallback": "static row of logos, no marquee translateX loop"
+  }
+}

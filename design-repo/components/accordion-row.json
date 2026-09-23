@@ -1,0 +1,15 @@
+{
+  "id": "accordion-row",
+  "type": "component",
+  "purpose": "A single toggleable question/answer row - composed by convert.faq.",
+  "citation": "ia.json sections.convert.faq ('Rows toggle independently rather than single-open')",
+  "props": {
+    "question": { "type": "string", "maxWords": 20 },
+    "answer": { "type": "string", "maxWords": 80 },
+    "openByDefault": { "type": "boolean", "default": false, "note": "measured per-page and passed as openFirst; not a fixed default" }
+  },
+  "motion": {
+    "pattern": "accordion-reveal",
+    "reducedMotionFallback": "instant show/hide, no grid-template-rows transition"
+  }
+}

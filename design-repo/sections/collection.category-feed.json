@@ -1,0 +1,18 @@
+{
+  "id": "collection.category-feed",
+  "category": "COLLECTION",
+  "purpose": "Organizes the blog by topic so a visitor can browse by interest rather than only chronologically, with an explicit per-category cap so the page stays a finite size.",
+  "citation": "ia.json sections.collection.category-feed; implementedBy Blog.jsx",
+  "scope": "/blog only.",
+  "content": {
+    "type": "object",
+    "properties": {
+      "categories": { "type": "array", "items": { "type": "object", "properties": { "heading": { "type": "string", "maxWords": 4 }, "posts": { "type": "array", "items": { "type": "string", "maxWords": 14 }, "maxItems": 8 }, "seeAllHref": { "type": "string" } }, "required": ["heading", "posts"], "additionalProperties": false }, "minItems": 1 },
+      "capNote": { "const": "capped at 8 posts per category; the page states this cap" }
+    },
+    "required": ["categories"],
+    "additionalProperties": false
+  },
+  "constraints": { "onePerPage": true, "repeatable": false, "routeRestriction": "/blog" },
+  "motion": { "pattern": "none", "reducedMotionFallback": "n/a" }
+}

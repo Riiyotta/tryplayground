@@ -1,0 +1,111 @@
+{
+  "template": "template.audience-plain",
+  "route": "/for/centers",
+  "nodes": [
+    {
+      "section": "chrome.header",
+      "type": "section",
+      "content": {
+        "announcementText": "Playground is now the highest-rated child care platform.",
+        "navLabels": ["Platform", "Switch to Playground", "Built for", "Resources"]
+      },
+      "motion": { "pattern": "none", "reducedMotionFallback": "n/a - static chrome" }
+    },
+    {
+      "section": "chrome.scroll-restore",
+      "type": "section",
+      "content": {},
+      "motion": { "pattern": "none", "reducedMotionFallback": "n/a - non-visual" }
+    },
+    {
+      "section": "hero.split",
+      "type": "section",
+      "content": {
+        "headline": "Everything your center needs without running it all by hand",
+        "subhead": "Playground helps you simplify operations, support your staff, and stay on top of the details that keep your center running.",
+        "ctaLabel": "Book a demo",
+        "productShot": "src/data/forPages.js:15 (shot field) - assetRole: product-screenshot"
+      },
+      "motion": { "pattern": "none", "reducedMotionFallback": "n/a - static hero" }
+    },
+    {
+      "section": "proof.logo-ticker",
+      "type": "section",
+      "content": {
+        "introText": "Join 500,000+ owners, directors, teachers, and families already on Playground",
+        "logos": [
+          { "image": "assetRole: customer-logo - placeholder mark 1, per assets/asset-roles.json must-not-fabricate guidance", "alt": "Placeholder customer logo 1" },
+          { "image": "assetRole: customer-logo - placeholder mark 2, per assets/asset-roles.json must-not-fabricate guidance", "alt": "Placeholder customer logo 2" }
+        ]
+      },
+      "motion": { "pattern": "logo-marquee", "reducedMotionFallback": "static row of logos, no marquee translateX loop" }
+    },
+    {
+      "section": "feature.alternating-rows",
+      "type": "section",
+      "content": {
+        "rows": [
+          {
+            "eyebrow": "Operations",
+            "headline": "Run a tight ship without burning out",
+            "subheadline": "Playground replaces spreadsheets, forms, and half-working tools with a system that actually fits how a center runs.",
+            "checklist": ["Predictive enrollment that plans ahead for you"],
+            "media": "src/data/forPages.js:20 (sections[0].img) - assetRole: product-screenshot",
+            "mediaSide": "right"
+          },
+          {
+            "eyebrow": "Compliance",
+            "headline": "Stay compliant without living in fear of licensing",
+            "subheadline": "Catch the issues before they become violations.",
+            "checklist": ["Live ratio dashboards and attendance alerts", "Track immunizations, trainings, and expiration dates", "Audit-friendly CACFP and subsidy reporting"],
+            "media": "src/data/forPages.js:27 (sections[1].img) - assetRole: product-screenshot",
+            "mediaSide": "left"
+          }
+        ]
+      },
+      "motion": { "pattern": "none", "reducedMotionFallback": "instant show/hide" }
+    },
+    {
+      "section": "convert.faq",
+      "type": "section",
+      "content": {
+        "questions": [
+          {
+            "question": "What does Playground do for child care centers?",
+            "answer": "Playground is child care management software built for multi-classroom, full-day center programs. It runs billing, classroom-level enrollment, ratios, staff scheduling, payroll, family communication, and licensing reporting from one platform."
+          },
+          {
+            "question": "How do you run a child care center across multiple classrooms?",
+            "answer": "Run multiple classrooms from one system instead of separate spreadsheets. Playground tracks ratios live by classroom and age group and forecasts upcoming openings classroom by classroom."
+          }
+        ],
+        "openFirst": false
+      },
+      "motion": { "pattern": "accordion-reveal", "curve": "tilt", "durationMs": 360, "reducedMotionFallback": "instant show/hide, no grid-template-rows transition" }
+    },
+    {
+      "section": "convert.closing-cta",
+      "type": "section",
+      "content": {
+        "heading": "See why you don't need more admin help.",
+        "ctaLabel": "Book a demo",
+        "illustration": false
+      },
+      "motion": { "pattern": "none", "reducedMotionFallback": "n/a" }
+    },
+    {
+      "section": "chrome.footer",
+      "type": "section",
+      "content": {
+        "columns": [
+          { "heading": "Platform", "links": ["Billing", "Expenses", "Payroll", "Subsidy"] },
+          { "heading": "Built for", "links": ["Centers", "Home-Based", "Multi-Site"] },
+          { "heading": "Resources", "links": ["Blog", "Webinars", "Changelog"] },
+          { "heading": "Company", "links": ["About", "Careers", "Customers"] }
+        ],
+        "legalText": "Copyright Playground. All rights reserved."
+      },
+      "motion": { "pattern": "none", "reducedMotionFallback": "n/a - static chrome" }
+    }
+  ]
+}

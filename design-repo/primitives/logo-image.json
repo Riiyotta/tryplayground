@@ -1,0 +1,12 @@
+{
+  "id": "logo-image",
+  "type": "primitive",
+  "purpose": "A single customer/partner logo image, as used by proof.logo-ticker's marquee items.",
+  "citation": "src/components/Ticker.jsx:38-42 (tickerLogos list rendered as <img> per logo)",
+  "props": {
+    "image": { "assetRole": "customer-logo" },
+    "alt": { "type": "string", "maxWords": 6 }
+  },
+  "assetRole": "customer-logo",
+  "complianceNote": "See assets/asset-roles.json:customer-logo - must-not-fabricate a real, identifiable organization's mark."
+}

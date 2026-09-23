@@ -1,0 +1,26 @@
+{
+  "$schema": "foundation.typography",
+  "measuredFrom": "tailwind.config.js:37-64",
+  "fontFamily": {
+    "sans": { "stack": ["Inter", "system-ui", "sans-serif"], "citation": "tailwind.config.js:39-40", "note": "renders on 237 elements on the original; SIL OFL, self-hosted" },
+    "display": { "stack": ["Manrope", "Inter", "system-ui", "sans-serif"], "citation": "tailwind.config.js:41-42", "note": "substitutes CircularXX TT Bold (commercial, Lineto license) with Manrope, a geometric grotesque with similar metrics. Manrope is the correct substitute to keep using - never reintroduce CircularXX without a commercial license." }
+  },
+  "fontSize": {
+    "h1": { "size": "68px", "lineHeight": "68px", "letterSpacing": "-0.059em", "citation": "tailwind.config.js:46" },
+    "h2": { "size": "60px", "lineHeight": "66px", "letterSpacing": "-0.06em", "citation": "tailwind.config.js:47" },
+    "h2sub": { "size": "48px", "lineHeight": "52.8px", "letterSpacing": "-0.06em", "citation": "tailwind.config.js:48" },
+    "h2card": { "size": "32px", "lineHeight": "35.2px", "letterSpacing": "-0.03em", "citation": "tailwind.config.js:49" },
+    "pullquote": { "size": "28px", "lineHeight": "33.6px", "letterSpacing": "0.02em", "citation": "tailwind.config.js:50" },
+    "cardquote": { "size": "32px", "lineHeight": "33.6px", "letterSpacing": "-0.02em", "citation": "tailwind.config.js:51" },
+    "feature": { "size": "18px", "lineHeight": "21.6px", "letterSpacing": "-0.02em", "citation": "tailwind.config.js:52" },
+    "lead": { "size": "17px", "lineHeight": "23.8px", "letterSpacing": "-0.02em", "citation": "tailwind.config.js:53" },
+    "body": { "size": "16px", "lineHeight": "22.4px", "letterSpacing": "-0.021em", "citation": "tailwind.config.js:54" },
+    "bodyslate": { "size": "16px", "lineHeight": "23.2px", "letterSpacing": "0", "citation": "tailwind.config.js:55" },
+    "small": { "size": "15px", "lineHeight": "21.9px", "letterSpacing": "-0.024em", "citation": "tailwind.config.js:56" },
+    "nav": { "size": "14px", "lineHeight": "16.8px", "letterSpacing": "0", "citation": "tailwind.config.js:57" },
+    "caption": { "size": "14px", "lineHeight": "16.8px", "letterSpacing": "-0.026em", "citation": "tailwind.config.js:58" },
+    "footer": { "size": "13px", "lineHeight": "18.2px", "letterSpacing": "-0.023em", "citation": "tailwind.config.js:59" },
+    "announce": { "size": "13px", "lineHeight": "15.6px", "letterSpacing": "0", "citation": "tailwind.config.js:60" },
+    "daylabel": { "size": "13px", "lineHeight": "13px", "letterSpacing": "0", "citation": "tailwind.config.js:61" }
+  }
+}

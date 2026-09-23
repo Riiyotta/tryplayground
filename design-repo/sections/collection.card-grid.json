@@ -1,0 +1,18 @@
+{
+  "id": "collection.card-grid",
+  "category": "COLLECTION",
+  "purpose": "Browsable grid of cover-plus-title cards for a list-backed content type (webinars, resources).",
+  "citation": "ia.json sections.collection.card-grid; implementedBy IndexPage.jsx",
+  "scope": "/webinars and /resources.",
+  "content": {
+    "type": "object",
+    "properties": {
+      "cardGeometry": { "enum": ["landscape-343x205", "portrait-181x271"], "note": "measured per page: landscape for webinars, portrait for resources" },
+      "items": { "type": "array", "items": { "type": "object", "properties": { "title": { "type": "string", "maxWords": 12 }, "cover": { "assetRole": "product-screenshot" } }, "required": ["title", "cover"], "additionalProperties": false }, "minItems": 1 }
+    },
+    "required": ["cardGeometry", "items"],
+    "additionalProperties": false
+  },
+  "constraints": { "onePerPage": true, "repeatable": false, "routeRestriction": ["/webinars", "/resources"] },
+  "motion": { "pattern": "none", "reducedMotionFallback": "n/a" }
+}

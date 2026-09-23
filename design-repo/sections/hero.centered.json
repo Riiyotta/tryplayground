@@ -1,0 +1,20 @@
+{
+  "id": "hero.centered",
+  "category": "HERO",
+  "purpose": "Opens a support/informational/index page with no product shot - used where the page's job is orientation or index browsing rather than a feature pitch.",
+  "citation": "ia.json sections.hero.centered; implementedBy Support.jsx / Customers.jsx / IndexPage.jsx",
+  "scope": "Support, customers, why-playground, about, careers, and the collection index pages.",
+  "content": {
+    "type": "object",
+    "properties": {
+      "headline": { "type": "string", "maxWords": 12 },
+      "subhead": { "type": "string", "maxWords": 24 },
+      "illustrationBand": { "type": "boolean", "default": false, "assetRole": "decorative-illustration" },
+      "photoRow": { "type": "array", "items": { "assetRole": "customer-photo" }, "maxItems": 6 }
+    },
+    "required": ["headline"],
+    "additionalProperties": false
+  },
+  "constraints": { "onePerPage": true, "mustBeFirst": true, "repeatable": false },
+  "motion": { "pattern": "none", "reducedMotionFallback": "n/a - static hero" }
+}

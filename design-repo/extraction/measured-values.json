@@ -1,0 +1,16 @@
+{
+  "$schema": "extraction.measured-values",
+  "note": "External citations to evidence outside design-repo/ live here, not in registry.manifest.json's entryPoints (which must only list files inside design-repo/ itself). This file degrades gracefully - if the sibling project tree isn't present (e.g. this design-repo was zipped and handed to someone standalone), citations here simply can't be re-verified, but nothing in verify_all.py hard-fails because of that.",
+  "citations": [
+    { "claim": "23 routes, 15 templates", "source": "../ia.json:5-6" },
+    { "claim": "30 distinct sections with real implementedBy mappings", "source": "../ia.json:16-196" },
+    { "claim": "all color/typography/radius/elevation/motion foundation token values", "source": "../tailwind.config.js:9-100" },
+    { "claim": "measurement viewports 1440/768/390", "source": "../tailwind.config.js:2" },
+    { "claim": "real copy for /for/centers example instance", "source": "../src/data/forPages.js:12-52" },
+    { "claim": "public/assets/ is gitignored, not committed - real customer logos/photos withheld", "source": "../NOTICE.md:19-31" },
+    { "claim": "scroll-parallax motion mechanism and both measured instances", "source": "../src/components/useParallax.js:1-31" },
+    { "claim": "logo-marquee speed (49.7px/s) and runtime-measured-duration mechanism", "source": "../src/components/Ticker.jsx:1-30" },
+    { "claim": "Rive canvas IntersectionObserver-gated play pattern", "source": "../src/components/RiveArt.jsx:1-30" },
+    { "claim": "route table: 13 static/dynamic App.jsx entries + 3 solutions.js slugs + 7 forPages.js slugs = 23", "source": "../src/App.jsx:22-38" }
+  ]
+}

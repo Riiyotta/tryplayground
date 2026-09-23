@@ -1,0 +1,10 @@
+{
+  "$schema": "component.card",
+  "measuredFrom": "tailwind.config.js radius/elevation blocks; CLONE_SPEC_COMPONENTS.md",
+  "variants": {
+    "default": { "surface": "surface.card", "radius": "radius.card", "elevation": null },
+    "elevated": { "surface": "surface.card", "radius": "radius.card-elevated", "elevation": "elevation.card-elevated" },
+    "well": { "surface": "surface.card-blog", "radius": "radius.card-well", "elevation": "elevation.card-well", "note": "the only inset-shadow card variant; /blog and /changelog only" },
+    "cta": { "surface": "surface.card-cta", "radius": "radius.cta-card", "elevation": null }
+  }
+}

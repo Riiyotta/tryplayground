@@ -1,0 +1,21 @@
+{
+  "id": "proof.testimonial-band",
+  "category": "PROOF",
+  "purpose": "Deepens trust with a specific named customer's voice, switchable between several customers.",
+  "citation": "ia.json sections.proof.testimonial-band; implementedBy PageParts.jsx > TestimonialBand",
+  "scope": "Homepage, /solutions/billing and /why-playground.",
+  "content": {
+    "type": "object",
+    "properties": {
+      "quotes": { "type": "array", "items": { "type": "object", "properties": { "quote": { "type": "string", "maxWords": 40 }, "name": { "type": "string", "maxWords": 4 }, "role": { "type": "string", "maxWords": 6 }, "portrait": { "assetRole": "customer-photo" } }, "required": ["quote", "name", "portrait"], "additionalProperties": false }, "minItems": 1, "maxItems": 6 }
+    },
+    "required": ["quotes"],
+    "additionalProperties": false
+  },
+  "constraints": { "maxPerPage": 1, "repeatable": false },
+  "motion": {
+    "pattern": "none",
+    "component": "dot-nav",
+    "reducedMotionFallback": "dot navigation switches instantly, no crossfade transition beyond the site-wide 200ms color easing already used for hover states"
+  }
+}

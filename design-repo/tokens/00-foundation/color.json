@@ -1,0 +1,31 @@
+{
+  "$schema": "foundation.color",
+  "measuredFrom": "tailwind.config.js:9-33",
+  "note": "Every hex value below is copied verbatim from tailwind.config.js's colors.extend block. Usage counts in each token's citation are the original author's own pixel-measured counts, not re-derived here.",
+  "colors": {
+    "ink": { "value": "#1C1917", "citation": "tailwind.config.js:10", "note": "primary ink - headings, card titles (64 uses)" },
+    "muted": { "value": "#79716B", "citation": "tailwind.config.js:11", "note": "muted body / nav labels (57 uses)" },
+    "body-alt": { "value": "#6A7074", "citation": "tailwind.config.js:12", "note": "secondary body, feature descriptions (23 uses)" },
+    "slate": { "value": "#4A5565", "citation": "tailwind.config.js:13", "note": "timeline copy (9 uses)" },
+    "tertiary": { "value": "#807E7A", "citation": "tailwind.config.js:14" },
+    "link-blue": { "value": "#066DFE", "citation": "tailwind.config.js:15", "note": "phone link" },
+    "accent": { "value": "#1F5CF7", "citation": "tailwind.config.js:16", "note": "inline links, gradient end" },
+    "accent-start": { "value": "#3079FF", "citation": "tailwind.config.js:17", "note": "announcement bar, gradient start" },
+    "quote": { "value": "#4F4741", "citation": "tailwind.config.js:18" },
+    "day-label": { "value": "#8A8F98", "citation": "tailwind.config.js:19" },
+    "surface": { "value": "#FBFAF9", "citation": "tailwind.config.js:20", "note": "card surface (24 uses)" },
+    "cream": { "value": "#FEF5E4", "citation": "tailwind.config.js:21", "note": "hero gradient stop" },
+    "warm-card": { "value": "#F4F2EC", "citation": "tailwind.config.js:22" },
+    "cta-card": { "value": "#FAFAFA", "citation": "tailwind.config.js:23" },
+    "warm-neutral": { "value": "#F0ECE9", "citation": "tailwind.config.js:24" },
+    "blue-fill": { "value": "#CEE7FE", "citation": "tailwind.config.js:25" },
+    "btn-secondary": { "value": "#E7E6E5", "citation": "tailwind.config.js:26" },
+    "warm-tint": { "value": "rgba(68,25,6,0.04)", "citation": "tailwind.config.js:27", "note": "tab rail track, frames, arrows" },
+    "dark-chip": { "value": "#272A2E", "citation": "tailwind.config.js:28" },
+    "grey-fill": { "value": "#9AA0A8", "citation": "tailwind.config.js:29" },
+    "blog-surface": { "value": "#FBF9F7", "citation": "tailwind.config.js:30-32", "note": "/blog card fill - one channel off the global surface; page-local, do not merge with surface" },
+    "rule": { "value": "#ECECEC", "citation": "tailwind.config.js:33", "note": "1px row dividers (measured x3)" },
+    "eyebrow": { "value": "#FC5F35", "citation": "tailwind.config.js:34", "note": "feature-section eyebrow (pixel-sampled)" },
+    "nav-hover": { "value": "#45403D", "citation": "tailwind.config.js:35", "note": "measured nav-link hover target" }
+  }
+}
