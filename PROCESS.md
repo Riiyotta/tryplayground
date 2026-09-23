@@ -768,3 +768,39 @@ cross-fading out, caught mid-transition. The real fill is the same
 `rgba(68,25,6,0.04)` warm wash used elsewhere. Screenshots of an
 auto-advancing section will regularly catch a transient state; confirm any
 "new" color against `getComputedStyle` before encoding it.
+
+## 13. A computed value can be right and still be the wrong thing to copy
+
+A typography QA pass reported that every `h1` on the original computes to
+`font-weight: 400` while the clone renders `700`, and recommended dropping
+the clone to 400 on eight routes.
+
+The full computed style says why that would have been wrong:
+
+```
+font-family: "CircularXX TT Bold", "CircularXX TT Bold Placeholder", sans-serif
+font-weight: 400
+```
+
+The family *is* the bold cut. Circular ships each weight as a separate file,
+so the original asks for weight 400 of a font that is already bold, and it
+renders bold. The clone substitutes Manrope, a variable family where weight
+is a real axis, so the equivalent is `700`. Copying the 400 would have made
+every h1 on the site render thin.
+
+The general trap: a QA sweep compares computed values across two sites, but a
+computed value is only meaningful together with the resource it resolves
+against. Whenever the two sites load *different* fonts - which is the premise
+of this whole clone, since CircularXX is commercial - `font-weight`,
+`font-style` and `font-stretch` are not directly comparable. Check the family
+name before acting on a weight delta.
+
+The same logic applies to the h2/h3 weight deltas in that report (`h2:400`,
+`h3:500` on the original): they are Circular's Book and Medium cuts, not
+requests for light text.
+
+This is the second instance of the pattern in §12.2 - a measurement that is
+accurate as a number but wrong as an instruction. There the bounding box grew
+and the cause was rotation, not scale; here the weight reads 400 and the cause
+is the font file, not the intended thickness. Read the whole declaration, not
+the one property you came to compare.

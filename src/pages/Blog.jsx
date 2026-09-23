@@ -25,8 +25,14 @@ export default function Blog() {
           <section key={cat.name}>
             <div className="mx-auto max-w-content">
               <div className="flex items-baseline justify-between gap-4">
-                <h2 className="font-display text-[24px] font-bold tracking-[-0.03em] text-ink
-                               xl:text-[32px] xl:leading-[35.2px]">
+                {/* These are 14px category labels on the original, not
+                    section headings - measured 14px/16.8px, CircularXX TT
+                    Book (w450, so 500 in Manrope), rgb(39,42,46), tracking
+                    normal. An earlier pass rendered them as 32px h2s, i.e.
+                    more than twice their real size. Kept as an h2 for the
+                    document outline; only the type is corrected. */}
+                <h2 className="font-display text-[14px] font-medium leading-[16.8px]
+                               tracking-normal text-[#272A2E]">
                   {cat.name}
                 </h2>
                 <a href="#" className="shrink-0 text-[15px] font-medium text-link-blue hover-color">
