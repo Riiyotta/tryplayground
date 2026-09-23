@@ -42,7 +42,7 @@ export default function Changelog() {
                   {e.t}
                 </h3>
                 {e.img && (
-                  <Img src={e.img} w="full" h={455} radius={12} alt="" fit="cover"
+                  <Img src={e.img} w="full" h={455} radius={12} alt={e.t} fit="cover"
                        className="mt-5 max-w-[590px]" />
                 )}
               </li>

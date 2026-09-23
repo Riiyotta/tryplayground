@@ -21,6 +21,9 @@ export default function RiveArt({ src, className = '', label }) {
   const { RiveComponent, rive } = useRive({
     src,
     autoplay: false,
+    // These files ship a state machine; naming it stops Rive falling back to
+    // "first linear animation" and logging a warning for every card.
+    stateMachines: 'State Machine 1',
     // The artboards are authored to fill the card edge to edge.
     layout: undefined,
   })

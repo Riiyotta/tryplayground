@@ -37,7 +37,7 @@ export default function Blog() {
                 {cat.posts.map((p) => (
                   <a key={p.t} href="#" className="group flex flex-col gap-3">
                     <div className="overflow-hidden rounded-card bg-surface">
-                      <Img src={p.img} w="full" h={213} radius={0} alt="" fit="cover"
+                      <Img src={p.img} w="full" h={213} radius={0} alt={p.t} fit="cover"
                            className="transition-transform duration-500 ease-move group-hover:scale-[1.03]" />
                     </div>
                     <p className="text-[16px] font-medium leading-[22px] text-ink
