@@ -63,6 +63,13 @@ Per-route live anchors: `/` 2→27, `/about` 2→22, `/for/directors` 2→21,
 - **`/blog` card wells**: the original uses an inset shadow
   (`inset 0 1px 11px rgba(0,0,0,0.05)`, 311 uses, the only inset on the site)
   on an 8px radius over #FBF9F7. The clone had no inset anywhere.
+- **Feature eyebrows** all rendered in the brand orange; the original
+  colour-codes them — Marketing rgb(252,95,53), Finances rgb(30,189,102),
+  Operations rgb(48,121,255), AI rgb(142,64,204). All four now match exactly.
+- **`shadow-warm` and `shadow-panel`** were each transcribed one layer short.
+  The missing layer is in both cases the widest and softest, so cards read
+  slightly flatter than the original rather than obviously wrong — which is
+  why it survived earlier passes.
 
 ## 4. Fixed — behaviour and a11y
 
@@ -118,16 +125,14 @@ It is the final CTA block, which exists. Not a missing section.
   sub-heading + tile-grid shape (§1).
 - **Missing shadow stacks** beyond the blog well: a 3-layer `rgba(81,81,84)`
   elevated-card stack (52 uses) and `rgba(0,0,0,0.12) 0 1px 4px` (24 uses)
-  are still absent. `shadow-warm` is 4 layers against the original's 5.
+  are still absent.
 - **Radius tokens** `16px` and `9px` do not exist; those cards flatten onto
   `card:12px`.
 - **Vertical rhythm**: the clone has collapsed onto a uniform ~140px section
   gap. `/for/centers` loses 80–95px before every heading; `/solutions/ai`
   gains 115–150px (the original has an eyebrow label directly above those
   h2s, a structure the clone does not reproduce).
-- **Per-page eyebrow colours**: `/support` uses blue `#066DFE` and
-  `/solutions/billing` green `#09A851`; the clone renders both as the
-  orange `#FC5F35`.
+
 - **Persona tab cards** and `/solutions/billing` feature tiles have wrong
   radius and fill.
 - **`/customers`** "Read case study" / "Watch video" buttons have no handler.
@@ -142,3 +147,12 @@ href resolves, no focus traps in 40 tab presses, every icon-only button has
 an `aria-label`, FAQ accordions work on all 13 routes that have one,
 carousels and steppers advance and disable correctly at their ends, and no
 serif or system-font fallback leaks anywhere.
+
+---
+
+## 8. Regression check
+
+After every fix above, all 23 routes re-verified at 1440: exactly one `<h1>`,
+zero broken images, zero console errors, zero HTTP ≥400, and no horizontal
+overflow. Production build succeeds. The homepage's 8 Rive canvases still
+mount at their exact 1610×960 / 790×960 backing sizes.
