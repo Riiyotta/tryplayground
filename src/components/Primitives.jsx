@@ -11,16 +11,36 @@ export function Reveal({ children, className = '', as: Tag = 'div' }) {
   return <Tag className={className}>{children}</Tag>
 }
 
+/* Primary CTA. The hover is a WIDTH growth, not the brightness shift an
+   earlier pass used: rAF-sampling the original's "Get a free demo" on
+   pointer-enter gives 162.61 -> 186.61 (+24px) over ~350ms, ease-out, while
+   a 16x16 arrow unclips from 0 to 16px wide alongside it. The original does
+   this by scaleX-ing a clip layer; animating the arrow's own width and gap
+   produces the same visible result without a wrapper.
+
+   grid-template-columns rather than width so the button still sizes to its
+   label - the +24px is the arrow (16) plus its gap (8). */
 export function PrimaryButton({ children, className = '', style, ...rest }) {
   return (
     <button
       {...rest}
       style={{ background: 'linear-gradient(#3079FF 0%, #1F5CF7 100%)', ...style }}
-      className={`inline-flex items-center justify-center rounded-btn px-5
-        text-[16px] font-medium leading-none text-white shadow-btn
-        transition-[filter] duration-200 ease-color hover:brightness-[1.03] ${className}`}
+      className={`group inline-flex items-center justify-center rounded-btn px-5
+        text-[16px] font-medium leading-none text-white shadow-btn ${className}`}
     >
       {children}
+      <span aria-hidden="true"
+            className="grid grid-cols-[0fr] overflow-hidden
+                       transition-[grid-template-columns] duration-[350ms]
+                       ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:grid-cols-[1fr]">
+        <span className="overflow-hidden">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+               className="ml-2 block shrink-0">
+            <path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" strokeWidth="1.8"
+                  strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </span>
+      </span>
     </button>
   )
 }

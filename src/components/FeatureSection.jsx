@@ -91,7 +91,7 @@ export default function FeatureSection({
             <article
               key={f.title}
               style={{ '--ch-sm': `${cardH[0]}px`, '--ch-md': `${cardH[1]}px` }}
-              className={`relative flex h-[var(--ch-sm)] flex-col overflow-hidden rounded-card
+              className={`hover-card relative flex h-[var(--ch-sm)] flex-col overflow-hidden rounded-card
                           bg-surface md:h-[var(--ch-md)] xl:h-[480px]
                           ${f.span === 3 ? 'xl:col-span-3' : f.span === 2 ? 'xl:col-span-2' : ''}`}
             >

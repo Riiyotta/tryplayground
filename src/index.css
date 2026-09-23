@@ -52,6 +52,24 @@
      one of the three curves above; this bezier reproduces the overshoot. */
   .ease-tilt  { transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
 
+  /* Feature/content card hover. Measured on the original by rAF-sampling a
+     395x480 card on pointer-enter: background steps
+     rgb(251,250,249) -> 250,249,248 -> 249,248,247 -> 248,247,246 ->
+     rgb(247,246,245), first change at ~56ms and settled at ~156ms, so a
+     150ms transition. No transform, no shadow change - only the fill. */
+  .hover-card {
+    transition: background-color 150ms cubic-bezier(0.44, 0, 0.56, 1);
+  }
+  .hover-card:hover { background-color: rgb(247, 246, 245); }
+
+  /* The "who it's for" tiles desaturate their artwork until hovered. */
+  .hover-desat img { filter: saturate(0); transition: filter 300ms cubic-bezier(0.44, 0, 0.56, 1); }
+  .hover-desat:hover img { filter: saturate(1); }
+
+  /* Footer Log In / Family Sign Up. Sampled 1 -> 0.72 over ~250ms. */
+  .hover-fade { transition: opacity 250ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .hover-fade:hover { opacity: 0.7; }
+
   .hover-color {
     transition: color 200ms cubic-bezier(0.44, 0, 0.56, 1);
   }

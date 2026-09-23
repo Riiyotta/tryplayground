@@ -129,9 +129,23 @@ export function Faq({ items, openFirst = true }) {
                       strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
-            {isOpen && (
-              <p className="pb-5 pr-9 text-[16px] leading-[24px] text-muted">{it.a}</p>
-            )}
+            {/* The answer was conditionally mounted, so opening a row jumped
+                in a single frame. The original springs: rAF-sampling
+                /for/centers gives 428 -> 447 (210ms) -> 493 (268) -> 513
+                (320) -> 519.6 (368), overshooting to 520.37 at 418ms before
+                settling at 519.0 by 571ms. Core motion is ~210ms with the
+                settle out to ~360ms.
+
+                Kept mounted and animated with grid-rows 0fr/1fr, the same
+                technique the "Get to know" accordion uses - it animates to
+                the content's natural height without measuring it. ease-tilt
+                carries the overshoot; a plain ease-out cannot. */}
+            <div className={`grid transition-[grid-template-rows] duration-[360ms] ease-tilt
+                             ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
+              <div className="overflow-hidden">
+                <p className="pb-5 pr-9 text-[16px] leading-[24px] text-muted">{it.a}</p>
+              </div>
+            </div>
           </li>
         )
       })}

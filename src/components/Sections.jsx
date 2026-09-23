@@ -292,7 +292,7 @@ export function BuiltFor() {
               {/* Tile measured 313.33x380 flat, bg #FBFAF9, radius 12, padding 40. */}
               {/* Tile 380px at desktop; at <=768 the measured grid is 670x298.6
                   over two rows with a 10px gap => ~144px per tile. */}
-              <Link to={t.to} className="group relative flex h-[225px] flex-col justify-end overflow-hidden rounded-card
+              <Link to={t.to} className="hover-desat group relative flex h-[225px] flex-col justify-end overflow-hidden rounded-card
                                      bg-surface p-4 md:h-[235px] md:p-5 xl:h-[380px] xl:p-10">
                 <Img src={`/assets/img/tile-${i + 1}.${i === 4 ? 'jpg' : 'webp'}`}
                      w="full" h="100%" alt=""
@@ -596,10 +596,10 @@ export function Footer() {
       <div className="mx-auto max-w-content px-5 pb-0 pt-[60px] xl:h-[515px] xl:overflow-hidden">
         <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-5">
           <div className="flex flex-col gap-4">
-            <a href="#" className="text-[15px] leading-[21px] text-muted hover-color hover:text-ink">
+            <a href="#" className="text-[15px] leading-[21px] text-muted hover-color hover:text-nav-hover">
               Request AI summary of Playground
             </a>
-            <a href="#" className="text-[15px] leading-[21px] text-muted hover-color hover:text-ink">
+            <a href="#" className="text-[15px] leading-[21px] text-muted hover-color hover:text-nav-hover">
               Early Childhood Investigations
             </a>
           </div>
@@ -619,11 +619,11 @@ export function Footer() {
                   <li key={l.label}>
                     {l.to ? (
                       <Link to={l.to}
-                            className="text-small font-medium text-muted hover-color hover:text-ink">
+                            className="text-small font-medium text-muted hover-color hover:text-nav-hover">
                         {l.label}
                       </Link>
                     ) : (
-                      <a href="#" className="text-small font-medium text-muted hover-color hover:text-ink">
+                      <a href="#" className="text-small font-medium text-muted hover-color hover:text-nav-hover">
                         {l.label}
                       </a>
                     )}
