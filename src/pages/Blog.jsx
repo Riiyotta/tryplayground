@@ -42,7 +42,11 @@ export default function Blog() {
               <div className="mt-6 grid gap-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
                 {cat.posts.map((p) => (
                   <a key={p.t} href="#" className="group flex flex-col gap-3">
-                    <div className="overflow-hidden rounded-card bg-surface">
+                    {/* Measured on the original: an 8px-radius well with an
+                        INSET shadow (311 uses, the site's only inset) over
+                        #FBF9F7 - a blog-local fill one channel off the global
+                        surface token. */}
+                    <div className="overflow-hidden rounded-well bg-blog-surface shadow-well">
                       <Img src={p.img} w="full" h={213} radius={0} alt={p.t} fit="cover"
                            className="transition-transform duration-500 ease-move group-hover:scale-[1.03]" />
                     </div>

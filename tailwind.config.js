@@ -25,6 +25,9 @@ export default {
         'warm-tint': 'rgba(68,25,6,0.04)', // tab rail track, frames, arrows
         'dark-chip': '#272A2E',
         'grey-fill': '#9AA0A8',
+        'blog-surface': '#FBF9F7', // /blog card fill - one channel off the
+                                   // global `surface`, and page-local: the
+                                   // homepage and /solutions use #FBFAF9.
         rule: '#ECECEC',         // 1px row dividers (measured x3)
         eyebrow: '#FC5F35',      // feature-section eyebrow (pixel-sampled)
         'nav-hover': '#45403D',  // measured nav-link hover target
@@ -57,6 +60,7 @@ export default {
       },
       borderRadius: {
         card: '12px',   // dominant radius (50 uses)
+        well: '8px',    // /blog + /changelog cards
         panel: '10px',  // nav dropdown
         btn: '8px',     // buttons
         rail: '70px',   // tab rail track
@@ -68,6 +72,11 @@ export default {
         warm: '0 0.97px 0.97px 0.49px rgba(68,25,6,0.04), 0 2.92px 2.92px 1.46px rgba(68,25,6,0.04), 0 5.83px 5.83px -2.92px rgba(68,25,6,0.04), 0 11.67px 11.67px -5.83px rgba(68,25,6,0.04)',
         btn: '0 1px 1px 0.5px rgba(0,0,0,0.04), 0 3px 3px 1.5px rgba(0,0,0,0.04), 0 6px 6px -3px rgba(0,0,0,0.04), 0 24px 24px -12px rgba(0,0,0,0.04), 0 1px 4px -1px rgba(3,7,18,0.04)',
         panel: '0 0 0 1px rgba(0,0,0,0.04), 0 1px 1px 0.5px rgba(0,0,0,0.04), 0 3px 3px 1.5px rgba(0,0,0,0.04), 0 6px 6px -3px rgba(0,0,0,0.04), 0 12px 12px -6px rgba(0,0,0,0.04)',
+        // /blog and /changelog card wells: an INSET shadow on a transparent
+        // 8px-radius box, 311 uses on /blog alone. The only inset on the site.
+        well: 'inset 0 1px 11px 0 rgba(0,0,0,0.05)',
+        // small floating chip (e.g. the /blog read-time pill), 3 uses
+        chip: '0 1px 4px 0 rgba(0,0,0,0.08)',
       },
       transitionTimingFunction: {
         // the only two easing curves on the page
