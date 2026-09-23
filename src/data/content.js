@@ -162,14 +162,28 @@ export const financeFeatures = [
     desc: "Pay your staff with Playground's full service payroll, tax filing, and time tracking tool." },
 ]
 
+/* Measured at 1440: a 805px wide card then a 395px card on row 1, three
+   395px cards on row 2 - the same five-card shape as finances. The wide
+   card's heading is much longer than the earlier build's "Attendance",
+   which was actually the SECOND card's title. */
 export const opsFeatures = [
-  { span: 2, title: 'Attendance', img: '/assets/img/feat-enrollment.webp',   desc: 'Simple, compliant check in/out for any childcare program' },
-  { span: 1, title: 'Communication', img: '/assets/img/feat-ai-chat.webp', desc: 'Streamline communication, and track daily activities' },
-  { span: 1, title: 'Learning', img: '/assets/img/feat-learning.webp',
-    desc: 'Create, organize, and document learning in one seamless flow—from activity planning to family updates.' },
-  { span: 1, title: 'Food program', img: '/assets/img/feat-food.webp',  desc: 'Simple meal recording, automatic CACFP reports, and easy menu planning.' },
-  { span: 1, title: 'Reporting', img: '/assets/img/feat-ai-funnel.webp',
-    desc: 'Report on anything in your program with 100s of premade reports and the ability to build your own.' },
+  { span: 2, title: 'Strengthen relationships with families — and turn them into your biggest fans',
+    rive: '/assets/rive/communication.riv',
+    riveLabel: 'Family messaging and daily activity feed',
+    desc: 'Streamline communication, and track daily activities',
+    note: '/assets/img/note-pin-blue.svg',
+    quote: 'I have families that chose to enroll because of our daily parent app',
+    who: 'Kaycee Cottone', role: 'Southern Oregon Head Start' },
+  { span: 1, title: 'Attendance', rive: '/assets/rive/attendance.riv',
+    riveLabel: 'Student sign-in log with check in and out times',
+    desc: 'Simple, compliant check in/out for any childcare program' },
+  { span: 1, title: 'Learning', img: '/assets/img/card-learning.webp',
+    desc: 'Create, organize, and document learning in one seamless flow—from activity planning to milestone tracking to family sharing' },
+  { span: 1, title: 'Food program', img: '/assets/img/card-food.webp',
+    desc: 'Simple meal recording, automatic CACFP reports, and easy menu planning.' },
+  { span: 1, title: 'Reporting', rive: '/assets/rive/reporting.riv',
+    riveLabel: 'Report builder with premade report templates',
+    desc: 'Report on anything in Playground with 100s of premade reports and the ability to build your own.' },
 ]
 
 export const aiFeatures = [
