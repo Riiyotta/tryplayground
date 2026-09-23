@@ -10,6 +10,17 @@ import NotFound from './NotFound'
    FAQ, CTA - so they are data-driven rather than four near-identical files.
    Sections without artwork on the original render as a centred copy block,
    which is how the original lays them out. */
+/* The third support card is a miniature changelog. Measured verbatim from
+   /for/directors at y=8040-8250: five rows, 300x46, r10px, alternating on a
+   #F2F1F0 fill with the third row white. */
+const SUPPORT_RELEASES = [
+  { t: 'Added Food programs', v: '4.1', d: '3/21/25' },
+  { t: 'Improved navigation', v: '4.2', d: '4/3/25' },
+  { t: 'New Quickbooks connector', v: '4.3', d: '4/18/25' },
+  { t: 'Faster attendance check-in', v: '4.4', d: '5/2/25' },
+  { t: 'Subsidy report exports', v: '4.5', d: '5/20/25' },
+]
+
 export default function ForPage() {
   const { slug } = useParams()
   const page = forPages[slug]
@@ -185,6 +196,89 @@ export default function ForPage() {
                     <p className="text-[15px] leading-[22px] text-body-alt">{c.desc}</p>
                   </div>
                 </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+
+      {/* y=7254 on /for/directors — an image + copy + link band offering the
+          Savings Club. Measured: image 603x352 at x=112, heading at the same
+          y as the image top, so the two columns are top-aligned, not centred. */}
+      {page.savingsClub && (
+        <section className="px-5 pt-24 xl:pt-[140px]">
+          <div className="mx-auto grid max-w-content items-center gap-10 xl:grid-cols-2 xl:gap-16">
+            <Img src="/assets/for/savings-club.png" w={603} h={352} alt="" fit="contain"
+                 className="max-w-full" />
+            <div className="max-w-[520px]">
+              <SectionH2>Get access to the Playground Savings Club</SectionH2>
+              <p className="mt-5 text-lead text-muted">
+                Playground customers get 10–40% off the supplies they already buy
+                with the exclusive Savings Club.
+              </p>
+              <a href="#" className="mt-6 inline-flex items-center gap-1 text-body font-medium
+                                     text-ink hover-color">
+                See how it works
+                <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" strokeWidth="1.6"
+                        strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* y=7746 on /for/directors — a centred heading + intro over three
+          315x540 cards (r12px, bg #FBFAF9) at x=216/563/909, i.e. a 3-col
+          grid on the 1216 container with a 32px gutter. Card 1 carries the
+          support-rating badge, card 2 is copy-only, card 3 is a release list.
+          Card CTAs sit at a shared y=8467, so the body area is fixed-height
+          and the link is pinned to the card bottom. */}
+      {page.support && (
+        <section className="px-5 pt-24 xl:pt-[140px]">
+          <div className="mx-auto max-w-content text-center">
+            <SectionH2 className="mx-auto max-w-[760px]">{page.support.title}</SectionH2>
+            <p className="mx-auto mt-5 max-w-[620px] text-lead text-muted">{page.support.intro}</p>
+            <div className="mt-12 grid gap-8 text-left xl:grid-cols-3">
+              {page.support.cards.map((c, i) => (
+                <div key={c.title}
+                     className="flex flex-col rounded-card bg-surface p-8 xl:h-[540px]">
+                  <div className="flex min-h-[150px] flex-1 items-start justify-center">
+                    {i === 0 && (
+                      <img src="/assets/for/support-badge.png" alt="" loading="lazy"
+                           decoding="async" width={259} height={120}
+                           className="h-auto w-[259px] max-w-full" />
+                    )}
+                    {i === 2 && (
+                      <ul className="w-full space-y-2">
+                        {SUPPORT_RELEASES.map((r) => (
+                          <li key={r.t}
+                              className="flex items-center justify-between rounded-[10px]
+                                         bg-[#F2F1F0] px-4 py-3">
+                            <span className="text-footer font-medium text-[rgba(28,25,23,0.6)]">{r.t}</span>
+                            <span className="flex items-center gap-2">
+                              <span className="text-[12px] font-semibold leading-[16.8px] text-[#867F7A]">{r.v}</span>
+                              <span className="text-[12px] font-medium leading-[16.2px] text-[rgba(121,113,107,0.6)]">{r.d}</span>
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                  <h3 className="text-feature font-medium text-[rgba(0,0,0,0.9)]">{c.title}</h3>
+                  <p className="mt-2 text-small text-[rgba(121,113,107,0.9)]">{c.desc}</p>
+                  {c.primary ? (
+                    <PrimaryButton className="mt-6 h-[40px] self-start">{c.cta}</PrimaryButton>
+                  ) : (
+                    <a href="#" className="mt-6 inline-flex h-[40px] items-center justify-center
+                                           self-start rounded-btn bg-btn-secondary px-5 text-body
+                                           font-medium text-ink hover-color">
+                      {c.cta}
+                    </a>
+                  )}
+                </div>
               ))}
             </div>
           </div>

@@ -194,6 +194,6 @@ export const solutionsPages = {
       { q: 'Is subsidy tracking included in the Playground subscription?',
         a: 'Yes. All subsidy tracking features are included with the core Playground platform with no add-ons or extra fees.' },
     ],
-    cta: 'Book a demo to stop leaving subsidy money on the table.',
+    cta: 'Book a demo and collect every subsidy without the busywork.',
   },
 }

@@ -41,9 +41,13 @@ export const forPages = {
       { title: 'Look professional and grow like it',
         intro: 'Give families confidence from the first click to the first day.',
         items: ['Convert more inquiries with a high-converting site and marketing tools that tie directly to enrollment',
-                'Your center looks polished, organized, and trustworthy — because it is.'] },
+                'Your center looks polished, organized, and trustworthy — because it is.'],
+        img: '/assets/for/cen-professional-a.webp',
+        imgW: 408, imgH: 421 },
       { title: 'Multiply what your program gets done in a day',
-        intro: 'Camber handles daily admin work, captures and converts enrollment leads, and keeps your entire team aligned on compliance and policy.' },
+        intro: 'Camber handles daily admin work, captures and converts enrollment leads, and keeps your entire team aligned on compliance and policy.',
+        img: '/assets/for/cen-multiply-a.webp',
+        imgW: 395, imgH: 480, flip: true },
     ],
     faq: [
       { q: 'What does Playground do for child care centers?',
@@ -87,9 +91,13 @@ export const forPages = {
         img: '/assets/img/for-home-based/playground-income-eligibility-form__iYnSqn9ZWI5AMSGwB4c9Rx79CFQ.webp',
         imgW: 330, imgH: 273, flip: true },
       { title: 'Bring professional polish to your home-based care',
-        intro: 'Automated payments, receipts and a clean parent app give families the experience they expect.' },
+        intro: 'Automated payments, receipts and a clean parent app give families the experience they expect.',
+        img: '/assets/for/hb-polish.webp',
+        imgW: 330, imgH: 331 },
       { title: 'You don’t need to be a “tech person”',
-        intro: 'Simple tap-and-swipe interactions, built-in tips, and fast human support.' },
+        intro: 'Simple tap-and-swipe interactions, built-in tips, and fast human support.',
+        img: '/assets/for/hb-tech-a.webp',
+        imgW: 408, imgH: 152, flip: true },
     ],
     faq: [
       { q: 'What does Playground do for home-based child care providers?',
@@ -240,7 +248,7 @@ export const forPages = {
       { q: 'How does AI help multi-site child care operations?',
         a: "Camber, Playground's AI employee, applies consistent capacity across every location. Camber Enrollment Agent answers inquiry calls 24/7 across every location with consistent qualification standards, and Camber Knowledge gives staff director-level policy and licensing answers regardless of which site they work at." },
     ],
-    cta: 'Book a demo to see how Playground scales with you.',
+    cta: 'Book a demo with the platform for multi-site growth.',
   },
 
   'head-start': {
@@ -280,10 +288,26 @@ export const forPages = {
       { q: 'Does Playground work for multi-site Head Start agencies?',
         a: 'Yes. Directors and agency leadership can analyze enrollment, attendance, staffing, family goals, screenings, referrals, health, CACFP, and custom data across the entire agency or narrow to a single center, classroom, or child. Goal templates and selection criteria are created once and shared across sites.' },
     ],
-    cta: 'Book a demo to see Playground for Head Start.',
+    cta: 'See what your Head Start program looks like on Playground',
   },
 
   'owners': {
+    savingsClub: true,
+    support: {
+      title: 'Incredible support — every step of the way',
+      intro: 'We don’t just sell software. We partner with you.',
+      cards: [
+        { title: 'Fast, human help when you need it',
+          desc: 'Get responses in minutes — not days. Our team knows child care and has your back.',
+          cta: 'Learn about our support' },
+        { title: 'White-glove onboarding',
+          desc: "We'll transfer your old child care management software data with you without skipping a beat.",
+          cta: 'Get a free demo', primary: true },
+        { title: 'A product that keeps getting better',
+          desc: 'We ship improvements constantly, shaped by what programs like yours actually ask for.',
+          cta: 'See the changelog' },
+      ],
+    },
     h1: 'Programs on Playground typically make more money',
     sub: 'Playground is an all-in-one child care management software that streamlines operations and administration.',
     shot: '/assets/img/billing/playground-revenue-dashboard-with-__q66XwmXTXbGaSKWHeZziryXxMs.webp',
@@ -303,12 +327,18 @@ export const forPages = {
       },
       { title: 'Grow revenue',
         intro: 'More enrollments. Higher conversion. Zero extra hustle.',
+        img: '/assets/for/own-grow-revenue.webp',
+        imgW: 414, imgH: 420
       },
       { title: 'An AI employee built for child care',
         intro: 'Camber handles enrollment calls, keeps your staff aligned, and takes daily admin off your plate.',
+        img: '/assets/for/own-ai-employee.webp',
+        imgW: 436, imgH: 465,
       },
       { title: 'Strengthen your reputation',
         intro: 'Give families the digital experience they expect from a modern program.',
+        img: '/assets/for/own-reputation-a.png',
+        imgW: 343, imgH: 250
       },
     ],
     faq: [
@@ -330,6 +360,22 @@ export const forPages = {
     cta: 'Book a demo and see how you can stand out from the programs around you.',
   },
   'directors': {
+    savingsClub: true,
+    support: {
+      title: 'Support that makes you feel like a priority',
+      intro: 'Directors carry the weight. We’re here to make sure tech isn’t adding to it.',
+      cards: [
+        { title: 'Real help from real people',
+          desc: 'Get responses in minutes — not days. Our team knows child care and has your back.',
+          cta: 'Learn about our support' },
+        { title: 'White-glove onboarding',
+          desc: 'We handle setup, training, and migration. You stay focused on your business.',
+          cta: 'Get a free demo', primary: true },
+        { title: 'A product that keeps getting better',
+          desc: 'We ship improvements constantly, shaped by what programs like yours actually ask for.',
+          cta: 'See the changelog' },
+      ],
+    },
     h1: 'Run your center without running yourself into the ground',
     sub: 'Playground replaces the daily chaos with smooth systems, clear visibility, and predictable operations.',
     shot: '/assets/img/for-directors/aging-balance-bar-chart-showing-re__IBTSzZU8wiqGAIzedWzhyqJfhYo.png',
@@ -349,12 +395,18 @@ export const forPages = {
       },
       { title: 'Student development that stays in the moment',
         intro: 'Help teachers capture the big (and small) moments without slowing them down.',
+        img: '/assets/for/dir-student-dev.webp',
+        imgW: 330, imgH: 355, flip: true
       },
       { title: 'Family communication that scales with you',
         intro: 'Consistent, professional updates without adding hours to anyone\u2019s day.',
+        img: '/assets/for/dir-family-comm.webp',
+        imgW: 330, imgH: 352
       },
       { title: 'Always audit-ready',
         intro: 'Documentation stays current, so licensing visits stop being a scramble.',
+        img: '/assets/for/dir-audit-a.webp',
+        imgW: 377, imgH: 276, flip: true
       },
     ],
     faq: [
@@ -378,6 +430,21 @@ export const forPages = {
     cta: 'Book a demo to see how you can run your program without running yourself down.',
   },
   'enrollment-specialist': {
+    support: {
+      title: 'Support that keeps up with you',
+      intro: 'You’re moving fast. We’re built to keep pace — with real people ready to help and a product that keeps improving.',
+      cards: [
+        { title: 'Get help in minutes, not days',
+          desc: 'Our award-winning support team knows child care and enrollment — so you get real answers, fast.',
+          cta: 'Learn about our support' },
+        { title: 'Built-in help, no training manual required',
+          desc: 'Tooltips, tutorials, and onboarding that actually make sense.',
+          cta: 'Get a free demo', primary: true },
+        { title: 'A product that keeps getting better',
+          desc: 'We ship improvements constantly, shaped by what programs like yours actually ask for.',
+          cta: 'See the changelog' },
+      ],
+    },
     h1: 'Fill programs faster without the chaos',
     sub: 'Playground gives enrollment specialists the tools to run a predictable pipeline, from first inquiry to first day.',
     shot: '/assets/img/for-enroll/happy-hands-inquiry-form-with-stud__h2HrKVRdoLAee1UBRR4Rq5gu4.webp',
@@ -389,6 +456,8 @@ export const forPages = {
       },
       { title: 'Respond to new inquiries instantly',
         intro: 'Speed matters. Families often go with whoever replies first.',
+        img: '/assets/for/enr-inquiries.png',
+        imgW: 346, imgH: 158, flip: true
       },
       { title: 'Streamline enrollment paperwork',
         intro: 'Ditch the paper packets and back-and-forth emails. Enrollment should feel easy.',
@@ -400,6 +469,8 @@ export const forPages = {
       },
       { title: 'An AI employee built for child care',
         intro: 'Camber handles enrollment calls, keeps your staff aligned, and takes daily admin off your plate.',
+        img: '/assets/for/ai-employee.webp',
+        imgW: 476, imgH: 508, flip: true,
       },
     ],
     faq: [
@@ -416,6 +487,6 @@ export const forPages = {
       { q: 'How does AI help capture inquiries at a child care program?',
         a: 'Camber Enrollment Agent answers inquiry calls 24/7 and creates qualified leads in your CRM automatically. Every call is transcribed, summarized, and paired with follow-up tasks, so specialists arrive in the morning to qualified leads ready to follow up instead of voicemails to chase down. No family slips through the cracks even after hours.' },
     ],
-    cta: 'Book a demo to fill your programs faster.',
+    cta: 'Book a demo and see how you can enroll more families, faster',
   },
 }
