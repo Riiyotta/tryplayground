@@ -14,22 +14,33 @@ checkable — a section can only drift if it's described twice.
 
 ## What the data shows
 
-**Three templates carry 61% of the routes.** The built-for audience pages (7),
-the collection indexes (4) and the shared solutions renderer (3) cover 14 of 23
-routes between them. The other 9 routes each have their own template, so that's
-where the per-page build effort actually sits — the homepage, the two hand-built
-solutions pages, why-playground, customers, about, careers and the 404.
+**The built-for audience pages are not one template — they're four.** The
+original ia.json treated all 7 `/for/*` routes as a single template with a
+fixed section list. Rebuilding the clone's head-start page (real 7-row +
+tile-grid + pull-quote shape, not a spacing tweak) and adding the savings-club
+and support bands to owners/directors/enrollment-specialist made that
+inaccurate: 3 routes are the plain hero→rows→FAQ→CTA shape, 2 add a savings-club
+band and a 3-card support band, 1 adds only the support band, and head-start
+alone carries a 2×2 tile grid and a pull-quote that no other route has. Split
+into `template.audience-plain`, `-savings-support`, `-support` and `-headstart`
+so the section list per template is actually what that route renders.
 
-**17 sections are shared, 9 are page-local.** The shared set is already real
-shared code — `PageParts.jsx` and `Primitives.jsx` back most of it. The 9
-page-local ones (the homepage hero, timeline and grid sections; the two-step
-demo form; the three collection feeds; the customer-story band; the 404 body)
-have exactly one caller each and should stay local until a second one appears.
+**Three templates still carry 43% of the routes.** Collection index (4),
+the shared solutions renderer (3) and the plain audience page (3) cover 10 of
+23 routes. The other 13 routes now span 12 templates — audience pages split
+three further ways, plus the 9 fully bespoke ones (homepage, both hand-built
+solutions pages, why-playground, customers, about, careers, support, 404).
 
-**All 26 sections name the component that renders them** via `implementedBy`, so
-this is a map of the code rather than a plan for it. `FEATURE` is the largest
-category at 7 sections, which matches a product marketing site — most of the
-distinct blocks exist to explain the product.
+**18 sections are shared, 12 are page-local.** The 4 new sections
+(`convert.savings-club`, `feature.support-band`, `feature.tile-grid`,
+`proof.pull-quote`) are all single-use today — support-band is shared across
+2 of the 4 new audience variants, the other 3 have exactly one caller. Keep
+them page-local in `ForPage.jsx` until a second caller shows up; don't
+pre-extract components for a reuse count of 1.
+
+**30 sections now name the component that renders them** via `implementedBy`.
+`FEATURE` is still the largest category (9 sections after this pass), which
+tracks — most of the site's distinct blocks exist to explain the product.
 
 ## One thing not to "fix"
 

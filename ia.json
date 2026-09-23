@@ -3,7 +3,7 @@
     "source": "tryplayground.com clone \u2014 21 nav routes built and measured against the live original at 1440/768/390. Structure derived from src/App.jsx (route table), src/pages/* (template composition) and src/data/* (content modules).",
     "status": "measured-from-codebase",
     "totalRoutes": 23,
-    "totalTemplates": 12
+    "totalTemplates": 15
   },
   "categories": {
     "CHROME": "Persistent site furniture rendered once by Layout.jsx and shared by every route.",
@@ -169,6 +169,30 @@
       "description": "404 body: heading, explanation that the page may not be built in this clone, and a link home.",
       "scope": "The catch-all route only.",
       "implementedBy": "NotFound.jsx"
+    },
+    "convert.savings-club": {
+      "category": "CONVERT",
+      "description": "Image + copy + link band offering the Playground Savings Club discount programme. Top-aligned two-column layout, 603x352 image at x=112.",
+      "scope": "Two of the seven built-for audience pages: /for/owners and /for/directors.",
+      "implementedBy": "ForPage.jsx"
+    },
+    "feature.support-band": {
+      "category": "FEATURE",
+      "description": "Three-card band (315x540 cards, r12 on #FBFAF9) promoting support/release resources, sharing a CTA baseline.",
+      "scope": "Three of the seven built-for audience pages: /for/owners, /for/directors and /for/enrollment-specialist.",
+      "implementedBy": "ForPage.jsx"
+    },
+    "feature.tile-grid": {
+      "category": "FEATURE",
+      "description": "2x2 tile grid under a 48px heading, tiles at 18px/w500 with a 245px row pitch \u2014 a compact features-list variant distinct from the alternating feature rows.",
+      "scope": "One route: /for/head-start only.",
+      "implementedBy": "ForPage.jsx"
+    },
+    "proof.pull-quote": {
+      "category": "PROOF",
+      "description": "32px centred pull-quote with attribution (name + role) beneath, no card chrome.",
+      "scope": "One route: /for/head-start only.",
+      "implementedBy": "ForPage.jsx"
     }
   },
   "templates": [
@@ -263,32 +287,6 @@
         "feature.alternating-rows",
         "convert.faq",
         "collection.article-rail",
-        "convert.closing-cta",
-        "chrome.footer"
-      ]
-    },
-    {
-      "id": "template.audience",
-      "name": "Built-for audience page",
-      "routeCount": 7,
-      "routes": [
-        "/for/centers",
-        "/for/home-based",
-        "/for/multi-site",
-        "/for/head-start",
-        "/for/owners",
-        "/for/directors",
-        "/for/enrollment-specialist"
-      ],
-      "routePattern": null,
-      "chrome": "full",
-      "sections": [
-        "chrome.header",
-        "chrome.scroll-restore",
-        "hero.split",
-        "proof.logo-ticker",
-        "feature.alternating-rows",
-        "convert.faq",
         "convert.closing-cta",
         "chrome.footer"
       ]
@@ -431,6 +429,94 @@
         "chrome.header",
         "chrome.scroll-restore",
         "convert.not-found",
+        "chrome.footer"
+      ]
+    },
+    {
+      "id": "template.audience-plain",
+      "name": "Built-for audience page (plain)",
+      "routeCount": 3,
+      "routes": [
+        "/for/centers",
+        "/for/home-based",
+        "/for/multi-site"
+      ],
+      "routePattern": null,
+      "chrome": "full",
+      "sections": [
+        "chrome.header",
+        "chrome.scroll-restore",
+        "hero.split",
+        "proof.logo-ticker",
+        "feature.alternating-rows",
+        "convert.faq",
+        "convert.closing-cta",
+        "chrome.footer"
+      ]
+    },
+    {
+      "id": "template.audience-savings-support",
+      "name": "Built-for audience page (savings club + support band)",
+      "routeCount": 2,
+      "routes": [
+        "/for/owners",
+        "/for/directors"
+      ],
+      "routePattern": null,
+      "chrome": "full",
+      "sections": [
+        "chrome.header",
+        "chrome.scroll-restore",
+        "hero.split",
+        "proof.logo-ticker",
+        "feature.alternating-rows",
+        "convert.savings-club",
+        "feature.support-band",
+        "convert.faq",
+        "convert.closing-cta",
+        "chrome.footer"
+      ]
+    },
+    {
+      "id": "template.audience-support",
+      "name": "Built-for audience page (support band)",
+      "routeCount": 1,
+      "routes": [
+        "/for/enrollment-specialist"
+      ],
+      "routePattern": null,
+      "chrome": "full",
+      "sections": [
+        "chrome.header",
+        "chrome.scroll-restore",
+        "hero.split",
+        "proof.logo-ticker",
+        "feature.alternating-rows",
+        "feature.support-band",
+        "convert.faq",
+        "convert.closing-cta",
+        "chrome.footer"
+      ]
+    },
+    {
+      "id": "template.audience-headstart",
+      "name": "Built-for audience page (head start \u2014 tile grid + pull quote)",
+      "routeCount": 1,
+      "routes": [
+        "/for/head-start"
+      ],
+      "routePattern": null,
+      "chrome": "full",
+      "sections": [
+        "chrome.header",
+        "chrome.scroll-restore",
+        "hero.split",
+        "proof.logo-ticker",
+        "feature.alternating-rows",
+        "feature.tile-grid",
+        "proof.pull-quote",
+        "convert.faq",
+        "convert.closing-cta",
         "chrome.footer"
       ]
     }
