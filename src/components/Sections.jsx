@@ -52,7 +52,7 @@ export function GetToKnow() {
             <Reveal delay={60}>
               <p className="mt-5 max-w-[501px] text-body text-muted xl:hidden">
                 Replace multiple broken tools with Playground, the only child care platform
-                designed to run every part of your program from one place.
+                designed to make your teachers and families happier.
               </p>
             </Reveal>
             <Reveal delay={115}>
@@ -127,14 +127,14 @@ export function GetToKnow() {
               </button>
             </Reveal>
           </div>
-          <div className="xl:w-[829px] xl:shrink-0">
+          <div className="xl:w-[845px] xl:shrink-0">
             {/* Right column opens with the subhead + overview link (xl only),
                 sitting level with the H2 as measured on the original. */}
             <Reveal delay={60}>
               <div className="hidden xl:block">
                 <p className="max-w-[501px] text-body text-muted">
                   Replace multiple broken tools with Playground, the only child care platform
-                  designed to run every part of your program from one place.
+                  designed to make your teachers and families happier.
                 </p>
                 <a href="#" className="mt-5 inline-flex items-center gap-2 text-[15px] font-medium text-link-blue">
                   Platform Overview
@@ -150,15 +150,15 @@ export function GetToKnow() {
                 807x515 stage on the right holding the 829x451 card. */}
             {/* The stage swaps with the open row — measured changing ~150ms
                 before the row itself expands, so it leads rather than lags.
-                Measured 829x451 at x=561 with the image filling the box
-                exactly: there is no warm padded frame around it here (that
-                belongs to the hero stage, not this one). */}
-            <div className="relative h-[620px] overflow-hidden rounded-card md:h-[660px] xl:h-[451px] xl:w-[829px]">
+                Measured: an 845x467 warm frame (rgba(68,25,6,0.04), radius
+                20, padding 8) holding the 829x451 image at radius 12. */}
+            <div className="relative h-[620px] overflow-hidden rounded-[20px] p-2 md:h-[660px] xl:h-[467px] xl:w-[845px]"
+                 style={{ background: 'rgba(68,25,6,0.04)' }}>
               {getToKnowRows.map((row, i) => (
                 <img key={row.label} src={row.img} alt=""
                      loading={i === 0 ? 'eager' : 'lazy'} decoding="async"
-                     className="absolute inset-0 h-full w-full rounded-card object-cover
-                                transition-opacity duration-[310ms] ease-color"
+                     className="absolute inset-2 h-[calc(100%-16px)] w-[calc(100%-16px)] rounded-card
+                                object-cover transition-opacity duration-[310ms] ease-color"
                      style={{ opacity: i === active ? 1 : 0 }} />
               ))}
             </div>
