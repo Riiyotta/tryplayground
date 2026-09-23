@@ -163,18 +163,30 @@ export default function Header() {
             {nav.map(({ label }) => (
               <div key={label} className="relative"
                    onMouseEnter={() => setOpen(label)}>
+                {/* The original opens these on hover only, which leaves every
+                    menu link unreachable by keyboard - and the mega-menus hold
+                    nearly all of the site's real navigation. Click/Enter and
+                    Escape are added on top of the measured hover behaviour
+                    rather than replacing it, so the pointer experience is
+                    unchanged. */}
                 <button
                   className={`flex items-center gap-[3px] whitespace-nowrap rounded-pill px-3 py-[6px] text-nav font-medium
                               transition-colors duration-200 ease-color
                               ${open === label ? 'text-nav-hover' : 'text-muted hover:text-nav-hover'}`}
                   aria-expanded={open === label}
+                  onClick={() => setOpen((v) => (v === label ? null : label))}
+                  onKeyDown={(e) => { if (e.key === 'Escape') setOpen(null) }}
                 >
                   {label}
                   <Chevron />
                 </button>
               </div>
             ))}
-            {open && <Panel name={open} />}
+            {open && (
+              <div onKeyDown={(e) => { if (e.key === 'Escape') setOpen(null) }}>
+                <Panel name={open} />
+              </div>
+            )}
           </nav>
 
           <div className="flex items-center gap-4">
@@ -202,13 +214,21 @@ export default function Header() {
             <div key={label} className="border-b border-black/[0.06] py-4">
               <p className="mb-2 text-[15px] font-semibold text-ink">{label}</p>
               <ul className="flex flex-col gap-2">
+                {/* These carry the same measured `to` the desktop panel
+                    routes on; an earlier pass dropped it here, which left the
+                    whole mobile site navigation-dead. Tapping one also closes
+                    the panel - otherwise it stays open over the new route. */}
                 {(menus[label].left || []).map((r) => (
                   <li key={r.title}>
-                    <a href="#" className="text-[14px] text-muted">{r.title}</a>
+                    <LinkOrA to={r.to} onClick={() => setMobile(false)}
+                             className="text-[14px] text-muted">{r.title}</LinkOrA>
                   </li>
                 ))}
                 {(menus[label].cards || []).map((c) => (
-                  <li key={c.label}><a href="#" className="text-[14px] text-muted">{c.label}</a></li>
+                  <li key={c.label}>
+                    <LinkOrA to={c.to} onClick={() => setMobile(false)}
+                             className="text-[14px] text-muted">{c.label}</LinkOrA>
+                  </li>
                 ))}
               </ul>
             </div>

@@ -612,9 +612,21 @@ export function Footer() {
                 </h4>
               )}
               <ul className="flex flex-col gap-[6px]">
+                {/* Labels whose page this clone actually serves route for
+                    real; the rest stay inert anchors rather than pretending
+                    to navigate somewhere that does not exist. */}
                 {col.links.map((l) => (
-                  <li key={l}>
-                    <a href="#" className="text-small font-medium text-muted hover-color hover:text-ink">{l}</a>
+                  <li key={l.label}>
+                    {l.to ? (
+                      <Link to={l.to}
+                            className="text-small font-medium text-muted hover-color hover:text-ink">
+                        {l.label}
+                      </Link>
+                    ) : (
+                      <a href="#" className="text-small font-medium text-muted hover-color hover:text-ink">
+                        {l.label}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>

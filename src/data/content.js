@@ -257,12 +257,42 @@ export const timeline = [
     ] },
 ]
 
+/* Footer link destinations. Every label that corresponds to a route the clone
+   actually serves now points at it; the rest stay '#' because the target page
+   genuinely does not exist in this clone (matching the original's own
+   behaviour for those would need pages we have not built).
+
+   Note the slug/label mismatches are the ORIGINAL's, not ours: on
+   tryplayground.com "Shared Services" goes to /for/owners, "Camps" to
+   /for/directors and "Before & After Care" to /for/enrollment-specialist. */
+const FOOTER_ROUTES = {
+  Billing: '/solutions/billing',
+  Expense: '/solutions/expenses',
+  Payroll: '/solutions/payroll',
+  Subsidies: '/solutions/subsidy',
+  AI: '/solutions/ai',
+  Centers: '/for/centers',
+  'Multi-site': '/for/multi-site',
+  'In-home': '/for/home-based',
+  'Head Start': '/for/head-start',
+  'Shared Services': '/for/owners',
+  Camps: '/for/directors',
+  'Before & After Care': '/for/enrollment-specialist',
+  About: '/about',
+  Careers: '/careers',
+  Blog: '/blog',
+  'Why Playground': '/why-playground',
+  'Customer Stories': '/customers',
+  Changelog: '/changelog',
+  'Help Center': '/support',
+}
+
 export const footerColumns = [
   { heading: 'Solutions', links: ['Billing','Expense','Payroll','Subsidies','Marketing','Enrollment','Websites','Paperwork','Branded Experience','Predictive Enrollment','AI','Attendance','Communication','Food programs','Learning','Reporting','API','Integrations'] },
   { heading: 'Built for', links: ['Centers','Multi-site','In-home','Head Start','Shared Services','Before & After Care','Camps','About','Careers','Security'] },
   { heading: 'Resources', links: ['Blog','Why Playground','Savings Club','Early Childhood Investigations','Customer Stories','Help Center','Changelog'] },
   { heading: '', links: ['Log In','Family Sign Up','Apple Store','Google Play'] },
-]
+].map((col) => ({ ...col, links: col.links.map((l) => ({ label: l, to: FOOTER_ROUTES[l] || null })) }))
 
 export const legalLinks = ['HIPAA Notice of Privacy Practices', 'Privacy', 'Terms of Service', 'Sitemap']
 
