@@ -6,6 +6,23 @@ import RiveArt from './RiveArt'
    gap, collapsing to a single column at <=768 (which is why these sections
    roughly triple in height on mobile).
    Section padding: 180px desktop -> 96px at <=768. */
+/* The eyebrow is colour-coded per section on the original, not one brand
+   orange. Pixel-sampled on the homepage: Marketing rgb(252,95,53),
+   Finances rgb(30,189,102), Operations rgb(48,121,255), AI rgb(142,64,204).
+   The /solutions pages carry the same coding - billing/payroll/expenses/
+   subsidy eyebrows are green rgb(9,168,81), /solutions/ai is the same
+   purple. Falls back to the orange token for anything unlisted. */
+const EYEBROW_TONE = {
+  Marketing: '#FC5F35',
+  Finances: '#1EBD66',
+  Operations: '#3079FF',
+  AI: '#8E40CC',
+  Billing: '#09A851',
+  Payroll: '#09A851',
+  Expenses: '#09A851',
+  Subsidy: '#09A851',
+}
+
 export default function FeatureSection({
   id, heading, intro, lead, features, mediaH = 480, tone = 'grey', headingSize = 'h2',
   band = false, headingW = 760, padTop = 180, eyebrow = '', padBottom = 0, introW = 501,
@@ -13,6 +30,8 @@ export default function FeatureSection({
 }) {
   /* Section pt measured per section at 1440: 0 for marketing, 180 for the
      rest. Collapses to 96px at <=768 per CLONE_SPEC s10. */
+  const eyebrowTone = EYEBROW_TONE[eyebrow || id] || undefined
+
   return (
     <section id={id}
              className={`px-5 pt-24 md:pt-24 ${padTop === 0 ? 'xl:pt-0' : 'xl:pt-[180px]'}
@@ -25,11 +44,13 @@ export default function FeatureSection({
           <div className="flex h-[48px] items-center justify-center gap-[6px]">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                  strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"
-                 aria-hidden="true" className="shrink-0 text-eyebrow">
+                 aria-hidden="true" className="shrink-0 text-eyebrow"
+                 style={eyebrowTone ? { color: eyebrowTone } : undefined}>
               <path d="M3 11v2a1 1 0 0 0 1 1h2l4 3V7L6 10H4a1 1 0 0 0-1 1Z" />
               <path d="M15 9a3.5 3.5 0 0 1 0 6" />
             </svg>
-            <span className="text-caption font-medium text-eyebrow">
+            <span className="text-caption font-medium text-eyebrow"
+                  style={eyebrowTone ? { color: eyebrowTone } : undefined}>
               {eyebrow || id}
             </span>
           </div>
